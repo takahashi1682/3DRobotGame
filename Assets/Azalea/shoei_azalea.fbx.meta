@@ -1,0 +1,1695 @@
+fileFormatVersion: 2
+guid: ad10b0000b7468a46a4eea3c0c0f1b10
+timeCreated: 1445652419
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: 05azalea_back:base
+    100002: 05azalea_back:baseLight
+    100004: 05azalea_back:left
+    100006: 05azalea_back:leftLight
+    100008: 05azalea_back:right
+    100010: 05azalea_back:rightLight
+    100012: 05azalea_back:top
+    100014: 05azalea_back:topArm
+    100016: 05azalea_waist:base
+    100018: 05azalea_waist:centerLight
+    100020: 05azalea_waist:left
+    100022: 05azalea_waist:leftLight
+    100024: 05azalea_waist:leftWing
+    100026: 05azalea_waist:leftWingLight
+    100028: 05azalea_waist:right
+    100030: 05azalea_waist:rightLight
+    100032: 05azalea_waist:rightWing
+    100034: 05azalea_waist:rightWingLight
+    100036: 25cn:base
+    100038: 25cn:baseLight
+    100040: 25cn:tail
+    100042: 25cn:tailLight
+    100044: 66etc:Layer1
+    100046: pivot
+    100048: //RootNode
+    100050: wall01_azalea:belly
+    100052: wall01_azalea:body
+    100054: wall01_azalea:head
+    100056: wall01_azalea:head_light
+    100058: wall01_azalea:Lleg
+    100060: wall01_azalea:Lleg_light
+    100062: wall01_azalea:Lshoulder
+    100064: wall01_azalea:Lshoulder_light
+    100066: wall01_azalea:Lthigh
+    100068: wall01_azalea:Lthigh_light
+    100070: wall01_azalea:Luparm
+    100072: wall01_azalea:Rleg
+    100074: wall01_azalea:Rleg_light
+    100076: wall01_azalea:Rshoulder
+    100078: wall01_azalea:Rshoulder_light
+    100080: wall01_azalea:Rthigh
+    100082: wall01_azalea:Rthigh_light
+    100084: wall01_azalea:Ruparm
+    100086: wall01_azalea:waist
+    100088: wall01_azalea:waist_light
+    400000: 05azalea_back:base
+    400002: 05azalea_back:baseLight
+    400004: 05azalea_back:left
+    400006: 05azalea_back:leftLight
+    400008: 05azalea_back:right
+    400010: 05azalea_back:rightLight
+    400012: 05azalea_back:top
+    400014: 05azalea_back:topArm
+    400016: 05azalea_waist:base
+    400018: 05azalea_waist:centerLight
+    400020: 05azalea_waist:left
+    400022: 05azalea_waist:leftLight
+    400024: 05azalea_waist:leftWing
+    400026: 05azalea_waist:leftWingLight
+    400028: 05azalea_waist:right
+    400030: 05azalea_waist:rightLight
+    400032: 05azalea_waist:rightWing
+    400034: 05azalea_waist:rightWingLight
+    400036: 25cn:base
+    400038: 25cn:baseLight
+    400040: 25cn:tail
+    400042: 25cn:tailLight
+    400044: 66etc:Layer1
+    400046: pivot
+    400048: //RootNode
+    400050: wall01_azalea:belly
+    400052: wall01_azalea:body
+    400054: wall01_azalea:head
+    400056: wall01_azalea:head_light
+    400058: wall01_azalea:Lleg
+    400060: wall01_azalea:Lleg_light
+    400062: wall01_azalea:Lshoulder
+    400064: wall01_azalea:Lshoulder_light
+    400066: wall01_azalea:Lthigh
+    400068: wall01_azalea:Lthigh_light
+    400070: wall01_azalea:Luparm
+    400072: wall01_azalea:Rleg
+    400074: wall01_azalea:Rleg_light
+    400076: wall01_azalea:Rshoulder
+    400078: wall01_azalea:Rshoulder_light
+    400080: wall01_azalea:Rthigh
+    400082: wall01_azalea:Rthigh_light
+    400084: wall01_azalea:Ruparm
+    400086: wall01_azalea:waist
+    400088: wall01_azalea:waist_light
+    2300000: 05azalea_back:base
+    2300002: 05azalea_back:baseLight
+    2300004: 05azalea_back:left
+    2300006: 05azalea_back:leftLight
+    2300008: 05azalea_back:right
+    2300010: 05azalea_back:rightLight
+    2300012: 05azalea_back:top
+    2300014: 05azalea_back:topArm
+    2300016: 05azalea_waist:base
+    2300018: 05azalea_waist:centerLight
+    2300020: 05azalea_waist:left
+    2300022: 05azalea_waist:leftLight
+    2300024: 05azalea_waist:leftWing
+    2300026: 05azalea_waist:leftWingLight
+    2300028: 05azalea_waist:right
+    2300030: 05azalea_waist:rightLight
+    2300032: 05azalea_waist:rightWing
+    2300034: 05azalea_waist:rightWingLight
+    2300036: 25cn:base
+    2300038: 25cn:baseLight
+    2300040: 25cn:tail
+    2300042: 25cn:tailLight
+    2300044: 66etc:Layer1
+    2300046: wall01_azalea:belly
+    2300048: wall01_azalea:body
+    2300050: wall01_azalea:head
+    2300052: wall01_azalea:head_light
+    2300054: wall01_azalea:Lleg
+    2300056: wall01_azalea:Lleg_light
+    2300058: wall01_azalea:Lshoulder
+    2300060: wall01_azalea:Lshoulder_light
+    2300062: wall01_azalea:Lthigh
+    2300064: wall01_azalea:Lthigh_light
+    2300066: wall01_azalea:Luparm
+    2300068: wall01_azalea:Rleg
+    2300070: wall01_azalea:Rleg_light
+    2300072: wall01_azalea:Rshoulder
+    2300074: wall01_azalea:Rshoulder_light
+    2300076: wall01_azalea:Rthigh
+    2300078: wall01_azalea:Rthigh_light
+    2300080: wall01_azalea:Ruparm
+    2300082: wall01_azalea:waist
+    2300084: wall01_azalea:waist_light
+    3300000: 05azalea_back:base
+    3300002: 05azalea_back:baseLight
+    3300004: 05azalea_back:left
+    3300006: 05azalea_back:leftLight
+    3300008: 05azalea_back:right
+    3300010: 05azalea_back:rightLight
+    3300012: 05azalea_back:top
+    3300014: 05azalea_back:topArm
+    3300016: 05azalea_waist:base
+    3300018: 05azalea_waist:centerLight
+    3300020: 05azalea_waist:left
+    3300022: 05azalea_waist:leftLight
+    3300024: 05azalea_waist:leftWing
+    3300026: 05azalea_waist:leftWingLight
+    3300028: 05azalea_waist:right
+    3300030: 05azalea_waist:rightLight
+    3300032: 05azalea_waist:rightWing
+    3300034: 05azalea_waist:rightWingLight
+    3300036: 25cn:base
+    3300038: 25cn:baseLight
+    3300040: 25cn:tail
+    3300042: 25cn:tailLight
+    3300044: 66etc:Layer1
+    3300046: wall01_azalea:belly
+    3300048: wall01_azalea:body
+    3300050: wall01_azalea:head
+    3300052: wall01_azalea:head_light
+    3300054: wall01_azalea:Lleg
+    3300056: wall01_azalea:Lleg_light
+    3300058: wall01_azalea:Lshoulder
+    3300060: wall01_azalea:Lshoulder_light
+    3300062: wall01_azalea:Lthigh
+    3300064: wall01_azalea:Lthigh_light
+    3300066: wall01_azalea:Luparm
+    3300068: wall01_azalea:Rleg
+    3300070: wall01_azalea:Rleg_light
+    3300072: wall01_azalea:Rshoulder
+    3300074: wall01_azalea:Rshoulder_light
+    3300076: wall01_azalea:Rthigh
+    3300078: wall01_azalea:Rthigh_light
+    3300080: wall01_azalea:Ruparm
+    3300082: wall01_azalea:waist
+    3300084: wall01_azalea:waist_light
+    4300000: wall01_azalea:waist
+    4300002: wall01_azalea:belly
+    4300004: wall01_azalea:body
+    4300006: wall01_azalea:head
+    4300008: wall01_azalea:head_light
+    4300010: wall01_azalea:Lshoulder
+    4300012: wall01_azalea:Luparm
+    4300014: 66etc:Layer1
+    4300016: wall01_azalea:Lshoulder_light
+    4300018: wall01_azalea:Rshoulder
+    4300020: wall01_azalea:Ruparm
+    4300022: 25cn:base
+    4300024: 25cn:tail
+    4300026: 25cn:tailLight
+    4300028: 25cn:baseLight
+    4300030: wall01_azalea:Rshoulder_light
+    4300032: 05azalea_back:base
+    4300034: 05azalea_back:topArm
+    4300036: 05azalea_back:top
+    4300038: 05azalea_back:left
+    4300040: 05azalea_back:leftLight
+    4300042: 05azalea_back:right
+    4300044: 05azalea_back:rightLight
+    4300046: 05azalea_back:baseLight
+    4300048: wall01_azalea:waist_light
+    4300050: wall01_azalea:Lthigh
+    4300052: wall01_azalea:Lleg
+    4300054: wall01_azalea:Lleg_light
+    4300056: wall01_azalea:Lthigh_light
+    4300058: wall01_azalea:Rthigh
+    4300060: wall01_azalea:Rleg
+    4300062: wall01_azalea:Rleg_light
+    4300064: wall01_azalea:Rthigh_light
+    4300066: 05azalea_waist:base
+    4300068: 05azalea_waist:left
+    4300070: 05azalea_waist:leftWing
+    4300072: 05azalea_waist:leftWingLight
+    4300074: 05azalea_waist:leftLight
+    4300076: 05azalea_waist:right
+    4300078: 05azalea_waist:rightWing
+    4300080: 05azalea_waist:rightWingLight
+    4300082: 05azalea_waist:rightLight
+    4300084: 05azalea_waist:centerLight
+    7400000: move_forward
+    7400002: move_back
+    7400004: move_left
+    7400006: move_right
+    7400008: jump_on
+    7400010: jump_off
+    7400012: jump_boost
+    7400014: boost_forward
+    7400016: boost_back
+    7400018: boost_left
+    7400020: boost_right
+    7400022: idle
+    9500000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: move_forward
+      takeName: Base Stack
+      firstFrame: 40
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: move_back
+      takeName: Base Stack
+      firstFrame: 160
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: move_left
+      takeName: Base Stack
+      firstFrame: 80
+      lastFrame: 110
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: move_right
+      takeName: Base Stack
+      firstFrame: 120
+      lastFrame: 150
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: jump_on
+      takeName: Base Stack
+      firstFrame: 200
+      lastFrame: 230
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: jump_off
+      takeName: Base Stack
+      firstFrame: 240
+      lastFrame: 260
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: jump_boost
+      takeName: Base Stack
+      firstFrame: 270
+      lastFrame: 300
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: boost_forward
+      takeName: Base Stack
+      firstFrame: 350
+      lastFrame: 380
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: boost_back
+      takeName: Base Stack
+      firstFrame: 310
+      lastFrame: 340
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: boost_left
+      takeName: Base Stack
+      firstFrame: 390
+      lastFrame: 420
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: boost_right
+      takeName: Base Stack
+      firstFrame: 430
+      lastFrame: 460
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: idle
+      takeName: Base Stack
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pivot
+        weight: 1
+      - path: wall01_azalea:waist
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:centerLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:left/05azalea_waist:leftWing/05azalea_waist:leftWingLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing
+        weight: 1
+      - path: wall01_azalea:waist/05azalea_waist:base/05azalea_waist:right/05azalea_waist:rightWing/05azalea_waist:rightWingLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:left/05azalea_back:leftLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:right/05azalea_back:rightLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/05azalea_back:base/05azalea_back:topArm/05azalea_back:top
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:head/wall01_azalea:head_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Lshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Lshoulder/wall01_azalea:Luparm/66etc:Layer1
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Rshoulder_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:baseLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:belly/wall01_azalea:body/wall01_azalea:Rshoulder/wall01_azalea:Ruparm/25cn:base/25cn:tail/25cn:tailLight
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lleg/wall01_azalea:Lleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Lthigh/wall01_azalea:Lthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rleg/wall01_azalea:Rleg_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:Rthigh/wall01_azalea:Rthigh_light
+        weight: 1
+      - path: wall01_azalea:waist/wall01_azalea:waist_light
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
