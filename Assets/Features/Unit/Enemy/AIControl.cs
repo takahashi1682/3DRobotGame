@@ -74,8 +74,11 @@ namespace Features.Unit.Enemy
                         // ブーストを試みる(ロックオンの有無に関係なく共通)
                         TryPress(_boost, BoostRate, 0.1f);
 
-                        // 一定時間の射撃を試みる
-                        if (!_fire.Value) TryPress(_fire, FireRate, Random.Range(2f, 3f));
+                        // ターゲット見える場合は攻撃を試みる
+                        if (trackingObservable.IsLookingAtTarget)
+                        {
+                            if (!_fire.Value) TryPress(_fire, FireRate, Random.Range(2f, 3f));
+                        }
                     }
                     else
                     {

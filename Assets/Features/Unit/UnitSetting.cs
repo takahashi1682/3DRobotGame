@@ -22,6 +22,9 @@ namespace Features.Unit
         [field: SerializeField] public float MaxLockOnDistance { get; private set; } = 200f;
         [field: SerializeField] public ArmyType Army { get; private set; } = ArmyType.Player;
 
+        [Tooltip("Targetとの間を遮る障害物とみなすレイヤー(視認判定に使用)")]
+        [field: SerializeField] public LayerMask ObstacleLayerMask { get; private set; }
+
         /// <summary>
         /// 距離判定・ロックオンなどで使う、このUnitの基準座標。
         /// </summary>

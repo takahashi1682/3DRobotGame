@@ -16,6 +16,7 @@ namespace Features.Unit
     public interface IUnitTrackingObservable
     {
         ReadOnlyReactiveProperty<UnitScopeRoot> Target { get; }
+        bool IsLookingAtTarget { get; }
         float Distance { get; }
         float MaxDistance { get; }
     }
@@ -35,6 +36,7 @@ namespace Features.Unit
         private SerializableReactiveProperty<UnitScopeRoot> _target = new();
         public ReadOnlyReactiveProperty<UnitScopeRoot> Target => _target;
 
+        public bool IsLookingAtTarget { get; private set; }
         public float Distance { get; private set; }
         public float MaxDistance { get; private set; }
 
@@ -69,6 +71,8 @@ namespace Features.Unit
 
         public void ClearTarget()
         {
+            IsLookingAtTarget = false;
+            Distance = 0;
             MaxDistance = 0;
             _target.Value = null;
             _targetHealth = null;
@@ -83,6 +87,8 @@ namespace Features.Unit
                 ClearTarget();
                 return;
             }
+            
+            UpdateIsLookingAtTarget();
 
             // CurrentUnit(水平のみ)とShotPos(全方位)を、少し遅れてTargetの方向に向ける。
             _lastTargetPosition = Vector3.Lerp(_lastTargetPosition, _targetSetting.Pivot, _unitSetting.TrackingSpeed);
@@ -96,6 +102,16 @@ namespace Features.Unit
 
             Distance = Vector3.Distance(_unitSetting.Pivot, _targetSetting.Pivot);
             return Distance < MaxDistance;
+        }
+
+        /// <summary>
+        /// 自身からTargetまでの間に、ObstacleLayerMaskに属する障害物がなければ「直視できている」とする。
+        /// </summary>
+        private void UpdateIsLookingAtTarget()
+        {
+            var direction = (_targetSetting.Pivot - _unitSetting.Pivot).normalized;
+            IsLookingAtTarget = !Physics.Raycast(
+                _unitSetting.Pivot, direction, Distance, _unitSetting.ObstacleLayerMask);
         }
 
         protected virtual void LookAtTarget(Vector3 targetPos)
