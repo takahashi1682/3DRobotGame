@@ -66,12 +66,12 @@ namespace Features.Unit.Enemy
                 {
                     if (current.Running.CurrentValue)
                     {
-                        if (unitStatus.HasFlag((int)EPlayerState.LockOn))
+                        if (unitStatus.HasFlag(EPlayerState.LockOn))
                         {
                             _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 
                             // 飛行を試みる
-                            if (unitStatus.HasFlag((int)EPlayerState.Grounded))
+                            if (unitStatus.HasFlag(EPlayerState.Grounded))
                                 TryPress(_fly, FlyRate, Random.Range(1f, 2f));
 
                             // ブーストを試みる(ロックオンの有無に関係なく共通)
