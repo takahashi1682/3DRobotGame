@@ -70,7 +70,7 @@ namespace Features.Game
         {
             // 勝利条件: プレイヤー以外のユニットが全滅した場合
             _unitManager = unit.Container.Resolve<UnitManager>();
-            var targetKilled = _unitManager.ChangedUnitList
+            var targetKilled = _unitManager.OnRemovedUnit
                 .Where(_ => _state.Value == EGameState.Playing)
                 .Where(_ => _unitManager.GetTargetUnits(ArmyType.Player).Count == 0).Select(_ => true);
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Features.Unit.Battle;
 using MyUtils.Parameter.Basic;
@@ -10,32 +9,37 @@ namespace Features.Unit
 {
     public class UnitManager
     {
-        private readonly List<UnitScopeRoot> _unitList = new();
-        private readonly Subject<List<UnitScopeRoot>> _changedUnitListSubject = new();
-        public Observable<List<UnitScopeRoot>> ChangedUnitList => _changedUnitListSubject;
+        public List<UnitScopeRoot> UnitList { get; } = new();
+
+        private readonly Subject<UnitScopeRoot> _onRegisteredUnitSubject = new();
+        public Observable<UnitScopeRoot> OnRegisteredUnit => _onRegisteredUnitSubject;
+
+        private readonly Subject<UnitScopeRoot> _onRemovedUnitSubject = new();
+        public Observable<UnitScopeRoot> OnRemovedUnit => _onRemovedUnitSubject;
 
         public UnitManager(GameObject gameObject)
         {
-            _changedUnitListSubject.AddTo(gameObject);
+            _onRegisteredUnitSubject.AddTo(gameObject);
+            _onRemovedUnitSubject.AddTo(gameObject);
         }
 
         public void RegisterUnit(UnitScopeRoot unit)
         {
-            _unitList.Add(unit);
-            _changedUnitListSubject.OnNext(_unitList);
+            UnitList.Add(unit);
+            _onRegisteredUnitSubject.OnNext(unit);
         }
 
         public void RemoveUnit(UnitScopeRoot unit)
         {
-            _unitList.Remove(unit);
-            _changedUnitListSubject.OnNext(_unitList);
+            UnitList.Remove(unit);
+            _onRemovedUnitSubject.OnNext(unit);
         }
 
         public List<UnitScopeRoot> GetTargetUnits(ArmyType current)
         {
             var units = new List<UnitScopeRoot>();
 
-            foreach (var unit in _unitList)
+            foreach (var unit in UnitList)
             {
                 if (!unit.Container.TryResolve(out UnitSetting targetSetting)) continue;
                 if (!targetSetting.Army.IsTarget(current)) continue;

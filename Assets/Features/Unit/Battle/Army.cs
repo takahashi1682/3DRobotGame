@@ -7,7 +7,7 @@ namespace Features.Unit.Battle
     {
         Player, // プレイヤー陣営
         PlayerAlly, // プレイヤーの味方陣営
-        Boss, // ボス陣営
+        EnemyBoss, // ボス陣営
         Enemy, // 敵陣営
         Other, // その他の陣営（中立など）
         Gimmick, // ギミック陣営（トラップなど）
@@ -23,7 +23,7 @@ namespace Features.Unit.Battle
 
         private static bool IsEnemySide(this ArmyType type)
         {
-            return type is ArmyType.Enemy or ArmyType.Boss;
+            return type is ArmyType.Enemy or ArmyType.EnemyBoss;
         }
 
         /// <summary>
