@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Features.Unit.Battle;
+using MyUtils.Parameter.Basic;
 using UnityEngine;
 using VContainer;
 
@@ -34,6 +35,8 @@ namespace Features.Unit
             {
                 if (!unit.Container.TryResolve(out UnitSetting targetSetting)) continue;
                 if (!targetSetting.Army.IsTarget(currentSetting.Army)) continue;
+                if (!unit.Container.TryResolve(out Health targetHealth)) continue;
+                if (targetHealth.IsEmpty.CurrentValue) continue;
 
                 float distance = Vector3.Distance(
                     currentSetting.Pivot,

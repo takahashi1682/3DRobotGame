@@ -14,9 +14,9 @@ namespace Features.Unit.Player
         [SerializeField] private Slider _energySlider;
         [SerializeField] private TMP_Text _distanceText;
         private Camera _mainCamera;
-        private UnitScopeRoot _targetUnit;
         private UnitSetting _targetSetting;
-        private ILockOnActionObservable _lockOn;
+        private IUnitTrackingObservable _unitTrackingObservable;
+
 
         private void Start()
         {
@@ -30,11 +30,9 @@ namespace Features.Unit.Player
         public void OnResolve(IObjectResolver resolver)
         {
             _mainCamera = resolver.Resolve<Camera>();
-            _lockOn = resolver.Resolve<ILockOnActionObservable>();
-            _lockOn.Target.Subscribe(target =>
+            _unitTrackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+            _unitTrackingObservable.Target.Subscribe(target =>
             {
-                _targetUnit = target;
-
                 if (target != null)
                 {
                     _targetSetting = target.Container.Resolve<UnitSetting>();
@@ -60,12 +58,12 @@ namespace Features.Unit.Player
 
         private void Update()
         {
-            if (_targetUnit)
+            if (_unitTrackingObservable.Target.CurrentValue)
             {
                 Vector3 screenPos = _mainCamera.WorldToScreenPoint(_targetSetting.Pivot);
                 _lockOnUI.position = screenPos;
 
-                _distanceText.text = _lockOn.Distance.ToString("F1") + "m";
+                _distanceText.text = _unitTrackingObservable.Distance.ToString("F1") + "m";
             }
         }
     }

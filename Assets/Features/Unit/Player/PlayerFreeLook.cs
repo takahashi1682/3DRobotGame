@@ -78,6 +78,8 @@ namespace Features.Unit.Player
 
         private void Update()
         {
+            if (!IsAction.CurrentValue) return;
+
             var scaledLook = GetScaledLook();
             ApplyHorizontalLook(scaledLook.x);
             ApplyVerticalLook(scaledLook.y);

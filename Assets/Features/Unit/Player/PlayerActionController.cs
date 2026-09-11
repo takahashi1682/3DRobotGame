@@ -14,14 +14,16 @@ namespace Features.Unit.Player
         public override void OnResolve(IObjectResolver resolver)
         {
             base.OnResolve(resolver);
+            var unitScopeRoot = resolver.Resolve<UnitScopeRoot>();
             var control = resolver.Resolve<IUnitControllable>();
-            var playerStatus = resolver.Resolve<UnitStatus>();
 
-            _lookHandler = resolver.Resolve<ILookActionHandler>();
-            control.Look
-                .Where(_ => CanAction.CurrentValue && playerStatus.CanLook)
-                .SubscribeAwait(async (x, cts) => await _lookHandler.OnValueChanged(x, cts), AwaitOperation.Drop)
-                .AddTo(this);
+            if (resolver.TryResolve(out _lookHandler))
+            {
+                control.Look
+                    .Where(_ => unitScopeRoot.Running.CurrentValue)
+                    .SubscribeAwait(async (x, cts) => await _lookHandler.OnValueChanged(x, cts), AwaitOperation.Drop)
+                    .AddTo(this);
+            }
         }
 
         // 死亡・ゲーム終了時のキャンセルは、基底クラスのCanAction購読からCancelAllActionsを

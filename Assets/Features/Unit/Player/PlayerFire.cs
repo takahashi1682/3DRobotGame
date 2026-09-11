@@ -12,11 +12,11 @@ namespace Features.Unit.Player
         public override void OnResolve(IObjectResolver resolver)
         {
             base.OnResolve(resolver);
-            var unitLockOn = resolver.Resolve<UnitLockOn>();
             var setting = resolver.Resolve<UnitSetting>();
+            var trackingTargetObservable = resolver.Resolve<IUnitTrackingObservable>();
 
             // ロックオン対象がいない場合、カメラの正面方向を向くようにする。
-            unitLockOn.Target.Subscribe(target =>
+            trackingTargetObservable.Target.Subscribe(target =>
             {
                 if (target == null)
                 {

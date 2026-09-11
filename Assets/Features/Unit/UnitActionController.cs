@@ -1,7 +1,5 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using Features.Game;
-using MyUtils.Parameter.Basic;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -25,12 +23,11 @@ namespace Features.Unit
         /// 体力が0でなく、かつゲーム進行中かどうか。派生クラス(PlayerActionControllerのLookなど)も
         /// 同じインスタンスを参照することで、死亡・ゲーム終了時の停止処理を連動させる。
         /// </summary>
-        protected ReadOnlyReactiveProperty<bool> CanAction { get; private set; }
-        protected IMoveActionHandler MoveHandler;
-        protected IFlyActionHandler FlyHandler;
-        protected IBoostActionHandler BoostHandler;
-        protected IFireActionHandler FireHandler;
-        protected ILockOnActionHandler LockOnHandler;
+        protected IMoveActionHandler _moveHandler;
+        protected IFlyActionHandler _flyHandler;
+        protected IBoostActionHandler _boostHandler;
+        protected IFireActionHandler _fireHandler;
+        protected ILockOnActionHandler _lockOnHandler;
 
         public virtual void OnRegister(IContainerBuilder builder)
         {
@@ -38,63 +35,70 @@ namespace Features.Unit
 
         public virtual void OnResolve(IObjectResolver resolver)
         {
-            var control = resolver.Resolve<IUnitControllable>();
+            // IUnitControllableが解決できない場合は、アクション制御を行わない
+            if (!resolver.TryResolve<IUnitControllable>(out var control)) return;
+
+            var unitScopeRoot = resolver.Resolve<UnitScopeRoot>();
             var playerStatus = resolver.Resolve<UnitStatus>();
-            var health = resolver.Resolve<Health>();
-            var gameJudge = resolver.Resolve<GameJudge>();
 
-            CanAction = Observable.CombineLatest(
-                    health.IsEmpty, gameJudge.State, // 体力が0でなく、かつゲーム進行中のみアクション可能
-                    (healthEmpty, gameState) => !healthEmpty && gameState == EGameState.Playing)
-                .ToReadOnlyReactiveProperty()
-                .AddTo(this);
+            if (resolver.TryResolve(out _moveHandler))
+            {
+                control.Move
+                    .Where(_ => unitScopeRoot.Running.CurrentValue && playerStatus.CanMove)
+                    .SubscribeAwait(async (x, cts) => await _moveHandler.OnValueChanged(x, cts),
+                        AwaitOperation.Drop)
+                    .AddTo(this);
+            }
 
-            MoveHandler = resolver.Resolve<IMoveActionHandler>();
-            control.Move
-                .Where(_ => CanAction.CurrentValue && playerStatus.CanMove)
-                .SubscribeAwait(async (x, cts) => await MoveHandler.OnValueChanged(x, cts), AwaitOperation.Drop)
-                .AddTo(this);
+            if (resolver.TryResolve(out _flyHandler))
+            {
+                control.Fly
+                    .Where(_ => unitScopeRoot.Running.CurrentValue && playerStatus.CanFly)
+                    .SubscribeAwait(async (x, cts) => await _flyHandler.OnValueChanged(x, cts), AwaitOperation.Drop)
+                    .AddTo(this);
+            }
 
-            FlyHandler = resolver.Resolve<IFlyActionHandler>();
-            control.Fly
-                .Where(_ => CanAction.CurrentValue && playerStatus.CanFly)
-                .SubscribeAwait(async (press, cts) => await FlyHandler.OnValueChanged(press, cts), AwaitOperation.Drop)
-                .AddTo(this);
+            if (resolver.TryResolve(out _boostHandler))
+            {
+                control.Boost
+                    .Where(press => press && unitScopeRoot.Running.CurrentValue && playerStatus.CanBoost)
+                    .SubscribeAwait(async (_, cts) => await _boostHandler.OnValueChanged(true, cts),
+                        AwaitOperation.Drop)
+                    .AddTo(this);
+            }
 
-            BoostHandler = resolver.Resolve<IBoostActionHandler>();
-            control.Boost
-                .Where(press => press && CanAction.CurrentValue && playerStatus.CanBoost)
-                .SubscribeAwait(async (_, cts) => await BoostHandler.OnValueChanged(true, cts), AwaitOperation.Drop)
-                .AddTo(this);
+            if (resolver.TryResolve(out _fireHandler))
+            {
+                control.Fire
+                    .Where(_ => unitScopeRoot.Running.CurrentValue && playerStatus.CanFire)
+                    .SubscribeAwait(async (press, cts) => await _fireHandler.OnValueChanged(press, cts),
+                        AwaitOperation.Drop)
+                    .AddTo(this);
+            }
 
-            FireHandler = resolver.Resolve<IFireActionHandler>();
-            control.Fire
-                .Where(_ => CanAction.CurrentValue && playerStatus.CanFire)
-                .SubscribeAwait(async (press, cts) => await FireHandler.OnValueChanged(press, cts),
-                    AwaitOperation.Drop)
-                .AddTo(this);
-
-            LockOnHandler = resolver.Resolve<ILockOnActionHandler>();
-            control.LockOn
-                .Where(press => press && CanAction.CurrentValue && playerStatus.CanLockOn)
-                .SubscribeAwait(async (_, cts) => await LockOnHandler.OnValueChanged(true, cts),
-                    AwaitOperation.Drop)
-                .AddTo(this);
+            if (resolver.TryResolve(out _lockOnHandler))
+            {
+                control.LockOn
+                    .Where(press => press && unitScopeRoot.Running.CurrentValue && playerStatus.CanLockOn)
+                    .SubscribeAwait(async (_, cts) => await _lockOnHandler.OnValueChanged(true, cts),
+                        AwaitOperation.Drop)
+                    .AddTo(this);
+            }
 
             // アクション不可状態になった場合、すべてのアクションをキャンセルする
-            CanAction.Where(x => !x).Subscribe(_ =>
-            {
-                CancelAllActions();
-            }).AddTo(this);
+            unitScopeRoot.Running
+                .Where(x => !x)
+                .Subscribe(_ => CancelAllActions())
+                .AddTo(this);
         }
 
         protected virtual void CancelAllActions()
         {
-            MoveHandler?.CancelAction();
-            FlyHandler?.CancelAction();
-            BoostHandler?.CancelAction();
-            FireHandler?.CancelAction();
-            LockOnHandler?.CancelAction();
+            _moveHandler?.CancelAction();
+            _flyHandler?.CancelAction();
+            _boostHandler?.CancelAction();
+            _fireHandler?.CancelAction();
+            _lockOnHandler?.CancelAction();
         }
     }
 }

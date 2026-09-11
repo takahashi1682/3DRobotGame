@@ -1,6 +1,7 @@
 using Features.Game;
 using MyUtils.Parameter.Basic;
 using MyUtils.VContainerExtensions;
+using R3;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -10,28 +11,34 @@ namespace Features.Unit
     public class UnitScopeRoot : AbstractScopeRoot<IUnitScopeInitializable>
         , IGameScopeInitializable
     {
+        [SerializeField] private SerializableReactiveProperty<bool> _running = new();
+        public ReadOnlyReactiveProperty<bool> Running => _running;
+
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private GroundDetection _groundDetection;
         [SerializeField] private Health _health;
         [SerializeField] private Energy _energy;
 
-        private UnitManager _unitManager;
-
         public override void OnResolve(IObjectResolver resolver)
         {
             base.OnResolve(resolver);
-            _unitManager = resolver.Resolve<UnitManager>();
-        }
+            var unitManager = resolver.Resolve<UnitManager>();
+            var health = resolver.Resolve<Health>();
+            var gameJudge = resolver.Resolve<GameJudge>();
 
-        private void OnEnable()
-        {
-            _unitManager.RegisterUnit(this);
-        }
+            // 体力が0でなく、かつゲーム進行中のみアクション可能
+            health.IsEmpty.CombineLatest(gameJudge.State,
+                    (healthEmpty, gameState) => !healthEmpty && gameState == EGameState.Playing)
+                .Subscribe(x => _running.Value = x)
+                .AddTo(this);
 
-        private void OnDisable()
-        {
-            _unitManager.RemoveUnit(this);
+            // 体力が0になったらUnitManagerから削除する
+            health.IsEmpty.Subscribe(x =>
+            {
+                if (x) unitManager.RemoveUnit(this);
+                else unitManager.RegisterUnit(this);
+            }).AddTo(this);
         }
 
         /// <summary>

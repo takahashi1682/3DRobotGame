@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Features.Unit.Player
 {
-    public class PlayerLockOn : UnitLockOn
+    public class PlayerTracking : UnitTracking
     {
         public Transform CameraTarget;
 

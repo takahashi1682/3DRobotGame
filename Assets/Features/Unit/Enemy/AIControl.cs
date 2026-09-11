@@ -14,8 +14,6 @@ namespace Features.Unit.Enemy
         , IUnitScopeInitializable
         , IUnitControllable
     {
-        public bool IsEnabled = true;
-
         [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
         public Observable<Vector2> Move => _move;
 
@@ -56,34 +54,64 @@ namespace Features.Unit.Enemy
             _fire.AddTo(this);
             _lockOn.AddTo(this);
 
+            var current = resolver.Resolve<UnitScopeRoot>();
+            var unitManager = resolver.Resolve<UnitManager>();
+            var trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+            var trackingHandler = resolver.Resolve<IUnitTrackingHandler>();
+
             var unitStatus = resolver.Resolve<UnitStatus>();
             Observable.Interval(TimeSpan.FromSeconds(ThinkingInterval))
-                .Where(_ => IsEnabled)
+                .Where(_ => current.Running.CurrentValue)
                 .Subscribe(_ =>
                 {
-                    _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
-
-                    if (Random.value < FlyRate)
-                    {
-                        VirtualPress(_fly, 0.1f, destroyCancellationToken).Forget();
-                    }
-
-                    if (Random.value < BoostRate)
-                    {
-                        VirtualPress(_boost, 0.1f, destroyCancellationToken).Forget();
-                    }
-
-                    // ロックオン状態であれば、一定確率で射撃する。ロックオン状態でなければ、ロックオンする。
                     if (unitStatus.HasFlag((int)EPlayerState.LockOn))
                     {
-                        _fire.Value = Random.value < FireRate;
+                        _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+
+                        // 飛行を試みる
+                        TryPress(_fly, FlyRate, 0.1f);
+
+                        // ブーストを試みる(ロックオンの有無に関係なく共通)
+                        TryPress(_boost, BoostRate, 0.1f);
+
+                        // 一定時間の射撃を試みる
+                        if (!_fire.Value) TryPress(_fire, FireRate, Random.Range(2f, 3f));
                     }
                     else
                     {
-                        _fire.Value = false;
-                        VirtualPress(_lockOn, 0.1f, destroyCancellationToken).Forget();
+                        if (trackingObservable.Target.CurrentValue == null)
+                        {
+                            // 最も近い敵ユニットを検索する
+                            var target = unitManager.FindClosestEnemyUnit(current, float.MaxValue);
+                            if (target != null)
+                            {
+                                trackingHandler.SetTarget(target, float.MaxValue);
+                            }
+                        }
+                        else
+                        {
+                            // 前進する
+                            _move.Value = new Vector2(0, 1);
+
+                            // ブーストを試みる(ロックオンの有無に関係なく共通)
+                            TryPress(_boost, BoostRate, 0.1f);
+
+                            // ロックオンを試みる
+                            TryPress(_lockOn, 1f, 0.1f);
+                        }
                     }
                 }).AddTo(this);
+        }
+
+        /// <summary>
+        /// rateの確率でactionをduration秒だけtrueにする(ボタンの単発押下を模す)。
+        /// </summary>
+        private void TryPress(ReactiveProperty<bool> action, float rate, float duration)
+        {
+            if (Random.value < rate)
+            {
+                VirtualPress(action, duration, destroyCancellationToken).Forget();
+            }
         }
 
         private static async UniTask VirtualPress(ReactiveProperty<bool> action, float duration, CancellationToken ct)

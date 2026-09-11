@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -38,6 +39,11 @@ namespace Features.Unit
         public SerializableReactiveProperty<bool> IsAction => _isAction;
 
         private readonly List<BulletController> _bulletInstances = new();
+
+        private void Awake()
+        {
+            SetEffectsActive(false);
+        }
 
         public void OnRegister(IContainerBuilder builder)
         {
