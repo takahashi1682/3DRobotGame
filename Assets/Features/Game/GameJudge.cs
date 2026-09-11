@@ -1,5 +1,5 @@
 using Features.Unit;
-using Features.Unit.Player;
+using Features.Unit.Battle;
 using MyUtils;
 using MyUtils.Parameter.Basic;
 using R3;
@@ -13,6 +13,7 @@ namespace Features.Game
     {
         Ready,
         Playing,
+        GameClear,
         GameOver
     }
 
@@ -29,6 +30,8 @@ namespace Features.Game
         [SerializeField] private SerializableReactiveProperty<EGameState> _state = new(EGameState.Ready);
         public ReadOnlyReactiveProperty<EGameState> State => _state;
 
+        private UnitManager _unitManager;
+
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
@@ -37,9 +40,10 @@ namespace Features.Game
         public void OnResolve(IObjectResolver resolver)
         {
             _state.AddTo(this);
-            
+
             _startTimer.IsPlay.Value = true;
             _gameTimer.IsPlay.Value = false;
+            _unitManager = resolver.Resolve<UnitManager>();
 
             SubscribeGameStart();
             SubscribeGameEnd(_player);
@@ -64,22 +68,29 @@ namespace Features.Game
         /// </summary>
         private void SubscribeGameEnd(UnitScopeRoot unit)
         {
-            // 時間切れ
+            // 勝利条件: プレイヤー以外のユニットが全滅した場合
+            _unitManager = unit.Container.Resolve<UnitManager>();
+            var targetKilled = _unitManager.ChangedUnitList
+                .Where(_ => _state.Value == EGameState.Playing)
+                .Where(_ => _unitManager.GetTargetUnits(ArmyType.Player).Count == 0).Select(_ => true);
+
+            // 敗北条件: 制限時間切れ
             var timeUp = _gameTimer.OnFinish.Select(_ => true);
 
-            // プレイヤーの体力切れ
+            // 敗北条件: プレイヤーの体力が0になった場合
             var playerDie = unit.Container.Resolve<Health>().IsEmpty
                 .Where(x => x)
                 .Select(_ => false);
 
             // どちらが先に発火しても、勝敗判定は1回だけ
-            playerDie.Merge(timeUp)
+            targetKilled
+                .Merge(timeUp)
+                .Merge(playerDie)
                 .Take(1)
-                .Subscribe(wins =>
+                .Subscribe(playerWin =>
                 {
                     _gameTimer.IsPlay.Value = false;
-                    _state.Value = EGameState.GameOver;
-                    // GameClear = wins;
+                    _state.Value = playerWin ? EGameState.GameClear : EGameState.GameOver;
                 })
                 .AddTo(this);
         }

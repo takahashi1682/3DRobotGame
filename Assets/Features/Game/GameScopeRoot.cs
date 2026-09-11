@@ -18,7 +18,7 @@ namespace Features.Game
         {
             base.ConfigureScope(builder);
             builder.RegisterComponent(_mainCamera);
-            builder.Register<UnitManager>(Lifetime.Singleton);
+            builder.Register<UnitManager>(Lifetime.Singleton).WithParameter(gameObject);
         }
     }
 }

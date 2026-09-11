@@ -29,7 +29,6 @@ namespace Features.Unit
 
         private UnitSetting _unitSetting;
         private UnitManager _unitManager;
-        private UnitScopeRoot _currentUnit;
         private IUnitTrackingHandler _unitTracking;
 
         public void OnRegister(IContainerBuilder builder)
@@ -41,7 +40,6 @@ namespace Features.Unit
         {
             IsAction.AddTo(this);
             _unitManager = resolver.Resolve<UnitManager>();
-            _currentUnit = resolver.Resolve<UnitScopeRoot>();
             _unitSetting = resolver.Resolve<UnitSetting>();
             _unitTracking = resolver.Resolve<IUnitTrackingHandler>();
 
@@ -64,7 +62,10 @@ namespace Features.Unit
         {
             if (!IsAction.CurrentValue)
             {
-                var target = _unitManager.FindClosestEnemyUnit(_currentUnit, _unitSetting.MaxLockOnDistance);
+                var target = _unitManager.FindClosestTargetUnit(
+                    _unitSetting.Army,
+                    _unitSetting.UnitPivot.position,
+                    _unitSetting.MaxLockOnDistance);
                 if (target != null)
                 {
                     IsAction.Value = true;

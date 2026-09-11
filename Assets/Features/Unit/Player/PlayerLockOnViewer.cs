@@ -1,3 +1,4 @@
+using System;
 using MyUtils.Parameter.Basic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,8 +16,7 @@ namespace Features.Unit.Player
         [SerializeField] private TMP_Text _distanceText;
         private Camera _mainCamera;
         private UnitSetting _targetSetting;
-        private IUnitTrackingObservable _unitTrackingObservable;
-
+        private IUnitTrackingObservable _trackingObservable;
 
         private void Start()
         {
@@ -30,22 +30,31 @@ namespace Features.Unit.Player
         public void OnResolve(IObjectResolver resolver)
         {
             _mainCamera = resolver.Resolve<Camera>();
-            _unitTrackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-            _unitTrackingObservable.Target.Subscribe(target =>
+            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+
+            IDisposable health = null;
+            IDisposable energy = null;
+
+            // Targetはロックオンの開始・解除・切り替えのタイミングでのみ変化を通知するので
+            // (同じ値が連続で来ることはない)、ここで毎回購読を張り直せば十分。
+            _trackingObservable.Target.Subscribe(target =>
             {
+                health?.Dispose();
+                energy?.Dispose();
+
                 if (target != null)
                 {
                     _targetSetting = target.Container.Resolve<UnitSetting>();
 
                     var targetHealth = target.Container.Resolve<Health>();
-                    targetHealth.CurrentRate
+                    health = targetHealth.CurrentRate
                         .Subscribe(value => _healthSlider.value = value)
-                        .AddTo(targetHealth);
+                        .AddTo(target);
 
                     var targetEnergy = target.Container.Resolve<Energy>();
-                    targetEnergy.CurrentRate
+                    energy = targetEnergy.CurrentRate
                         .Subscribe(value => _energySlider.value = value)
-                        .AddTo(targetEnergy);
+                        .AddTo(target);
 
                     _lockOnUI.gameObject.SetActive(true);
                 }
@@ -58,12 +67,12 @@ namespace Features.Unit.Player
 
         private void Update()
         {
-            if (_unitTrackingObservable.Target.CurrentValue)
+            if (_trackingObservable.Target.CurrentValue)
             {
                 Vector3 screenPos = _mainCamera.WorldToScreenPoint(_targetSetting.Pivot);
                 _lockOnUI.position = screenPos;
 
-                _distanceText.text = _unitTrackingObservable.Distance.ToString("F1") + "m";
+                _distanceText.text = _trackingObservable.Distance.ToString("F1") + "m";
             }
         }
     }
