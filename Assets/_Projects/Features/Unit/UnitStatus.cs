@@ -36,8 +36,7 @@ namespace _Projects.Features.Unit
     public class UnitStatus : MonoBehaviour,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable
+        IScopeLaunchable
     {
         [SerializeField] private FlagsParameter<EPlayerState> _stateFlags = new();
         [SerializeField] private FlagsParameter<ECanFlags> _canFlags = new();
@@ -57,28 +56,19 @@ namespace _Projects.Features.Unit
         }
 
         private ILookActionObservable _look;
-        private IMoveActionObservable _move;
-        private GroundDetection _ground;
-        private IBoostActionObservable _boost;
-        private ILockOnActionObservable _lockOn;
-        private IFireActionObservable _fire;
-        private Health _health;
-        private Energy _energy;
+        [Inject] private IMoveActionObservable _move;
+        [Inject] private GroundDetection _ground;
+        [Inject] private IBoostActionObservable _boost;
+        [Inject] private ILockOnActionObservable _lockOn;
+        [Inject] private IFireActionObservable _fire;
+        [Inject] private Health _health;
+        [Inject] private Energy _energy;
 
-        public virtual void OnResolve(IObjectResolver resolver)
-        {
-            resolver.TryResolve(out _look);
-            _move = resolver.Resolve<IMoveActionObservable>();
-            _ground = resolver.Resolve<GroundDetection>();
-            _boost = resolver.Resolve<IBoostActionObservable>();
-            _lockOn = resolver.Resolve<ILockOnActionObservable>();
-            _fire = resolver.Resolve<IFireActionObservable>();
-            _health = resolver.Resolve<Health>();
-            _energy = resolver.Resolve<Energy>();
-        }
+        [Inject] private IObjectResolver _resolver;
 
-        public virtual void OnStart()
+        public virtual void OnLaunch()
         {
+            _resolver.TryResolve(out _look);
             if (_look != null)
             {
                 _look.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Look, x)).AddTo(this);

@@ -6,7 +6,7 @@ using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitAnimation : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
+    public class UnitAnimation : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         [Header("References")]
         [SerializeField] private Animator _animator;
@@ -27,18 +27,11 @@ namespace _Projects.Features.Unit
         private static readonly int _jumpOnHash = Animator.StringToHash("JumpOn");
         private static readonly int _jumpOffHash = Animator.StringToHash("JumpOff");
 
-        private UnitMove _unitMove;
-        private GroundDetection _groundDetection;
-        private IBoostActionObservable _boost;
+        [Inject] private UnitMove _unitMove;
+        [Inject] private GroundDetection _groundDetection;
+        [Inject] private IBoostActionObservable _boost;
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _unitMove = resolver.Resolve<UnitMove>();
-            _groundDetection = resolver.Resolve<GroundDetection>();
-            _boost = resolver.Resolve<IBoostActionObservable>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             _groundDetection.IsHit.Subscribe(isGround => _animator.SetTrigger(isGround ? _jumpOffHash : _jumpOnHash))
                 .AddTo(this);

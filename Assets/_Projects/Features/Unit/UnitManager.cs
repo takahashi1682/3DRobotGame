@@ -69,8 +69,6 @@ namespace _Projects.Features.Unit
 
             foreach (var unit in targetUnits)
             {
-                if(!unit.IsVisible) continue;
-                
                 // targetUnitsはGetTargetUnitsで陣営・生存チェック済みなので、ここでは距離だけ見ればよい。
                 float distance = Vector3.Distance(
                     currentPos,

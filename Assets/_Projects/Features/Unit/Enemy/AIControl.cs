@@ -14,8 +14,7 @@ namespace _Projects.Features.Unit.Enemy
     public class AIControl : MonoBehaviour
         , IUnitScopeMember
         , IScopeRegisterable
-        , IScopeResolvable
-        , IScopeStartable
+        , IScopeLaunchable
         , IUnitControllable
     {
         [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
@@ -49,24 +48,14 @@ namespace _Projects.Features.Unit.Enemy
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
-        private UnitScopeRoot _current;
-        private UnitManager _unitManager;
-        private IUnitTrackingObservable _trackingObservable;
-        private IUnitTrackingHandler _trackingHandler;
-        private UnitStatus _unitStatus;
-        private UnitSetting _unitSetting;
+        [Inject] private UnitScopeRoot _current;
+        [Inject] private UnitManager _unitManager;
+        [Inject] private IUnitTrackingObservable _trackingObservable;
+        [Inject] private IUnitTrackingHandler _trackingHandler;
+        [Inject] private UnitStatus _unitStatus;
+        [Inject] private UnitSetting _unitSetting;
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _current = resolver.Resolve<UnitScopeRoot>();
-            _unitManager = resolver.Resolve<UnitManager>();
-            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-            _trackingHandler = resolver.Resolve<IUnitTrackingHandler>();
-            _unitStatus = resolver.Resolve<UnitStatus>();
-            _unitSetting = resolver.Resolve<UnitSetting>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             _move.AddTo(this);
             _look.AddTo(this);

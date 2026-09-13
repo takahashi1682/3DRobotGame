@@ -12,19 +12,12 @@ namespace _Projects.Features.Unit.Player
     {
         public float BestFireDistance = 100f;
 
-        private Camera _camera;
-        private IUnitTrackingObservable _trackingObservable;
+        [Inject] private Camera _camera;
+        [Inject] private IUnitTrackingObservable _trackingObservable;
 
-        public override void OnResolve(IObjectResolver resolver)
+        public override void OnLaunch()
         {
-            base.OnResolve(resolver);
-            _camera = resolver.Resolve<Camera>();
-            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-        }
-
-        public override void OnStart()
-        {
-            base.OnStart();
+            base.OnLaunch();
 
             // ロックオン対象がいない場合、カメラの正面方向を向くようにする。
             _trackingObservable.Target.Subscribe(target =>

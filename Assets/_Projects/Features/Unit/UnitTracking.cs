@@ -28,8 +28,7 @@ namespace _Projects.Features.Unit
     public class UnitTracking : MonoBehaviour,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         IUnitTrackingHandler,
         IUnitTrackingObservable
     {
@@ -43,8 +42,8 @@ namespace _Projects.Features.Unit
         public float Distance { get; private set; }
         private float MaxDistance { get; set; }
 
-        protected Rigidbody _rigidbody;
-        protected UnitSetting _unitSetting;
+        [Inject] protected Rigidbody _rigidbody;
+        [Inject] protected UnitSetting _unitSetting;
         protected Transform _targetPivot;
 
         public void OnRegister(IContainerBuilder builder)
@@ -52,13 +51,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IUnitTrackingHandler, IUnitTrackingObservable>();
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _rigidbody = resolver.Resolve<Rigidbody>();
-            _unitSetting = resolver.Resolve<UnitSetting>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             _target.AddTo(this);
         }
@@ -76,7 +69,6 @@ namespace _Projects.Features.Unit
 
         public void ClearTarget()
         {
-            Debug.Log(2);
             // 銃口を初期位置(正面)に戻す
             _unitSetting.FirePoint.localRotation = Quaternion.identity;
 

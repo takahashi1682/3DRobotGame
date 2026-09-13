@@ -14,8 +14,7 @@ namespace _Projects.Features.Unit
     public class UnitGravity : MonoBehaviour,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable
+        IScopeLaunchable
     {
         [Header("Settings")]
         public float Gravity = -2.25f;
@@ -23,23 +22,16 @@ namespace _Projects.Features.Unit
 
         private float _currentGravity;
 
-        private Rigidbody _rigidbody;
-        private GroundDetection _groundDetection;
-        private IFlyActionObservable _flyActionObservable;
+        [Inject] private Rigidbody _rigidbody;
+        [Inject] private GroundDetection _groundDetection;
+        [Inject] private IFlyActionObservable _flyActionObservable;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _rigidbody = resolver.Resolve<Rigidbody>();
-            _groundDetection = resolver.Resolve<GroundDetection>();
-            _flyActionObservable = resolver.Resolve<IFlyActionObservable>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             this.FixedUpdateAsObservable()
                 .Subscribe(_ =>

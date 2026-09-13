@@ -26,8 +26,7 @@ namespace _Projects.Features.Unit
     public class UnitFire : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         IFireActionHandler,
         IFireActionObservable
     {
@@ -39,10 +38,11 @@ namespace _Projects.Features.Unit
         public float FireRate = 0.15f;
 
         /// <summary>派生クラス(PlayerFireなど)からもFirePoint等を参照できるようprotectedにしている。</summary>
+        [Inject]
         protected UnitSetting Setting { get; private set; }
 
         private float _fireTime;
-        private IObjectResolver _resolver;
+        [Inject] private IObjectResolver _resolver;
         private readonly List<BulletController> _bulletInstances = new();
 
         private void Awake()
@@ -55,13 +55,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IFireActionHandler, IFireActionObservable>();
         }
 
-        public virtual void OnResolve(IObjectResolver resolver)
-        {
-            _resolver = resolver;
-            Setting = resolver.Resolve<UnitSetting>();
-        }
-
-        public virtual void OnStart()
+        public virtual void OnLaunch()
         {
             IsAction.AddTo(this);
         }

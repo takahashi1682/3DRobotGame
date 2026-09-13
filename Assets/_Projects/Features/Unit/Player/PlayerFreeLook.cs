@@ -28,8 +28,7 @@ namespace _Projects.Features.Unit.Player
     public class PlayerFreeLook : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         ILookActionHandler,
         ILookActionObservable
     {
@@ -48,21 +47,15 @@ namespace _Projects.Features.Unit.Player
 
         private Vector2 CurrentLook { get; set; }
 
-        private IUnitControllable _control;
-        private Rigidbody _rigidbody;
+        [Inject] private IUnitControllable _control;
+        [Inject] private Rigidbody _rigidbody;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<ILookActionHandler, ILookActionObservable>();
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _control = resolver.Resolve<IUnitControllable>();
-            _rigidbody = resolver.Resolve<Rigidbody>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             IsAction.AddTo(this);
         }

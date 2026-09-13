@@ -1808,7 +1808,6 @@ GameObject:
   - component: {fileID: 155872613}
   - component: {fileID: 155872615}
   - component: {fileID: 939060855616413983}
-  - component: {fileID: 939060855616413988}
   - component: {fileID: 939060855616413990}
   - component: {fileID: 939060855616413992}
   - component: {fileID: 939060855616413994}
@@ -1941,7 +1940,6 @@ GameObject:
   - component: {fileID: 181099751}
   - component: {fileID: 181099772}
   - component: {fileID: 181099771}
-  - component: {fileID: 181099770}
   - component: {fileID: 181099769}
   - component: {fileID: 181099768}
   - component: {fileID: 181099767}
@@ -2306,30 +2304,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 181099772}
   _groundDetection: {fileID: 181099762}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 690216351}
+    <FirePoint>k__BackingField: {fileID: 1817287747}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 181099766}
   <Energy>k__BackingField: {fileID: 181099765}
---- !u!114 &181099770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181099750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 690216351}
-  <FirePoint>k__BackingField: {fileID: 1817287747}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &181099771
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5209,7 +5196,6 @@ GameObject:
   - component: {fileID: 456299130}
   - component: {fileID: 456299151}
   - component: {fileID: 456299150}
-  - component: {fileID: 456299149}
   - component: {fileID: 456299148}
   - component: {fileID: 456299147}
   - component: {fileID: 456299146}
@@ -5574,30 +5560,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 456299151}
   _groundDetection: {fileID: 456299141}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1802597999}
+    <FirePoint>k__BackingField: {fileID: 285011095}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 456299145}
   <Energy>k__BackingField: {fileID: 456299144}
---- !u!114 &456299149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456299129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1802597999}
-  <FirePoint>k__BackingField: {fileID: 285011095}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &456299150
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6300,7 +6275,6 @@ GameObject:
   - component: {fileID: 556414297}
   - component: {fileID: 556414317}
   - component: {fileID: 556414316}
-  - component: {fileID: 556414315}
   - component: {fileID: 556414314}
   - component: {fileID: 556414313}
   - component: {fileID: 556414312}
@@ -6649,30 +6623,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 556414317}
   _groundDetection: {fileID: 556414307}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 583540779}
+    <FirePoint>k__BackingField: {fileID: 1534767415}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 556414311}
   <Energy>k__BackingField: {fileID: 556414310}
---- !u!114 &556414315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 556414296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 583540779}
-  <FirePoint>k__BackingField: {fileID: 1534767415}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &556414316
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6969,7 +6932,6 @@ GameObject:
   - component: {fileID: 589956906}
   - component: {fileID: 589956926}
   - component: {fileID: 589956925}
-  - component: {fileID: 589956924}
   - component: {fileID: 589956923}
   - component: {fileID: 589956922}
   - component: {fileID: 589956921}
@@ -7318,30 +7280,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 589956926}
   _groundDetection: {fileID: 589956916}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 30000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1225456905}
+    <FirePoint>k__BackingField: {fileID: 778327577}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 500
+    <Army>k__BackingField: 2
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 589956920}
   <Energy>k__BackingField: {fileID: 589956919}
---- !u!114 &589956924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 589956905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 30000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1225456905}
-  <FirePoint>k__BackingField: {fileID: 778327577}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 500
-  <Army>k__BackingField: 2
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &589956925
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7486,7 +7437,6 @@ GameObject:
   - component: {fileID: 632850473}
   - component: {fileID: 632850493}
   - component: {fileID: 632850492}
-  - component: {fileID: 632850491}
   - component: {fileID: 632850490}
   - component: {fileID: 632850489}
   - component: {fileID: 632850488}
@@ -7835,30 +7785,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 632850493}
   _groundDetection: {fileID: 632850483}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1493994920}
+    <FirePoint>k__BackingField: {fileID: 1984288593}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 632850487}
   <Energy>k__BackingField: {fileID: 632850486}
---- !u!114 &632850491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 632850472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1493994920}
-  <FirePoint>k__BackingField: {fileID: 1984288593}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &632850492
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9674,7 +9613,6 @@ GameObject:
   - component: {fileID: 799823305}
   - component: {fileID: 799823326}
   - component: {fileID: 799823325}
-  - component: {fileID: 799823324}
   - component: {fileID: 799823323}
   - component: {fileID: 799823322}
   - component: {fileID: 799823321}
@@ -10039,30 +9977,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 799823326}
   _groundDetection: {fileID: 799823316}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 693722844}
+    <FirePoint>k__BackingField: {fileID: 1180003717}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 799823320}
   <Energy>k__BackingField: {fileID: 799823319}
---- !u!114 &799823324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799823304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 693722844}
-  <FirePoint>k__BackingField: {fileID: 1180003717}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &799823325
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13527,7 +13454,6 @@ GameObject:
   - component: {fileID: 1263132656}
   - component: {fileID: 1263132677}
   - component: {fileID: 1263132676}
-  - component: {fileID: 1263132675}
   - component: {fileID: 1263132674}
   - component: {fileID: 1263132673}
   - component: {fileID: 1263132672}
@@ -13892,30 +13818,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1263132677}
   _groundDetection: {fileID: 1263132667}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1428366375}
+    <FirePoint>k__BackingField: {fileID: 999092184}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1263132671}
   <Energy>k__BackingField: {fileID: 1263132670}
---- !u!114 &1263132675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1263132655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1428366375}
-  <FirePoint>k__BackingField: {fileID: 999092184}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1263132676
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14628,7 +14543,6 @@ GameObject:
   - component: {fileID: 1423939285}
   - component: {fileID: 1423939306}
   - component: {fileID: 1423939305}
-  - component: {fileID: 1423939304}
   - component: {fileID: 1423939303}
   - component: {fileID: 1423939302}
   - component: {fileID: 1423939301}
@@ -14993,30 +14907,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1423939306}
   _groundDetection: {fileID: 1423939296}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 319423073}
+    <FirePoint>k__BackingField: {fileID: 1990148013}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1423939300}
   <Energy>k__BackingField: {fileID: 1423939299}
---- !u!114 &1423939304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423939284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 319423073}
-  <FirePoint>k__BackingField: {fileID: 1990148013}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1423939305
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16019,7 +15922,6 @@ GameObject:
   - component: {fileID: 1469072657}
   - component: {fileID: 1469072678}
   - component: {fileID: 1469072677}
-  - component: {fileID: 1469072676}
   - component: {fileID: 1469072675}
   - component: {fileID: 1469072674}
   - component: {fileID: 1469072673}
@@ -16384,30 +16286,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1469072678}
   _groundDetection: {fileID: 1469072668}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 866550931}
+    <FirePoint>k__BackingField: {fileID: 630435799}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1469072672}
   <Energy>k__BackingField: {fileID: 1469072671}
---- !u!114 &1469072676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469072656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 866550931}
-  <FirePoint>k__BackingField: {fileID: 630435799}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1469072677
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17341,7 +17232,6 @@ GameObject:
   - component: {fileID: 1589630818}
   - component: {fileID: 1589630839}
   - component: {fileID: 1589630838}
-  - component: {fileID: 1589630837}
   - component: {fileID: 1589630836}
   - component: {fileID: 1589630835}
   - component: {fileID: 1589630834}
@@ -17706,30 +17596,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1589630839}
   _groundDetection: {fileID: 1589630829}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 280862359}
+    <FirePoint>k__BackingField: {fileID: 620616394}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1589630833}
   <Energy>k__BackingField: {fileID: 1589630832}
---- !u!114 &1589630837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589630817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 280862359}
-  <FirePoint>k__BackingField: {fileID: 620616394}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1589630838
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -17844,7 +17723,6 @@ GameObject:
   - component: {fileID: 1595287073}
   - component: {fileID: 1595287094}
   - component: {fileID: 1595287093}
-  - component: {fileID: 1595287092}
   - component: {fileID: 1595287091}
   - component: {fileID: 1595287090}
   - component: {fileID: 1595287089}
@@ -18209,30 +18087,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1595287094}
   _groundDetection: {fileID: 1595287084}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1900088413}
+    <FirePoint>k__BackingField: {fileID: 858225555}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1595287088}
   <Energy>k__BackingField: {fileID: 1595287087}
---- !u!114 &1595287092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595287072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1900088413}
-  <FirePoint>k__BackingField: {fileID: 858225555}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1595287093
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -18904,7 +18771,6 @@ GameObject:
   - component: {fileID: 1774520883}
   - component: {fileID: 1774520904}
   - component: {fileID: 1774520903}
-  - component: {fileID: 1774520902}
   - component: {fileID: 1774520901}
   - component: {fileID: 1774520900}
   - component: {fileID: 1774520899}
@@ -19269,30 +19135,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1774520904}
   _groundDetection: {fileID: 1774520894}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 724289162}
+    <FirePoint>k__BackingField: {fileID: 2042838331}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1774520898}
   <Energy>k__BackingField: {fileID: 1774520897}
---- !u!114 &1774520902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774520882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 724289162}
-  <FirePoint>k__BackingField: {fileID: 2042838331}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1774520903
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -19890,7 +19745,6 @@ GameObject:
   - component: {fileID: 1855678263}
   - component: {fileID: 1855678283}
   - component: {fileID: 1855678282}
-  - component: {fileID: 1855678281}
   - component: {fileID: 1855678280}
   - component: {fileID: 1855678279}
   - component: {fileID: 1855678278}
@@ -20239,30 +20093,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1855678283}
   _groundDetection: {fileID: 1855678273}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1780790559}
+    <FirePoint>k__BackingField: {fileID: 920672072}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 1855678277}
   <Energy>k__BackingField: {fileID: 1855678276}
---- !u!114 &1855678281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855678262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1780790559}
-  <FirePoint>k__BackingField: {fileID: 920672072}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &1855678282
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -21551,7 +21394,6 @@ GameObject:
   - component: {fileID: 2007454275}
   - component: {fileID: 2007454296}
   - component: {fileID: 2007454295}
-  - component: {fileID: 2007454294}
   - component: {fileID: 2007454293}
   - component: {fileID: 2007454292}
   - component: {fileID: 2007454291}
@@ -21916,30 +21758,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2007454296}
   _groundDetection: {fileID: 2007454286}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 2121584763}
+    <FirePoint>k__BackingField: {fileID: 1292981194}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 2007454290}
   <Energy>k__BackingField: {fileID: 2007454289}
---- !u!114 &2007454294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007454274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 2121584763}
-  <FirePoint>k__BackingField: {fileID: 1292981194}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &2007454295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22001,7 +21832,6 @@ GameObject:
   - component: {fileID: 2009075029}
   - component: {fileID: 2009075049}
   - component: {fileID: 2009075048}
-  - component: {fileID: 2009075047}
   - component: {fileID: 2009075050}
   - component: {fileID: 2009075051}
   - component: {fileID: 2009075052}
@@ -22259,28 +22089,6 @@ MonoBehaviour:
     value: 0
   _max:
     value: 1000
---- !u!114 &2009075047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009075028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1073556174}
-  <FirePoint>k__BackingField: {fileID: 2046598087}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &2009075048
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -22351,6 +22159,17 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2009075049}
   _groundDetection: {fileID: 2009075038}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1073556174}
+    <FirePoint>k__BackingField: {fileID: 2046598087}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 2009075042}
   <Energy>k__BackingField: {fileID: 2009075041}
 --- !u!114 &2009075051
@@ -22653,7 +22472,6 @@ GameObject:
   - component: {fileID: 2032437643}
   - component: {fileID: 2032437663}
   - component: {fileID: 2032437662}
-  - component: {fileID: 2032437661}
   - component: {fileID: 2032437660}
   - component: {fileID: 2032437659}
   - component: {fileID: 2032437658}
@@ -23002,30 +22820,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2032437663}
   _groundDetection: {fileID: 2032437653}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 1847154521}
+    <FirePoint>k__BackingField: {fileID: 1330972332}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 1
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 2032437657}
   <Energy>k__BackingField: {fileID: 2032437656}
---- !u!114 &2032437661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032437642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 1847154521}
-  <FirePoint>k__BackingField: {fileID: 1330972332}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 1
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &2032437662
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -23461,7 +23268,6 @@ GameObject:
   - component: {fileID: 2132389828}
   - component: {fileID: 2132389849}
   - component: {fileID: 2132389848}
-  - component: {fileID: 2132389847}
   - component: {fileID: 2132389846}
   - component: {fileID: 2132389845}
   - component: {fileID: 2132389844}
@@ -23785,7 +23591,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132389827}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a516ae247afd40fea9269cf79470af29, type: 3}
   m_Name: 
@@ -23826,30 +23632,19 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2132389849}
   _groundDetection: {fileID: 2132389839}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 828954388}
+    <FirePoint>k__BackingField: {fileID: 1517521897}
+    <RotationSpeed>k__BackingField: 360
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 3
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 1
   <Health>k__BackingField: {fileID: 2132389843}
   <Energy>k__BackingField: {fileID: 2132389842}
---- !u!114 &2132389847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132389827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 828954388}
-  <FirePoint>k__BackingField: {fileID: 1517521897}
-  <RotationSpeed>k__BackingField: 360
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 3
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 1
 --- !u!136 &2132389848
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -24475,28 +24270,6 @@ MonoBehaviour:
   LookdownLimit: 80
   MouseDeviceName: Mouse
   NonMouseLookScale: 1500
---- !u!114 &939060855616413988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155872612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8709f2d58f664364b446df16cdddff7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitSetting
-  <MaxHealth>k__BackingField: 5000
-  <MaxEnergy>k__BackingField: 1000
-  <UnitPivot>k__BackingField: {fileID: 370841416}
-  <FirePoint>k__BackingField: {fileID: 1172997060}
-  <RotationSpeed>k__BackingField: 400
-  <MaxLockOnDistance>k__BackingField: 200
-  <Army>k__BackingField: 0
-  <ObstacleLayerMask>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &939060855616413989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24535,6 +24308,17 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 155872615}
   _groundDetection: {fileID: 863526269436486623}
+  <Setting>k__BackingField:
+    <MaxHealth>k__BackingField: 5000
+    <MaxEnergy>k__BackingField: 1000
+    <UnitPivot>k__BackingField: {fileID: 370841416}
+    <FirePoint>k__BackingField: {fileID: 1172997060}
+    <RotationSpeed>k__BackingField: 400
+    <MaxLockOnDistance>k__BackingField: 200
+    <Army>k__BackingField: 0
+    <ObstacleLayerMask>k__BackingField:
+      serializedVersion: 2
+      m_Bits: 0
   <Health>k__BackingField: {fileID: 202967182922158155}
   <Energy>k__BackingField: {fileID: 592341520056142330}
 --- !u!114 &939060855616413992

@@ -21,8 +21,7 @@ namespace _Projects.Features.Unit
     public class UnitMove : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         IMoveActionHandler,
         IMoveActionObservable
     {
@@ -37,23 +36,16 @@ namespace _Projects.Features.Unit
         [field: SerializeField, ReadOnly] public Vector3 MoveDirection { get; private set; }
 
         private float _currentPower;
-        private Rigidbody _rigidbody;
-        private GroundDetection _groundDetection;
-        private IBoostActionObservable _playerBoost;
+        [Inject] private Rigidbody _rigidbody;
+        [Inject] private GroundDetection _groundDetection;
+        [Inject] private IBoostActionObservable _playerBoost;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IMoveActionHandler, IMoveActionObservable>();
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _rigidbody = resolver.Resolve<Rigidbody>();
-            _groundDetection = resolver.Resolve<GroundDetection>();
-            _playerBoost = resolver.Resolve<IBoostActionObservable>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             IsAction.AddTo(this);
 

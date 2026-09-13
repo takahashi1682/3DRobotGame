@@ -6,18 +6,13 @@ using VContainer;
 
 namespace _Projects.Features.Game
 {
-    public class GameViewer : MonoBehaviour, IGameScopeMember, IScopeResolvable, IScopeStartable
+    public class GameViewer : MonoBehaviour, IGameScopeMember, IScopeLaunchable
     {
         [SerializeField] private ObjectGroupSwitcher _gameStateSwitcher;
 
-        private GameJudge _judge;
+        [Inject] private GameJudge _judge;
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _judge = resolver.Resolve<GameJudge>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             // GameJudgeのGameStateを監視し、ObjectGroupSwitcherで表示するオブジェクトを切り替える
             _judge.State

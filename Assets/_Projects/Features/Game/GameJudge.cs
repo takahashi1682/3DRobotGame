@@ -23,8 +23,7 @@ namespace _Projects.Features.Game
     public class GameJudge : MonoBehaviour,
         IGameScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable
+        IScopeLaunchable
     {
         [Header("References")]
         [SerializeField] private UnitScopeRoot _player;
@@ -34,19 +33,14 @@ namespace _Projects.Features.Game
         [SerializeField] private SerializableReactiveProperty<EGameState> _state = new(EGameState.Ready);
         public ReadOnlyReactiveProperty<EGameState> State => _state;
 
-        private UnitManager _unitManager;
+        [Inject] private UnitManager _unitManager;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _unitManager = resolver.Resolve<UnitManager>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             _state.AddTo(this);
 

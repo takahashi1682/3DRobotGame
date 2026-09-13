@@ -20,8 +20,7 @@ namespace _Projects.Features.Unit
     public class UnitFly : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         IFlyActionHandler,
         IFlyActionObservable
     {
@@ -29,21 +28,15 @@ namespace _Projects.Features.Unit
         public float FlyForce = 10f;
         public int FlyingEnergy = 1;
 
-        private Rigidbody _rigidbody;
-        private Energy _energy;
+        [Inject] private Rigidbody _rigidbody;
+        [Inject] private Energy _energy;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IFlyActionHandler, IFlyActionObservable>();
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _rigidbody = resolver.Resolve<Rigidbody>();
-            _energy = resolver.Resolve<Energy>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             IsAction.AddTo(this);
         }

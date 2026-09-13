@@ -19,7 +19,7 @@ namespace _Projects.Features.Unit
         void CancelAction();
     }
 
-    public class UnitActionController : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
+    public class UnitActionController : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         /// <summary>
         /// 体力が0でなく、かつゲーム進行中かどうか。派生クラス(PlayerActionControllerのLookなど)も
@@ -32,34 +32,28 @@ namespace _Projects.Features.Unit
         protected ILockOnActionHandler _lockOnHandler;
 
         protected IUnitControllable _control;
-        protected UnitScopeRoot _unitScopeRoot;
-        protected UnitStatus _playerStatus;
+        [Inject] protected UnitScopeRoot _unitScopeRoot;
+        [Inject] protected UnitStatus _playerStatus;
 
-        public virtual void OnResolve(IObjectResolver resolver)
+        [Inject] private IObjectResolver _resolver;
+
+        public virtual void OnLaunch()
         {
             // IUnitControllableが解決できない場合は、アクション制御を行わない
-            if (!resolver.TryResolve(out _control)) return;
+            if (!_resolver.TryResolve(out _control)) return;
 
-            _unitScopeRoot = resolver.Resolve<UnitScopeRoot>();
-            _playerStatus = resolver.Resolve<UnitStatus>();
-
-            resolver.TryResolve(out _moveHandler);
-            resolver.TryResolve(out _flyHandler);
-            resolver.TryResolve(out _boostHandler);
-            resolver.TryResolve(out _fireHandler);
-            resolver.TryResolve(out _lockOnHandler);
-        }
-
-        public virtual void OnStart()
-        {
-            if (_control == null) return;
+            _resolver.TryResolve(out _moveHandler);
+            _resolver.TryResolve(out _flyHandler);
+            _resolver.TryResolve(out _boostHandler);
+            _resolver.TryResolve(out _fireHandler);
+            _resolver.TryResolve(out _lockOnHandler);
 
             BindValueAction(_control.Move, _moveHandler, () => _playerStatus.CanMove);
             BindValueAction(_control.Fly, _flyHandler, () => _playerStatus.CanFly);
             BindValueAction(_control.Fire, _fireHandler, () => _playerStatus.CanFire);
             BindValueAction(_control.Boost, _boostHandler, () => _playerStatus.CanBoost);
             BindValueAction(_control.LockOn, _lockOnHandler, () => _playerStatus.CanLockOn);
-            Debug.Log(1);
+
             // アクション不可状態になった場合、すべてのアクションをキャンセルする
             _unitScopeRoot.Running
                 .Where(x => !x)

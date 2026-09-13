@@ -8,30 +8,24 @@ using VContainer;
 
 namespace _Projects.Features.Unit.Player
 {
-    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
+    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         [SerializeField] private RectTransform _lockOnUI;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private Slider _energySlider;
         [SerializeField] private TMP_Text _distanceText;
-        private Camera _mainCamera;
+        [Inject] private Camera _mainCamera;
         private UnitSetting _targetSetting;
-        private IUnitTrackingObservable _trackingObservable;
+        [Inject] private IUnitTrackingObservable _trackingObservable;
         private IDisposable _health;
         private IDisposable _energy;
 
-        private void Start()
+        private void Awake()
         {
             _lockOnUI.gameObject.SetActive(false);
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _mainCamera = resolver.Resolve<Camera>();
-            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             // Targetはロックオンの開始・解除・切り替えのタイミングでのみ変化を通知するので
             // (同じ値が連続で来ることはない)、ここで毎回購読を張り直せば十分。
@@ -63,7 +57,7 @@ namespace _Projects.Features.Unit.Player
 
         private void Update()
         {
-            if (_trackingObservable.Target.CurrentValue)
+            if (_trackingObservable?.Target.CurrentValue)
             {
                 Vector3 screenPos = _mainCamera.WorldToScreenPoint(_targetSetting.Pivot);
                 _lockOnUI.position = screenPos;

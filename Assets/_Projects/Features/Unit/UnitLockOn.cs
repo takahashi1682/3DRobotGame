@@ -23,30 +23,21 @@ namespace _Projects.Features.Unit
     public class UnitLockOn : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         ILockOnActionHandler,
         ILockOnActionObservable
     {
-        private UnitSetting _unitSetting;
-        private UnitManager _unitManager;
-        private IUnitTrackingHandler _unitTracking;
-        private IUnitTrackingObservable _trackingObservable;
+        [Inject] private UnitSetting _unitSetting;
+        [Inject] private UnitManager _unitManager;
+        [Inject] private IUnitTrackingHandler _unitTracking;
+        [Inject] private IUnitTrackingObservable _trackingObservable;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<ILockOnActionHandler, ILockOnActionObservable>();
         }
 
-        public virtual void OnResolve(IObjectResolver resolver)
-        {
-            _unitManager = resolver.Resolve<UnitManager>();
-            _unitSetting = resolver.Resolve<UnitSetting>();
-            _unitTracking = resolver.Resolve<IUnitTrackingHandler>();
-            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-        }
-
-        public virtual void OnStart()
+        public virtual void OnLaunch()
         {
             IsAction.AddTo(this);
 

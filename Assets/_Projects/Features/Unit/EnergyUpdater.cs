@@ -9,22 +9,16 @@ namespace _Projects.Features.Unit
     public class EnergyUpdater : IntParameterUpdater,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable
+        IScopeLaunchable
     {
-        private GroundDetection _groundDetection;
+        [Inject] private GroundDetection _groundDetection;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _groundDetection = resolver.Resolve<GroundDetection>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             _groundDetection.IsHit
                 .Subscribe(x => IsEnable = x)

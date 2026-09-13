@@ -13,7 +13,7 @@ namespace _Projects.Features.Unit.Player
     /// 自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
     /// ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
     /// </summary>
-    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
+    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         [SerializeField] private float _radarScale = 2;
         [SerializeField] private RectTransform _radarUI;
@@ -26,16 +26,10 @@ namespace _Projects.Features.Unit.Player
         private readonly Dictionary<UnitScopeRoot, RectTransform> _icons = new();
         private readonly Queue<RectTransform> _pooledIcons = new();
 
-        private UnitSetting _currentSetting;
-        private UnitManager _unitManager;
+        [Inject] private UnitSetting _currentSetting;
+        [Inject] private UnitManager _unitManager;
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _currentSetting = resolver.Resolve<UnitSetting>();
-            _unitManager = resolver.Resolve<UnitManager>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             // すでに存在するユニットのアイコンを生成
             foreach (var unit in _unitManager.UnitList)

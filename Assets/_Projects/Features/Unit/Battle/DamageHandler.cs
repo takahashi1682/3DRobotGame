@@ -13,19 +13,13 @@ namespace _Projects.Features.Unit.Battle
     public class DamageHandler : MonoBehaviour,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
         IDamageable
     {
-        public IObjectResolver Owner { get; private set; }
+        [Inject] public IObjectResolver Owner { get; private set; }
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
-        }
-
-        public void OnResolve(IObjectResolver resolver)
-        {
-            Owner = resolver;
         }
 
         public bool TakeDamage(IDamageSource source)

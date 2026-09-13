@@ -21,8 +21,7 @@ namespace _Projects.Features.Unit
     public class UnitBoost : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeResolvable,
-        IScopeStartable,
+        IScopeLaunchable,
         IBoostActionHandler,
         IBoostActionObservable
     {
@@ -32,7 +31,7 @@ namespace _Projects.Features.Unit
         public int BoostDuration = 300;
         public int BoostInterval = 300;
 
-        private Energy _energy;
+        [Inject] private Energy _energy;
 
         float IBoostActionObservable.BoostPower => BoostPower;
         int IBoostActionObservable.BoostEnergy => BoostEnergy;
@@ -42,12 +41,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IBoostActionHandler, IBoostActionObservable>();
         }
 
-        public void OnResolve(IObjectResolver resolver)
-        {
-            _energy = resolver.Resolve<Energy>();
-        }
-
-        public void OnStart()
+        public void OnLaunch()
         {
             IsAction.AddTo(this);
         }

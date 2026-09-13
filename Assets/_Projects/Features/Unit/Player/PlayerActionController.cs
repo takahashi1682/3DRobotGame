@@ -12,16 +12,14 @@ namespace _Projects.Features.Unit.Player
     {
         private ILookActionHandler _lookHandler;
 
-        public override void OnResolve(IObjectResolver resolver)
-        {
-            base.OnResolve(resolver);
-            resolver.TryResolve(out _lookHandler);
-        }
+        [Inject] private IObjectResolver _lookResolver;
 
-        public override void OnStart()
+        public override void OnLaunch()
         {
-            base.OnStart();
+            base.OnLaunch();
             if (_control == null) return;
+
+            _lookResolver.TryResolve(out _lookHandler);
 
             if (_lookHandler != null)
             {

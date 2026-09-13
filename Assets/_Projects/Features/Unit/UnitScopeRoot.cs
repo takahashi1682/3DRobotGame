@@ -4,7 +4,6 @@ using MyUtils.Parameter.Basic;
 using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
@@ -12,42 +11,38 @@ namespace _Projects.Features.Unit
 {
     public class UnitScopeRoot : AbstractScopeRoot<IUnitScopeMember>
         , IGameScopeMember
+        , IScopeLaunchable
     {
         [SerializeField] private SerializableReactiveProperty<bool> _running = new();
         public ReadOnlyReactiveProperty<bool> Running => _running;
 
-        public bool IsVisible { get; private set; }
-
-        /// <summary>
-        /// このユニットの設定値(Pivot、Army、RotationSpeedなど)。
-        /// 他ユニットのスコープから直接Resolveする代わりに、ここを経由して参照する。
-        /// </summary>
-        public UnitSetting Setting { get; private set; }
-
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private GroundDetection _groundDetection;
+
+        [field: SerializeField]
+        public UnitSetting Setting { get; private set; }
+
         [field: SerializeField]
         public Health Health { get; private set; }
 
         [field: SerializeField]
         public Energy Energy { get; private set; }
 
-        private UnitManager _unitManager;
-        private GameJudge _gameJudge;
+        [Inject] private UnitManager _unitManager;
+        [Inject] private GameJudge _gameJudge;
 
-        public override void OnResolve(IObjectResolver resolver)
+        private void Awake()
         {
-            base.OnResolve(resolver);
-            Setting = resolver.Resolve<UnitSetting>();
-            _unitManager = resolver.Resolve<UnitManager>();
-            _gameJudge = resolver.Resolve<GameJudge>();
+            // 設定値を反映
+            Health.SetMax(Setting.MaxHealth);
+            Health.SetFull();
+            Energy.SetMax(Setting.MaxEnergy);
+            Energy.SetFull();
         }
 
-        public override void OnStart()
+        public void OnLaunch()
         {
-            base.OnStart();
-
             // 体力が0でなく、かつゲーム進行中のみアクション可能
             Health.IsEmpty.CombineLatest(_gameJudge.State,
                     (healthEmpty, gameState) => !healthEmpty && gameState == EGameState.Playing)
@@ -61,10 +56,7 @@ namespace _Projects.Features.Unit
                 else _unitManager.RegisterUnit(this);
             }).AddTo(this);
         }
-        
-        protected void OnBecameVisible() => IsVisible = true;
-        protected void OnBecameInvisible() => IsVisible = false;
-        
+
         /// <summary>
         /// 自身が構築するPlayerスコープ(子コンテナ)への登録。
         /// Player配下のIUnitScopeMemberから解決される共有依存をここで登録する。
@@ -73,6 +65,7 @@ namespace _Projects.Features.Unit
         {
             base.ConfigureScope(builder);
             builder.RegisterComponent(this);
+            builder.RegisterInstance(Setting);
             builder.RegisterComponent(_rigidbody);
             builder.RegisterComponent(_groundDetection);
             builder.RegisterComponent(Health);
