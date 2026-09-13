@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -24,8 +25,11 @@ namespace _Projects.Features.Unit.Player
     /// 更新しないため、FixedUpdateで呼ぶと物理ティック単位の粗さが見た目のカクつきとして残る。
     /// Updateで毎フレーム呼ぶことでこれを避けている。
     /// </summary>
-    public class PlayerFreeLook : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class PlayerFreeLook : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         ILookActionHandler,
         ILookActionObservable
     {
@@ -42,10 +46,7 @@ namespace _Projects.Features.Unit.Player
         public string MouseDeviceName = "Mouse";
         public float NonMouseLookScale = 1500f;
 
-        public Vector2 CurrentLook { get; private set; }
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
+        private Vector2 CurrentLook { get; set; }
 
         private IUnitControllable _control;
         private Rigidbody _rigidbody;
@@ -57,10 +58,13 @@ namespace _Projects.Features.Unit.Player
 
         public void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
-
             _control = resolver.Resolve<IUnitControllable>();
             _rigidbody = resolver.Resolve<Rigidbody>();
+        }
+
+        public void OnStart()
+        {
+            IsAction.AddTo(this);
         }
 
         public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)

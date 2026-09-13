@@ -1,12 +1,19 @@
 using MyUtils.Parameter;
+using MyUtils.VContainerExtensions;
 using R3;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Projects.Features.Unit
 {
-    public class EnergyUpdater : IntParameterUpdater, IUnitScopeInitializable
+    public class EnergyUpdater : IntParameterUpdater,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable
     {
+        private GroundDetection _groundDetection;
+
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
@@ -14,9 +21,12 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            var groundDetection = resolver.Resolve<GroundDetection>();
+            _groundDetection = resolver.Resolve<GroundDetection>();
+        }
 
-            groundDetection.IsHit
+        public void OnStart()
+        {
+            _groundDetection.IsHit
                 .Subscribe(x => IsEnable = x)
                 .AddTo(this);
         }

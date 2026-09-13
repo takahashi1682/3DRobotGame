@@ -1,4 +1,5 @@
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -17,7 +18,6 @@ namespace _Projects.Features.Unit
         ReadOnlyReactiveProperty<UnitScopeRoot> Target { get; }
         bool IsLookingAtTarget { get; }
         float Distance { get; }
-        float MaxDistance { get; }
     }
 
     /// <summary>
@@ -26,7 +26,10 @@ namespace _Projects.Features.Unit
     /// このクラスは「与えられたTargetを向き続ける」ことだけを担当する。
     /// </summary>
     public class UnitTracking : MonoBehaviour,
-        IUnitScopeInitializable,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         IUnitTrackingHandler,
         IUnitTrackingObservable
     {
@@ -38,7 +41,7 @@ namespace _Projects.Features.Unit
         public ReadOnlyReactiveProperty<UnitScopeRoot> Target => _target;
         public bool IsLookingAtTarget { get; private set; }
         public float Distance { get; private set; }
-        public float MaxDistance { get; private set; }
+        private float MaxDistance { get; set; }
 
         protected Rigidbody _rigidbody;
         protected UnitSetting _unitSetting;
@@ -51,9 +54,13 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            _target.AddTo(this);
             _rigidbody = resolver.Resolve<Rigidbody>();
             _unitSetting = resolver.Resolve<UnitSetting>();
+        }
+
+        public void OnStart()
+        {
+            _target.AddTo(this);
         }
 
         public void SetTarget(UnitScopeRoot target, float maxDistance)
@@ -69,6 +76,7 @@ namespace _Projects.Features.Unit
 
         public void ClearTarget()
         {
+            Debug.Log(2);
             // 銃口を初期位置(正面)に戻す
             _unitSetting.FirePoint.localRotation = Quaternion.identity;
 

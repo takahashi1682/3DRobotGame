@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -17,8 +18,11 @@ namespace _Projects.Features.Unit
     {
     }
 
-    public class UnitMove : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class UnitMove : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         IMoveActionHandler,
         IMoveActionObservable
     {
@@ -37,9 +41,6 @@ namespace _Projects.Features.Unit
         private GroundDetection _groundDetection;
         private IBoostActionObservable _playerBoost;
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
-
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IMoveActionHandler, IMoveActionObservable>();
@@ -47,11 +48,14 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
-
             _rigidbody = resolver.Resolve<Rigidbody>();
             _groundDetection = resolver.Resolve<GroundDetection>();
             _playerBoost = resolver.Resolve<IBoostActionObservable>();
+        }
+
+        public void OnStart()
+        {
+            IsAction.AddTo(this);
 
             _currentPower = MovePower;
 

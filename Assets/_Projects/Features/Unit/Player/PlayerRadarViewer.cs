@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using _Projects.Features.Unit.Battle;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,7 +13,7 @@ namespace _Projects.Features.Unit.Player
     /// 自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
     /// ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
     /// </summary>
-    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeInitializable
+    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
     {
         [SerializeField] private float _radarScale = 2;
         [SerializeField] private RectTransform _radarUI;
@@ -26,27 +27,27 @@ namespace _Projects.Features.Unit.Player
         private readonly Queue<RectTransform> _pooledIcons = new();
 
         private UnitSetting _currentSetting;
-
-        public void OnRegister(IContainerBuilder builder)
-        {
-        }
+        private UnitManager _unitManager;
 
         public void OnResolve(IObjectResolver resolver)
         {
             _currentSetting = resolver.Resolve<UnitSetting>();
+            _unitManager = resolver.Resolve<UnitManager>();
+        }
 
+        public void OnStart()
+        {
             // すでに存在するユニットのアイコンを生成
-            var unitManager = resolver.Resolve<UnitManager>();
-            foreach (var unit in unitManager.UnitList)
+            foreach (var unit in _unitManager.UnitList)
             {
                 CreateIcon(unit);
             }
 
             // 新しく生成されたユニットのアイコンを生成
-            unitManager.OnRegisteredUnit.Subscribe(CreateIcon).AddTo(this);
+            _unitManager.OnRegisteredUnit.Subscribe(CreateIcon).AddTo(this);
 
             // ユニットが削除されたときにアイコンをプールへ戻す
-            unitManager.OnRemovedUnit.Subscribe(ReleaseIcon).AddTo(this);
+            _unitManager.OnRemovedUnit.Subscribe(ReleaseIcon).AddTo(this);
         }
 
         private void CreateIcon(UnitScopeRoot unit)

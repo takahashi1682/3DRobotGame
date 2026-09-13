@@ -1,4 +1,5 @@
 using System;
+using MyUtils.VContainerExtensions;
 using R3;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ using VContainer;
 
 namespace _Projects.Features.Unit.Player
 {
-    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeInitializable
+    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
     {
         [SerializeField] private RectTransform _lockOnUI;
         [SerializeField] private Slider _healthSlider;
@@ -16,40 +17,38 @@ namespace _Projects.Features.Unit.Player
         private Camera _mainCamera;
         private UnitSetting _targetSetting;
         private IUnitTrackingObservable _trackingObservable;
+        private IDisposable _health;
+        private IDisposable _energy;
 
         private void Start()
         {
             _lockOnUI.gameObject.SetActive(false);
         }
 
-        public void OnRegister(IContainerBuilder builder)
-        {
-        }
-
         public void OnResolve(IObjectResolver resolver)
         {
             _mainCamera = resolver.Resolve<Camera>();
             _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+        }
 
-            IDisposable health = null;
-            IDisposable energy = null;
-
+        public void OnStart()
+        {
             // Targetはロックオンの開始・解除・切り替えのタイミングでのみ変化を通知するので
             // (同じ値が連続で来ることはない)、ここで毎回購読を張り直せば十分。
             _trackingObservable.Target.Subscribe(target =>
             {
-                health?.Dispose();
-                energy?.Dispose();
+                _health?.Dispose();
+                _energy?.Dispose();
 
                 if (target != null)
                 {
                     _targetSetting = target.Setting;
 
-                    health = target.Health.CurrentRate
+                    _health = target.Health.CurrentRate
                         .Subscribe(value => _healthSlider.value = value)
                         .AddTo(target);
 
-                    energy = target.Energy.CurrentRate
+                    _energy = target.Energy.CurrentRate
                         .Subscribe(value => _energySlider.value = value)
                         .AddTo(target);
 

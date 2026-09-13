@@ -3,6 +3,7 @@ using System.Threading;
 using _Projects.Features.Unit.Battle;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -22,8 +23,11 @@ namespace _Projects.Features.Unit
     /// 押下中(IsAction)の間、FireRate間隔でFirePointから弾を発射する。
     /// 弾はUnitFire自身がプールし、非アクティブな既存インスタンスがあれば再利用する。
     /// </summary>
-    public class UnitFire : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class UnitFire : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         IFireActionHandler,
         IFireActionObservable
     {
@@ -33,9 +37,6 @@ namespace _Projects.Features.Unit
 
         [Header("Settings")]
         public float FireRate = 0.15f;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
 
         /// <summary>派生クラス(PlayerFireなど)からもFirePoint等を参照できるようprotectedにしている。</summary>
         protected UnitSetting Setting { get; private set; }
@@ -56,9 +57,13 @@ namespace _Projects.Features.Unit
 
         public virtual void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
             _resolver = resolver;
             Setting = resolver.Resolve<UnitSetting>();
+        }
+
+        public virtual void OnStart()
+        {
+            IsAction.AddTo(this);
         }
 
         public UniTask OnValueChanged(bool value, CancellationToken ct)

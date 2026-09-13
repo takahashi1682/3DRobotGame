@@ -1,23 +1,26 @@
 using MyUtils.Parameter.Basic;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitDie : MonoBehaviour, IUnitScopeInitializable
+    public class UnitDie : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
     {
         [SerializeField] private GameObject _dieEffectPrefab;
         [SerializeField] private float _dieEffectScale = 5f;
 
-        public void OnRegister(IContainerBuilder builder)
-        {
-        }
+        private Health _health;
 
         public void OnResolve(IObjectResolver resolver)
         {
-            var health = resolver.Resolve<Health>();
-            health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
+            _health = resolver.Resolve<Health>();
+        }
+
+        public void OnStart()
+        {
+            _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
             {
                 var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
                 effect.transform.localScale = Vector3.one * _dieEffectScale;

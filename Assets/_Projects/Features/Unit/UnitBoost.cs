@@ -1,6 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -18,8 +18,11 @@ namespace _Projects.Features.Unit
         int BoostEnergy { get; }
     }
 
-    public class UnitBoost : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class UnitBoost : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         IBoostActionHandler,
         IBoostActionObservable
     {
@@ -31,9 +34,6 @@ namespace _Projects.Features.Unit
 
         private Energy _energy;
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
-
         float IBoostActionObservable.BoostPower => BoostPower;
         int IBoostActionObservable.BoostEnergy => BoostEnergy;
 
@@ -44,12 +44,17 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
             _energy = resolver.Resolve<Energy>();
+        }
+
+        public void OnStart()
+        {
+            IsAction.AddTo(this);
         }
 
         public async UniTask OnValueChanged(bool value, CancellationToken ct)
         {
+            if (!value) return;
             if (IsAction.CurrentValue) return;
             _isAction.Value = true;
 

@@ -1,7 +1,7 @@
 using _Projects.Features.Unit;
 using _Projects.Features.Unit.Battle;
 using MyUtils;
-using MyUtils.Parameter.Basic;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -20,7 +20,11 @@ namespace _Projects.Features.Game
     /// <summary>
     /// ゲーム全体の進行(開始/終了)と勝敗を管理する。
     /// </summary>
-    public class GameJudge : MonoBehaviour, IGameScopeInitializable
+    public class GameJudge : MonoBehaviour,
+        IGameScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable
     {
         [Header("References")]
         [SerializeField] private UnitScopeRoot _player;
@@ -39,11 +43,15 @@ namespace _Projects.Features.Game
 
         public void OnResolve(IObjectResolver resolver)
         {
+            _unitManager = resolver.Resolve<UnitManager>();
+        }
+
+        public void OnStart()
+        {
             _state.AddTo(this);
 
             _startTimer.IsPlay.Value = true;
             _gameTimer.IsPlay.Value = false;
-            _unitManager = resolver.Resolve<UnitManager>();
 
             SubscribeGameStart();
             SubscribeGameEnd(_player);

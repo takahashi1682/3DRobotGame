@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -11,7 +12,10 @@ using Random = UnityEngine.Random;
 namespace _Projects.Features.Unit.Enemy
 {
     public class AIControl : MonoBehaviour
-        , IUnitScopeInitializable
+        , IUnitScopeMember
+        , IScopeRegisterable
+        , IScopeResolvable
+        , IScopeStartable
         , IUnitControllable
     {
         [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
@@ -45,7 +49,24 @@ namespace _Projects.Features.Unit.Enemy
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
+        private UnitScopeRoot _current;
+        private UnitManager _unitManager;
+        private IUnitTrackingObservable _trackingObservable;
+        private IUnitTrackingHandler _trackingHandler;
+        private UnitStatus _unitStatus;
+        private UnitSetting _unitSetting;
+
         public void OnResolve(IObjectResolver resolver)
+        {
+            _current = resolver.Resolve<UnitScopeRoot>();
+            _unitManager = resolver.Resolve<UnitManager>();
+            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+            _trackingHandler = resolver.Resolve<IUnitTrackingHandler>();
+            _unitStatus = resolver.Resolve<UnitStatus>();
+            _unitSetting = resolver.Resolve<UnitSetting>();
+        }
+
+        public void OnStart()
         {
             _move.AddTo(this);
             _look.AddTo(this);
@@ -54,74 +75,96 @@ namespace _Projects.Features.Unit.Enemy
             _fire.AddTo(this);
             _lockOn.AddTo(this);
 
-            var current = resolver.Resolve<UnitScopeRoot>();
-            var unitManager = resolver.Resolve<UnitManager>();
-            var trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
-            var trackingHandler = resolver.Resolve<IUnitTrackingHandler>();
-            var unitStatus = resolver.Resolve<UnitStatus>();
-            var unitSetting = resolver.Resolve<UnitSetting>();
-
             Observable.Interval(TimeSpan.FromSeconds(ThinkingInterval))
-                .Subscribe(_ =>
+                .Subscribe(_ => Think())
+                .AddTo(this);
+        }
+
+        /// <summary>
+        /// 一定間隔で呼ばれるAIの思考処理。停止中はすべての操作を解除し、
+        /// 稼働中はロックオンの有無で行動を切り替える。
+        /// </summary>
+        private void Think()
+        {
+            if (!_current.Running.CurrentValue)
+            {
+                StopAllActions();
+                return;
+            }
+
+            if (_unitStatus.HasFlag(EPlayerState.LockOn))
+            {
+                DecideLockedOnBehavior();
+            }
+            else
+            {
+                DecideSearchBehavior();
+            }
+        }
+
+        /// <summary>
+        /// ロックオン中の行動。ランダムに動き回りつつ、状況に応じて飛行・ブースト・攻撃を試みる。
+        /// </summary>
+        private void DecideLockedOnBehavior()
+        {
+            _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+
+            // 飛行を試みる
+            if (_unitStatus.HasFlag(EPlayerState.Grounded))
+                TryPress(_fly, FlyRate, Random.Range(1f, 2f));
+
+            // ブーストを試みる(ロックオンの有無に関係なく共通)
+            TryPress(_boost, BoostRate, 0.1f);
+
+            // ターゲット見える場合は攻撃を試みる
+            if (_trackingObservable.IsLookingAtTarget)
+            {
+                if (!_fire.Value) TryPress(_fire, FireRate, Random.Range(2f, 3f));
+            }
+        }
+
+        /// <summary>
+        /// ロックオン前の行動。ターゲットを探し、見つかっていれば前進しつつロックオンを試みる。
+        /// </summary>
+        private void DecideSearchBehavior()
+        {
+            if (_trackingObservable.Target.CurrentValue == null)
+            {
+                // 最も近い敵ユニットを検索する
+                var target = _unitManager.FindClosestTargetUnit(
+                    _unitSetting.Army,
+                    _unitSetting.UnitPivot.position,
+                    float.MaxValue); // 範囲は無制限で検索する
+
+                if (target != null)
                 {
-                    if (current.Running.CurrentValue)
-                    {
-                        if (unitStatus.HasFlag(EPlayerState.LockOn))
-                        {
-                            _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+                    _trackingHandler.SetTarget(target, float.MaxValue);
+                }
+            }
+            else
+            {
+                // 前進する
+                _move.Value = new Vector2(0, 1);
 
-                            // 飛行を試みる
-                            if (unitStatus.HasFlag(EPlayerState.Grounded))
-                                TryPress(_fly, FlyRate, Random.Range(1f, 2f));
+                // ブーストを試みる(ロックオンの有無に関係なく共通)
+                TryPress(_boost, BoostRate, 0.1f);
 
-                            // ブーストを試みる(ロックオンの有無に関係なく共通)
-                            TryPress(_boost, BoostRate, 0.1f);
+                // ロックオンを試みる
+                TryPress(_lockOn, 1f, 0.1f);
+            }
+        }
 
-                            // ターゲット見える場合は攻撃を試みる
-                            if (trackingObservable.IsLookingAtTarget)
-                            {
-                                if (!_fire.Value) TryPress(_fire, FireRate, Random.Range(2f, 3f));
-                            }
-                        }
-                        else
-                        {
-                            if (trackingObservable.Target.CurrentValue == null)
-                            {
-                                // 最も近い敵ユニットを検索する
-                                var target = unitManager.FindClosestTargetUnit(
-                                    unitSetting.Army,
-                                    unitSetting.UnitPivot.position,
-                                    float.MaxValue); // 範囲は無制限で検索する
-
-                                if (target != null)
-                                {
-                                    trackingHandler.SetTarget(target, float.MaxValue);
-                                }
-                            }
-                            else
-                            {
-                                // 前進する
-                                _move.Value = new Vector2(0, 1);
-
-                                // ブーストを試みる(ロックオンの有無に関係なく共通)
-                                TryPress(_boost, BoostRate, 0.1f);
-
-                                // ロックオンを試みる
-                                TryPress(_lockOn, 1f, 0.1f);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        // ユニットが停止中の場合は、すべての操作を解除する
-                        _move.Value = Vector2.zero;
-                        _look.Value = Vector2.zero;
-                        _fly.Value = false;
-                        _boost.Value = false;
-                        _fire.Value = false;
-                        _lockOn.Value = false;
-                    }
-                }).AddTo(this);
+        /// <summary>
+        /// ユニットが停止中の場合、すべての操作を解除する。
+        /// </summary>
+        private void StopAllActions()
+        {
+            _move.Value = Vector2.zero;
+            _look.Value = Vector2.zero;
+            _fly.Value = false;
+            _boost.Value = false;
+            _fire.Value = false;
+            _lockOn.Value = false;
         }
 
         /// <summary>

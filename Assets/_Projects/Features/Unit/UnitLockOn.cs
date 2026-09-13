@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -19,17 +20,18 @@ namespace _Projects.Features.Unit
     /// <summary>
     /// Targetの方向を向くよう、CurrentUnit(水平のみ)とShotPos(全方位)を回転させるロックオン制御。
     /// </summary>
-    public class UnitLockOn : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class UnitLockOn : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         ILockOnActionHandler,
         ILockOnActionObservable
     {
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
-
         private UnitSetting _unitSetting;
         private UnitManager _unitManager;
         private IUnitTrackingHandler _unitTracking;
+        private IUnitTrackingObservable _trackingObservable;
 
         public void OnRegister(IContainerBuilder builder)
         {
@@ -38,14 +40,18 @@ namespace _Projects.Features.Unit
 
         public virtual void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
             _unitManager = resolver.Resolve<UnitManager>();
             _unitSetting = resolver.Resolve<UnitSetting>();
             _unitTracking = resolver.Resolve<IUnitTrackingHandler>();
+            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+        }
+
+        public virtual void OnStart()
+        {
+            IsAction.AddTo(this);
 
             // Targetがnullになったらロックオンを解除する
-            var trackingTargetObservable = resolver.Resolve<IUnitTrackingObservable>();
-            trackingTargetObservable.Target.Subscribe(target =>
+            _trackingObservable.Target.Subscribe(target =>
             {
                 if (target == null)
                 {
@@ -60,6 +66,7 @@ namespace _Projects.Features.Unit
         /// </summary>
         public UniTask OnValueChanged(bool value, CancellationToken ct)
         {
+            if (!value) return UniTask.CompletedTask;
             if (!IsAction.CurrentValue)
             {
                 var target = _unitManager.FindClosestTargetUnit(

@@ -1,12 +1,17 @@
 using _Projects.Features.Unit.Battle;
 using MyUtils.Parameter.Basic;
+using MyUtils.VContainerExtensions;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitSetting : MonoBehaviour, IUnitScopeInitializable
+    public class UnitSetting : MonoBehaviour,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable
     {
         [Header("Stats")]
         [field: SerializeField] public int MaxHealth { get; private set; } = 5000;
@@ -29,6 +34,9 @@ namespace _Projects.Features.Unit
         /// </summary>
         public Vector3 Pivot => UnitPivot.position;
 
+        private Health _health;
+        private Energy _energy;
+
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this);
@@ -36,13 +44,17 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            var health = resolver.Resolve<Health>();
-            health.SetMax(MaxHealth);
-            health.SetFull();
+            _health = resolver.Resolve<Health>();
+            _energy = resolver.Resolve<Energy>();
+        }
 
-            var energy = resolver.Resolve<Energy>();
-            energy.SetMax(MaxEnergy);
-            energy.SetFull();
+        public void OnStart()
+        {
+            _health.SetMax(MaxHealth);
+            _health.SetFull();
+
+            _energy.SetMax(MaxEnergy);
+            _energy.SetFull();
         }
     }
 }

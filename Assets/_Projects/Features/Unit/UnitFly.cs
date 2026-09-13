@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -16,8 +17,11 @@ namespace _Projects.Features.Unit
     {
     }
 
-    public class UnitFly : MonoBehaviour,
-        IUnitScopeInitializable,
+    public class UnitFly : AbstractUnitAction,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable,
         IFlyActionHandler,
         IFlyActionObservable
     {
@@ -28,9 +32,6 @@ namespace _Projects.Features.Unit
         private Rigidbody _rigidbody;
         private Energy _energy;
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _isAction = new();
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
-
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IFlyActionHandler, IFlyActionObservable>();
@@ -38,10 +39,13 @@ namespace _Projects.Features.Unit
 
         public void OnResolve(IObjectResolver resolver)
         {
-            IsAction.AddTo(this);
-
             _rigidbody = resolver.Resolve<Rigidbody>();
             _energy = resolver.Resolve<Energy>();
+        }
+
+        public void OnStart()
+        {
+            IsAction.AddTo(this);
         }
 
         public UniTask OnValueChanged(bool value, CancellationToken ct)

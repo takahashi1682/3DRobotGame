@@ -33,6 +33,11 @@ namespace _Projects.Features.Unit
             _onRemovedUnitSubject.OnNext(unit);
         }
 
+        /// <summary>
+        /// currentから見て敵対する陣営のUnitを返す。
+        /// </summary>
+        /// <param name="current"></param>
+        /// <returns></returns>
         public List<UnitScopeRoot> GetTargetUnits(ArmyType current)
         {
             var units = new List<UnitScopeRoot>();
@@ -54,7 +59,8 @@ namespace _Projects.Features.Unit
         /// currentから見て敵対する陣営のUnitのうち、maxDistance以内で最も近いものを返す。
         /// 該当がなければnull。
         /// </summary>
-        public UnitScopeRoot FindClosestTargetUnit(ArmyType current, Vector3 currentPos, float maxDistance)
+        public UnitScopeRoot FindClosestTargetUnit(ArmyType current, Vector3 currentPos,
+            float maxDistance)
         {
             var targetUnits = GetTargetUnits(current);
 
@@ -63,6 +69,8 @@ namespace _Projects.Features.Unit
 
             foreach (var unit in targetUnits)
             {
+                if(!unit.IsVisible) continue;
+                
                 // targetUnitsはGetTargetUnitsで陣営・生存チェック済みなので、ここでは距離だけ見ればよい。
                 float distance = Vector3.Distance(
                     currentPos,

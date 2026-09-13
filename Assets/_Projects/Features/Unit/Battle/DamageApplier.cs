@@ -1,4 +1,3 @@
-using R3;
 using UnityEngine;
 using VContainer;
 
@@ -14,24 +13,9 @@ namespace _Projects.Features.Unit.Battle
         [field: SerializeField] public int Damage { get; set; } = 100;
         public IObjectResolver Owner { get; private set; }
 
-        // ダメージイベント
-        private Subject<IDamageable> _damageSubject;
-        public Observable<IDamageable> OnDamage => _damageSubject;
-
         public void Build(IObjectResolver resolver)
         {
             Owner = resolver;
-            _damageSubject.AddTo(this);
-        }
-
-        protected virtual void OnEnable()
-        {
-            _damageSubject = new Subject<IDamageable>();
-        }
-
-        protected virtual void OnDisable()
-        {
-            _damageSubject.OnCompleted();
         }
 
         public void TryApplyDamage(Collider other)
@@ -47,9 +31,6 @@ namespace _Projects.Features.Unit.Battle
             {
                 // ダメージを与える
                 if (!damageable.TakeDamage(this)) return;
-
-                // イベント通知
-                _damageSubject.OnNext(damageable);
             }
 
             gameObject.SetActive(false); // 弾を非アクティブ化して再利用可能にする

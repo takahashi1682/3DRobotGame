@@ -1,3 +1,4 @@
+using MyUtils.VContainerExtensions;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -5,7 +6,7 @@ using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitAnimation : MonoBehaviour, IUnitScopeInitializable
+    public class UnitAnimation : MonoBehaviour, IUnitScopeMember, IScopeResolvable, IScopeStartable
     {
         [Header("References")]
         [SerializeField] private Animator _animator;
@@ -30,14 +31,15 @@ namespace _Projects.Features.Unit
         private GroundDetection _groundDetection;
         private IBoostActionObservable _boost;
 
-        public void OnRegister(IContainerBuilder builder) { }
-
         public void OnResolve(IObjectResolver resolver)
         {
             _unitMove = resolver.Resolve<UnitMove>();
             _groundDetection = resolver.Resolve<GroundDetection>();
             _boost = resolver.Resolve<IBoostActionObservable>();
+        }
 
+        public void OnStart()
+        {
             _groundDetection.IsHit.Subscribe(isGround => _animator.SetTrigger(isGround ? _jumpOffHash : _jumpOnHash))
                 .AddTo(this);
 

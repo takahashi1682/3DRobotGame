@@ -1,3 +1,4 @@
+using MyUtils.VContainerExtensions;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -10,7 +11,11 @@ namespace _Projects.Features.Unit
     /// 重力の適用を担当する。PlayerFly(IFlyActionObservable)が飛行中の間は重力をリセットし、
     /// 飛行しておらず、かつ接地していない間だけ重力を加算する。
     /// </summary>
-    public class UnitGravity : MonoBehaviour, IUnitScopeInitializable
+    public class UnitGravity : MonoBehaviour,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable
     {
         [Header("Settings")]
         public float Gravity = -2.25f;
@@ -32,7 +37,10 @@ namespace _Projects.Features.Unit
             _rigidbody = resolver.Resolve<Rigidbody>();
             _groundDetection = resolver.Resolve<GroundDetection>();
             _flyActionObservable = resolver.Resolve<IFlyActionObservable>();
+        }
 
+        public void OnStart()
+        {
             this.FixedUpdateAsObservable()
                 .Subscribe(_ =>
                 {

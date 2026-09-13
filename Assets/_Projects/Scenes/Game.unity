@@ -2071,12 +2071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &181099758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2103,10 +2103,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &181099760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,11 +2119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 205229047}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &181099761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,13 +2136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 181099751}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &181099762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2306,8 +2306,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 181099772}
   _groundDetection: {fileID: 181099762}
-  _health: {fileID: 181099766}
-  _energy: {fileID: 181099765}
+  <Health>k__BackingField: {fileID: 181099766}
+  <Energy>k__BackingField: {fileID: 181099765}
 --- !u!114 &181099770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2324,7 +2324,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 690216351}
   <FirePoint>k__BackingField: {fileID: 1817287747}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -5340,12 +5339,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &456299137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5372,10 +5371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &456299139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5388,11 +5387,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 1935560288}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &456299140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5405,13 +5404,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 456299130}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &456299141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5575,8 +5574,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 456299151}
   _groundDetection: {fileID: 456299141}
-  _health: {fileID: 456299145}
-  _energy: {fileID: 456299144}
+  <Health>k__BackingField: {fileID: 456299145}
+  <Energy>k__BackingField: {fileID: 456299144}
 --- !u!114 &456299149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5593,7 +5592,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1802597999}
   <FirePoint>k__BackingField: {fileID: 285011095}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -6416,12 +6414,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &556414303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6448,10 +6446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &556414305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6464,11 +6462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 421468376}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &556414306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6481,13 +6479,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 556414297}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &556414307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6651,8 +6649,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 556414317}
   _groundDetection: {fileID: 556414307}
-  _health: {fileID: 556414311}
-  _energy: {fileID: 556414310}
+  <Health>k__BackingField: {fileID: 556414311}
+  <Energy>k__BackingField: {fileID: 556414310}
 --- !u!114 &556414315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6669,7 +6667,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 583540779}
   <FirePoint>k__BackingField: {fileID: 1534767415}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -7086,12 +7083,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &589956912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7118,10 +7115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &589956914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7134,11 +7131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 891543140}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &589956915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7151,13 +7148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 589956906}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &589956916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7321,8 +7318,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 589956926}
   _groundDetection: {fileID: 589956916}
-  _health: {fileID: 589956920}
-  _energy: {fileID: 589956919}
+  <Health>k__BackingField: {fileID: 589956920}
+  <Energy>k__BackingField: {fileID: 589956919}
 --- !u!114 &589956924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7339,7 +7336,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1225456905}
   <FirePoint>k__BackingField: {fileID: 778327577}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 500
   <Army>k__BackingField: 2
@@ -7604,12 +7600,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &632850479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7636,10 +7632,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &632850481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7652,11 +7648,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 1019317624}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &632850482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7669,13 +7665,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 632850473}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &632850483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7839,8 +7835,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 632850493}
   _groundDetection: {fileID: 632850483}
-  _health: {fileID: 632850487}
-  _energy: {fileID: 632850486}
+  <Health>k__BackingField: {fileID: 632850487}
+  <Energy>k__BackingField: {fileID: 632850486}
 --- !u!114 &632850491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7857,7 +7853,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1493994920}
   <FirePoint>k__BackingField: {fileID: 1984288593}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -9809,12 +9804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &799823312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9841,10 +9836,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &799823314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9857,11 +9852,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 389779754}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &799823315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9874,13 +9869,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 799823305}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &799823316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10044,8 +10039,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 799823326}
   _groundDetection: {fileID: 799823316}
-  _health: {fileID: 799823320}
-  _energy: {fileID: 799823319}
+  <Health>k__BackingField: {fileID: 799823320}
+  <Energy>k__BackingField: {fileID: 799823319}
 --- !u!114 &799823324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10062,7 +10057,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 693722844}
   <FirePoint>k__BackingField: {fileID: 1180003717}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -13663,12 +13657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1263132663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13695,10 +13689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1263132665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13711,11 +13705,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 1861954290}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1263132666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13728,13 +13722,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1263132656}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1263132667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13898,8 +13892,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1263132677}
   _groundDetection: {fileID: 1263132667}
-  _health: {fileID: 1263132671}
-  _energy: {fileID: 1263132670}
+  <Health>k__BackingField: {fileID: 1263132671}
+  <Energy>k__BackingField: {fileID: 1263132670}
 --- !u!114 &1263132675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13916,7 +13910,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1428366375}
   <FirePoint>k__BackingField: {fileID: 999092184}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -14765,12 +14758,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1423939292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14797,10 +14790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1423939294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14813,11 +14806,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 1639824835}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1423939295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14830,13 +14823,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1423939285}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1423939296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15000,8 +14993,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1423939306}
   _groundDetection: {fileID: 1423939296}
-  _health: {fileID: 1423939300}
-  _energy: {fileID: 1423939299}
+  <Health>k__BackingField: {fileID: 1423939300}
+  <Energy>k__BackingField: {fileID: 1423939299}
 --- !u!114 &1423939304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15018,7 +15011,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 319423073}
   <FirePoint>k__BackingField: {fileID: 1990148013}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -16157,12 +16149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1469072664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16189,10 +16181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1469072666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16205,11 +16197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 532941313}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1469072667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16222,13 +16214,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1469072657}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1469072668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16392,8 +16384,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1469072678}
   _groundDetection: {fileID: 1469072668}
-  _health: {fileID: 1469072672}
-  _energy: {fileID: 1469072671}
+  <Health>k__BackingField: {fileID: 1469072672}
+  <Energy>k__BackingField: {fileID: 1469072671}
 --- !u!114 &1469072676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16410,7 +16402,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 866550931}
   <FirePoint>k__BackingField: {fileID: 630435799}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -17480,12 +17471,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1589630825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17512,10 +17503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1589630827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17528,11 +17519,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 1829696144}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1589630828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17545,13 +17536,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1589630818}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1589630829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17715,8 +17706,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1589630839}
   _groundDetection: {fileID: 1589630829}
-  _health: {fileID: 1589630833}
-  _energy: {fileID: 1589630832}
+  <Health>k__BackingField: {fileID: 1589630833}
+  <Energy>k__BackingField: {fileID: 1589630832}
 --- !u!114 &1589630837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17733,7 +17724,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 280862359}
   <FirePoint>k__BackingField: {fileID: 620616394}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -17984,12 +17974,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1595287080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18016,10 +18006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1595287082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18032,11 +18022,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 873750180}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1595287083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18049,13 +18039,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1595287073}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1595287084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18219,8 +18209,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1595287094}
   _groundDetection: {fileID: 1595287084}
-  _health: {fileID: 1595287088}
-  _energy: {fileID: 1595287087}
+  <Health>k__BackingField: {fileID: 1595287088}
+  <Energy>k__BackingField: {fileID: 1595287087}
 --- !u!114 &1595287092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18237,7 +18227,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1900088413}
   <FirePoint>k__BackingField: {fileID: 858225555}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -19045,12 +19034,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1774520890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19077,10 +19066,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1774520892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19093,11 +19082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 2055372930}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1774520893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19110,13 +19099,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1774520883}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1774520894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19280,8 +19269,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1774520904}
   _groundDetection: {fileID: 1774520894}
-  _health: {fileID: 1774520898}
-  _energy: {fileID: 1774520897}
+  <Health>k__BackingField: {fileID: 1774520898}
+  <Energy>k__BackingField: {fileID: 1774520897}
 --- !u!114 &1774520902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19298,7 +19287,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 724289162}
   <FirePoint>k__BackingField: {fileID: 2042838331}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -20016,12 +20004,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &1855678269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20048,10 +20036,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &1855678271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20064,11 +20052,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 1438224256}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &1855678272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20081,13 +20069,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 1855678263}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &1855678273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20251,8 +20239,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 1855678283}
   _groundDetection: {fileID: 1855678273}
-  _health: {fileID: 1855678277}
-  _energy: {fileID: 1855678276}
+  <Health>k__BackingField: {fileID: 1855678277}
+  <Energy>k__BackingField: {fileID: 1855678276}
 --- !u!114 &1855678281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20269,7 +20257,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1780790559}
   <FirePoint>k__BackingField: {fileID: 920672072}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -21694,12 +21681,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &2007454282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21726,10 +21713,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &2007454284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21742,11 +21729,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 1944699276}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &2007454285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21759,13 +21746,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 2007454275}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &2007454286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21929,8 +21916,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2007454296}
   _groundDetection: {fileID: 2007454286}
-  _health: {fileID: 2007454290}
-  _energy: {fileID: 2007454289}
+  <Health>k__BackingField: {fileID: 2007454290}
+  <Energy>k__BackingField: {fileID: 2007454289}
 --- !u!114 &2007454294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21947,7 +21934,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 2121584763}
   <FirePoint>k__BackingField: {fileID: 1292981194}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -22115,12 +22101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &2009075034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22147,10 +22133,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &2009075037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22163,13 +22149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 2009075029}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &2009075038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22289,7 +22275,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1073556174}
   <FirePoint>k__BackingField: {fileID: 2046598087}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -22366,8 +22351,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2009075049}
   _groundDetection: {fileID: 2009075038}
-  _health: {fileID: 2009075042}
-  _energy: {fileID: 2009075041}
+  <Health>k__BackingField: {fileID: 2009075042}
+  <Energy>k__BackingField: {fileID: 2009075041}
 --- !u!114 &2009075051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22420,11 +22405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 441843052}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &2009075054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22782,12 +22767,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &2032437649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22814,10 +22799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &2032437651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22830,11 +22815,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 1874275900}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &2032437652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22847,13 +22832,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 2032437643}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &2032437653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23017,8 +23002,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2032437663}
   _groundDetection: {fileID: 2032437653}
-  _health: {fileID: 2032437657}
-  _energy: {fileID: 2032437656}
+  <Health>k__BackingField: {fileID: 2032437657}
+  <Energy>k__BackingField: {fileID: 2032437656}
 --- !u!114 &2032437661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23035,7 +23020,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 1847154521}
   <FirePoint>k__BackingField: {fileID: 1330972332}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 1
@@ -23607,12 +23591,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &2132389835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23639,10 +23623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &2132389837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23655,11 +23639,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c290deb51569c2446a59e49fc457a34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 878941aba131a614095a248cec854d46, type: 3}
   FireEffect: {fileID: 209168570}
   FireRate: 0.15
-  _isAction:
-    value: 0
 --- !u!114 &2132389838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23672,13 +23656,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 2132389828}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &2132389839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23842,8 +23826,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 2132389849}
   _groundDetection: {fileID: 2132389839}
-  _health: {fileID: 2132389843}
-  _energy: {fileID: 2132389842}
+  <Health>k__BackingField: {fileID: 2132389843}
+  <Energy>k__BackingField: {fileID: 2132389842}
 --- !u!114 &2132389847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23860,7 +23844,6 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 828954388}
   <FirePoint>k__BackingField: {fileID: 1517521897}
-  <TrackingSpeed>k__BackingField: 0.9
   <RotationSpeed>k__BackingField: 360
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 3
@@ -24249,10 +24232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9582586f75d44594986e6cf24b2efd88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlyForce: 80
-  FlyingEnergy: 1
   _isAction:
     value: 0
+  FlyForce: 80
+  FlyingEnergy: 1
 --- !u!114 &574404284475791463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24308,12 +24291,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d760901ff84f4aefaeddc4d6b1748a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   BoostPower: 500
   BoostEnergy: 300
   BoostDuration: 300
   BoostInterval: 300
-  _isAction:
-    value: 0
 --- !u!114 &816262974580512050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24370,13 +24353,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fd505772c947b6a0c1eeff4f0d3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isAction:
+    value: 0
   Target: {fileID: 155872613}
   MovePower: 70
   PowerDownTime: 10
   StoppingPower: 2
   <MoveDirection>k__BackingField: {x: 0, y: 0, z: 0}
-  _isAction:
-    value: 0
 --- !u!114 &842825498748116227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24465,11 +24448,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ff972eb86644a591ec0060dbcc4938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.Player.PlayerFire
+  _isAction:
+    value: 0
   BulletPrefab: {fileID: 5772913708504926940, guid: 96a407eabccb5a24887c7f4ebca9b10a, type: 3}
   FireEffect: {fileID: 1473739842}
   FireRate: 0.1
-  _isAction:
-    value: 0
   BestFireDistance: 100
 --- !u!114 &939060855616413987
 MonoBehaviour:
@@ -24483,6 +24466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecf3ffe06da4c4db6f893406d9cd09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.Player.PlayerLook
+  _isAction:
+    value: 0
   CameraTarget: {fileID: 664973285}
   CamSpeedX: 0.1
   CamSpeedY: 0.1
@@ -24490,8 +24475,6 @@ MonoBehaviour:
   LookdownLimit: 80
   MouseDeviceName: Mouse
   NonMouseLookScale: 1500
-  _isAction:
-    value: 0
 --- !u!114 &939060855616413988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24508,8 +24491,7 @@ MonoBehaviour:
   <MaxEnergy>k__BackingField: 1000
   <UnitPivot>k__BackingField: {fileID: 370841416}
   <FirePoint>k__BackingField: {fileID: 1172997060}
-  <TrackingSpeed>k__BackingField: 400
-  <RotationSpeed>k__BackingField: 360
+  <RotationSpeed>k__BackingField: 400
   <MaxLockOnDistance>k__BackingField: 200
   <Army>k__BackingField: 0
   <ObstacleLayerMask>k__BackingField:
@@ -24553,8 +24535,8 @@ MonoBehaviour:
     value: 1
   _rigidbody: {fileID: 155872615}
   _groundDetection: {fileID: 863526269436486623}
-  _health: {fileID: 202967182922158155}
-  _energy: {fileID: 592341520056142330}
+  <Health>k__BackingField: {fileID: 202967182922158155}
+  <Energy>k__BackingField: {fileID: 592341520056142330}
 --- !u!114 &939060855616413992
 MonoBehaviour:
   m_ObjectHideFlags: 0

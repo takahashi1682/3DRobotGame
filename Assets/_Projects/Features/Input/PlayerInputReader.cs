@@ -1,5 +1,6 @@
 using _Projects.Features.Unit;
 using MyUtils;
+using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,7 +12,8 @@ namespace _Projects.Features.Input
     public class PlayerInputReader : MonoBehaviour,
         InputSystem_Actions.IPlayerActions,
         IUnitControllable,
-        IUnitScopeInitializable
+        IUnitScopeMember,
+        IScopeRegisterable
     {
         [SerializeField] private SerializableReactiveProperty<Vector2> _move = new();
         public Observable<Vector2> Move => _move;
@@ -48,10 +50,6 @@ namespace _Projects.Features.Input
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IUnitControllable>();
-        }
-
-        public void OnResolve(IObjectResolver resolver)
-        {
         }
 
         private void OnDestroy() => _actions.Dispose();

@@ -12,17 +12,25 @@ namespace _Projects.Features.Unit.Player
     {
         public float BestFireDistance = 100f;
 
+        private Camera _camera;
+        private IUnitTrackingObservable _trackingObservable;
+
         public override void OnResolve(IObjectResolver resolver)
         {
             base.OnResolve(resolver);
-            var camera = resolver.Resolve<Camera>();
-            var trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+            _camera = resolver.Resolve<Camera>();
+            _trackingObservable = resolver.Resolve<IUnitTrackingObservable>();
+        }
+
+        public override void OnStart()
+        {
+            base.OnStart();
 
             // ロックオン対象がいない場合、カメラの正面方向を向くようにする。
-            trackingObservable.Target.Subscribe(target =>
+            _trackingObservable.Target.Subscribe(target =>
             {
                 if (target != null) return;
-                var lookPos = camera.transform.position + camera.transform.forward * BestFireDistance;
+                var lookPos = _camera.transform.position + _camera.transform.forward * BestFireDistance;
                 Setting.FirePoint.LookAt(lookPos);
             }).AddTo(this);
         }

@@ -15,16 +15,20 @@ namespace _Projects.Features.Unit.Player
         public override void OnResolve(IObjectResolver resolver)
         {
             base.OnResolve(resolver);
-            var unitScopeRoot = resolver.Resolve<UnitScopeRoot>();
-            var control = resolver.Resolve<IUnitControllable>();
-            var playerStatus = resolver.Resolve<UnitStatus>();
+            resolver.TryResolve(out _lookHandler);
+        }
 
-            if (resolver.TryResolve(out _lookHandler))
+        public override void OnStart()
+        {
+            base.OnStart();
+            if (_control == null) return;
+
+            if (_lookHandler != null)
             {
-                control.Look
+                _control.Look
                     .SubscribeAwait(async (x, cts) =>
                         {
-                            if (unitScopeRoot.Running.CurrentValue && playerStatus.CanLook)
+                            if (_unitScopeRoot.Running.CurrentValue && _playerStatus.CanLook)
                             {
                                 await _lookHandler.OnValueChanged(x, cts);
                             }
@@ -37,8 +41,8 @@ namespace _Projects.Features.Unit.Player
             }
         }
 
-        // 死亡・ゲーム終了時のキャンセルは、基底クラスのCanAction購読からCancelAllActionsを
-        // 通じて呼ばれる(重複購読を避けるため、ここでは個別にCanActionを購読しない)。
+        // 死亡・ゲーム終了時のキャンセルは、基底クラスのRunning購読からCancelAllActionsを
+        // 通じて呼ばれる(重複購読を避けるため、ここでは個別にRunningを購読しない)。
         protected override void CancelAllActions()
         {
             base.CancelAllActions();

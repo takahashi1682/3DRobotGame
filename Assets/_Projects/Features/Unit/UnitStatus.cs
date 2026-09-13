@@ -1,6 +1,7 @@
 using _Projects.Features.Unit.Player;
 using MyUtils.Parameter;
 using MyUtils.Parameter.Basic;
+using MyUtils.VContainerExtensions;
 using R3;
 using R3.Triggers;
 using UnityEngine;
@@ -32,7 +33,11 @@ namespace _Projects.Features.Unit
         Fly,
     }
 
-    public class UnitStatus : MonoBehaviour, IUnitScopeInitializable
+    public class UnitStatus : MonoBehaviour,
+        IUnitScopeMember,
+        IScopeRegisterable,
+        IScopeResolvable,
+        IScopeStartable
     {
         [SerializeField] private FlagsParameter<EPlayerState> _stateFlags = new();
         [SerializeField] private FlagsParameter<ECanFlags> _canFlags = new();
@@ -51,33 +56,41 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this);
         }
 
+        private ILookActionObservable _look;
+        private IMoveActionObservable _move;
+        private GroundDetection _ground;
+        private IBoostActionObservable _boost;
+        private ILockOnActionObservable _lockOn;
+        private IFireActionObservable _fire;
+        private Health _health;
+        private Energy _energy;
+
         public virtual void OnResolve(IObjectResolver resolver)
         {
-            if (resolver.TryResolve<ILookActionObservable>(out var look))
+            resolver.TryResolve(out _look);
+            _move = resolver.Resolve<IMoveActionObservable>();
+            _ground = resolver.Resolve<GroundDetection>();
+            _boost = resolver.Resolve<IBoostActionObservable>();
+            _lockOn = resolver.Resolve<ILockOnActionObservable>();
+            _fire = resolver.Resolve<IFireActionObservable>();
+            _health = resolver.Resolve<Health>();
+            _energy = resolver.Resolve<Energy>();
+        }
+
+        public virtual void OnStart()
+        {
+            if (_look != null)
             {
-                look.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Look, x)).AddTo(this);
+                _look.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Look, x)).AddTo(this);
             }
 
-            var move = resolver.Resolve<IMoveActionObservable>();
-            move.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Move, x)).AddTo(this);
-
-            var ground = resolver.Resolve<GroundDetection>();
-            ground.IsHit.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Grounded, x)).AddTo(this);
-
-            var boost = resolver.Resolve<IBoostActionObservable>();
-            boost.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Boost, x)).AddTo(this);
-
-            var lockOn = resolver.Resolve<ILockOnActionObservable>();
-            lockOn.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.LockOn, x)).AddTo(this);
-
-            var fire = resolver.Resolve<IFireActionObservable>();
-            fire.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Fire, x)).AddTo(this);
-
-            var health = resolver.Resolve<Health>();
-            health.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Dead, x)).AddTo(this);
-
-            var energy = resolver.Resolve<Energy>();
-            energy.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.EnergyEmpty, x)).AddTo(this);
+            _move.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Move, x)).AddTo(this);
+            _ground.IsHit.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Grounded, x)).AddTo(this);
+            _boost.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Boost, x)).AddTo(this);
+            _lockOn.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.LockOn, x)).AddTo(this);
+            _fire.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Fire, x)).AddTo(this);
+            _health.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Dead, x)).AddTo(this);
+            _energy.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.EnergyEmpty, x)).AddTo(this);
 
             this.UpdateAsObservable()
                 .Subscribe(_ =>
@@ -98,7 +111,7 @@ namespace _Projects.Features.Unit
                     canBoost &= HasFlag(EPlayerState.Move);
                     canBoost &= !HasFlag(EPlayerState.Boost);
                     canBoost &= !HasFlag(EPlayerState.Dead);
-                    canBoost &= energy.CurrentValue > boost.BoostEnergy;
+                    canBoost &= _energy.CurrentValue > _boost.BoostEnergy;
                     _canFlags.SetFlag(ECanFlags.Boost, canBoost);
 
                     // Fireできる条件
