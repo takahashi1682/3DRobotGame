@@ -8,11 +8,19 @@ using VContainer;
 
 namespace _Projects.Features.Unit.Player
 {
+    /// <summary>
+    /// CinemachineはUpdate完了後(LateUpdate、または対象によってはFixedUpdate)にカメラの
+    /// 実際のTransformを反映するため、それより後に実行しないと1フレーム古いカメラ位置を
+    /// 参照してしまい、Dot/ロックオンUIがぶれる。DefaultExecutionOrderで他スクリプトの
+    /// LateUpdate(CinemachineBrain含む)より後に実行されることを保証する。
+    /// </summary>
+    [DefaultExecutionOrder(1000)]
     public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         [SerializeField] private RectTransform _lockOnUI;
         [SerializeField] private Slider _healthSlider;
         [SerializeField] private Slider _energySlider;
+        [SerializeField] private RectTransform _dot;
         [SerializeField] private TMP_Text _distanceText;
         [Inject] private Camera _mainCamera;
         private UnitSetting _targetSetting;
@@ -55,13 +63,13 @@ namespace _Projects.Features.Unit.Player
             }).AddTo(this);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
+            _dot.position = _mainCamera.WorldToScreenPoint(_trackingObservable.TargetPosition);
+
             if (_trackingObservable?.Target.CurrentValue)
             {
-                Vector3 screenPos = _mainCamera.WorldToScreenPoint(_targetSetting.Pivot);
-                _lockOnUI.position = screenPos;
-
+                _lockOnUI.position = _mainCamera.WorldToScreenPoint(_targetSetting.Pivot);
                 _distanceText.text = _trackingObservable.Distance.ToString("F1") + "m";
             }
         }

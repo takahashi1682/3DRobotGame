@@ -231,8 +231,8 @@ MonoBehaviour:
   _damageApplier: {fileID: 5647234248305615055}
   _trailRenderer: {fileID: -4892560650499164969}
   LifeTime: 2
-  Speed: 900
-  FireBlur: 2
+  Speed: 1200
+  FireBlur: 1
 --- !u!114 &5647234248305615055
 MonoBehaviour:
   m_ObjectHideFlags: 0
