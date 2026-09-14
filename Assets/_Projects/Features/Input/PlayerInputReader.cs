@@ -1,3 +1,4 @@
+using _Projects.Features.Game;
 using _Projects.Features.Unit;
 using MyUtils;
 using MyUtils.VContainerExtensions;
@@ -9,11 +10,19 @@ using VContainer.Unity;
 
 namespace _Projects.Features.Input
 {
+    /// <summary>
+    /// Input Systemはデフォルトだと自動(ProcessEventsInDynamicUpdate)でイベントを処理するため、
+    /// UpdateDispatcherのUpdatePhase.Inputより前後どちらで値が更新されるかが保証されない。
+    /// ProcessEventsManuallyに切り替え、UpdatePhase.Inputの先頭でこちらからInputSystem.Update()を
+    /// 呼ぶことで、毎フレーム最初に入力を確定させてから後続のAI/Action/Movementが読めるようにする。
+    /// </summary>
     public class PlayerInputReader : MonoBehaviour,
         InputSystem_Actions.IPlayerActions,
         IUnitControllable,
         IUnitScopeMember,
-        IScopeRegisterable
+        IScopeRegisterable,
+        IScopeLaunchable,
+        IPhaseUpdatable
     {
         [SerializeField] private SerializableReactiveProperty<Vector2> _move = new();
         public Observable<Vector2> Move => _move;
@@ -39,8 +48,14 @@ namespace _Projects.Features.Input
         private InputSystem_Actions _actions;
         public InputSystem_Actions.PlayerActions Player { get; private set; }
 
+        [Inject] private UpdateDispatcher _dispatcher;
+
+        public UpdatePhase Phase => UpdatePhase.Input;
+
         private void Awake()
         {
+            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
+
             _actions = new InputSystem_Actions();
             Player = _actions.Player;
             Player.AddCallbacks(this);
@@ -52,9 +67,24 @@ namespace _Projects.Features.Input
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
-        private void OnDestroy() => _actions.Dispose();
+        public void OnLaunch()
+        {
+            _dispatcher.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
+            _actions.Dispose();
+        }
+
         private void OnEnable() => _actions.Enable();
         private void OnDisable() => _actions.Disable();
+
+        public void OnPhaseUpdate()
+        {
+            InputSystem.Update();
+        }
 
         public void OnMove(InputAction.CallbackContext context) => _move.Value = context.ReadValue<Vector2>();
 
