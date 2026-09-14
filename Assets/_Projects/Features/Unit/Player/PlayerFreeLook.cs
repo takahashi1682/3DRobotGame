@@ -1,4 +1,5 @@
 using System.Threading;
+using _Projects.Features.Game;
 using Cysharp.Threading.Tasks;
 using MyUtils;
 using MyUtils.VContainerExtensions;
@@ -30,7 +31,8 @@ namespace _Projects.Features.Unit.Player
         IScopeRegisterable,
         IScopeLaunchable,
         ILookActionHandler,
-        ILookActionObservable
+        ILookActionObservable,
+        IPhaseUpdatable
     {
         [Header("References")]
         public Transform CameraTarget;
@@ -49,6 +51,9 @@ namespace _Projects.Features.Unit.Player
 
         [Inject] private IUnitControllable _control;
         [Inject] private Rigidbody _rigidbody;
+        [Inject] private UpdateDispatcher _dispatcher;
+
+        public UpdatePhase Phase => UpdatePhase.Movement;
 
         public void OnRegister(IContainerBuilder builder)
         {
@@ -58,6 +63,12 @@ namespace _Projects.Features.Unit.Player
         public void OnLaunch()
         {
             IsAction.AddTo(this);
+            _dispatcher.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
         }
 
         public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
@@ -73,7 +84,7 @@ namespace _Projects.Features.Unit.Player
             CurrentLook = Vector2.zero;
         }
 
-        private void Update()
+        public void OnPhaseUpdate()
         {
             if (!IsAction.CurrentValue) return;
 

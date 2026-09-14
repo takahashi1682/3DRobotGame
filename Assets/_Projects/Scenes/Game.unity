@@ -2558,6 +2558,19 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 19800006, guid: c5946a66b3eec2d479e20b7315b06bf8, type: 3}
   m_PrefabInstance: {fileID: 205229045}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &208295428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224505097031307202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29b143f72f4465393a0b5f6a50d5362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _brain: {fileID: 330585548}
 --- !u!1 &280862358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,7 +3390,7 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
+  UpdateMethod: 3
   BlendUpdateMethod: 1
   LensModeOverride:
     Enabled: 0
@@ -21994,8 +22007,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 988715536612551756}
-  - component: {fileID: 988715536612551757}
   - component: {fileID: 842825498748116227}
+  - component: {fileID: 208295428}
+  - component: {fileID: 988715536612551757}
   - component: {fileID: 246109408298996260}
   - component: {fileID: 589555445567513473}
   - component: {fileID: 988715536612551758}
@@ -22194,7 +22208,7 @@ MonoBehaviour:
   _includeDisableComponent: 0
   _additionalScanRoots:
   - {fileID: 183388531}
-  _mainCamera: {fileID: 330585545}
+  _camera: {fileID: 330585545}
 --- !u!114 &863526269436486623
 MonoBehaviour:
   m_ObjectHideFlags: 0

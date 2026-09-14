@@ -1,4 +1,5 @@
 using System;
+using _Projects.Features.Game;
 using MyUtils.VContainerExtensions;
 using R3;
 using TMPro;
@@ -9,13 +10,11 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    /// CinemachineはUpdate完了後(LateUpdate、または対象によってはFixedUpdate)にカメラの
-    /// 実際のTransformを反映するため、それより後に実行しないと1フレーム古いカメラ位置を
-    /// 参照してしまい、Dot/ロックオンUIがぶれる。DefaultExecutionOrderで他スクリプトの
-    /// LateUpdate(CinemachineBrain含む)より後に実行されることを保証する。
+    /// CinemachineBrainはUpdatePhase.CameraApply(CinemachineManualUpdater)でこのフレームの
+    /// カメラTransformを確定させるため、それより後のUpdatePhase.UIで読めば常に最新のカメラ位置を
+    /// 参照できる。
     /// </summary>
-    [DefaultExecutionOrder(1000)]
-    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
+    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable, IPhaseUpdatable
     {
         [SerializeField] private RectTransform _lockOnUI;
         [SerializeField] private Slider _healthSlider;
@@ -23,10 +22,13 @@ namespace _Projects.Features.Unit.Player
         [SerializeField] private RectTransform _dot;
         [SerializeField] private TMP_Text _distanceText;
         [Inject] private Camera _mainCamera;
+        [Inject] private UpdateDispatcher _dispatcher;
         private UnitSetting _targetSetting;
         [Inject] private IUnitTrackingObservable _trackingObservable;
         private IDisposable _health;
         private IDisposable _energy;
+
+        public UpdatePhase Phase => UpdatePhase.UI;
 
         private void Awake()
         {
@@ -61,9 +63,16 @@ namespace _Projects.Features.Unit.Player
                     _lockOnUI.gameObject.SetActive(false);
                 }
             }).AddTo(this);
+
+            _dispatcher.Register(this);
         }
 
-        private void LateUpdate()
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
+        }
+
+        public void OnPhaseUpdate()
         {
             _dot.position = _mainCamera.WorldToScreenPoint(_trackingObservable.TargetPosition);
 

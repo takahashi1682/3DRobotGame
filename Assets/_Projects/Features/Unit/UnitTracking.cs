@@ -1,3 +1,4 @@
+using _Projects.Features.Game;
 using MyUtils;
 using MyUtils.VContainerExtensions;
 using R3;
@@ -31,7 +32,8 @@ namespace _Projects.Features.Unit
         IScopeRegisterable,
         IScopeLaunchable,
         IUnitTrackingHandler,
-        IUnitTrackingObservable
+        IUnitTrackingObservable,
+        IPhaseUpdatable
     {
         private const float MinDirectionSqrMagnitude = 0.0001f;
         private const float UnlockedAimDistance = 200f;
@@ -47,7 +49,10 @@ namespace _Projects.Features.Unit
 
         [Inject] protected Rigidbody _rigidbody;
         [Inject] protected UnitSetting _unitSetting;
+        [Inject] private UpdateDispatcher _dispatcher;
         protected Transform _targetPivot;
+
+        public UpdatePhase Phase => UpdatePhase.Movement;
 
         public void OnRegister(IContainerBuilder builder)
         {
@@ -57,6 +62,12 @@ namespace _Projects.Features.Unit
         public void OnLaunch()
         {
             _target.AddTo(this);
+            _dispatcher.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
         }
 
         public void SetTarget(UnitScopeRoot target, float maxDistance)
@@ -86,7 +97,7 @@ namespace _Projects.Features.Unit
             _isAction.Value = false;
         }
 
-        protected virtual void Update()
+        public virtual void OnPhaseUpdate()
         {
             if (!IsTargetValid())
             {

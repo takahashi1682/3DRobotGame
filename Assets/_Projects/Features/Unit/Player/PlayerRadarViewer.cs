@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Projects.Features.Game;
 using _Projects.Features.Unit.Battle;
 using MyUtils.VContainerExtensions;
 using R3;
@@ -13,7 +14,7 @@ namespace _Projects.Features.Unit.Player
     /// 自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
     /// ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
     /// </summary>
-    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
+    public class PlayerRadarViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable, IPhaseUpdatable
     {
         [SerializeField] private float _radarScale = 2;
         [SerializeField] private RectTransform _radarUI;
@@ -28,6 +29,9 @@ namespace _Projects.Features.Unit.Player
 
         [Inject] private UnitSetting _currentSetting;
         [Inject] private UnitManager _unitManager;
+        [Inject] private UpdateDispatcher _dispatcher;
+
+        public UpdatePhase Phase => UpdatePhase.UI;
 
         public void OnLaunch()
         {
@@ -42,6 +46,13 @@ namespace _Projects.Features.Unit.Player
 
             // ユニットが削除されたときにアイコンをプールへ戻す
             _unitManager.OnRemovedUnit.Subscribe(ReleaseIcon).AddTo(this);
+
+            _dispatcher.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
         }
 
         private void CreateIcon(UnitScopeRoot unit)
@@ -86,7 +97,7 @@ namespace _Projects.Features.Unit.Player
             _pooledIcons.Enqueue(icon); // 使い終わったアイコンをプールへ戻す
         }
 
-        private void Update()
+        public void OnPhaseUpdate()
         {
             foreach (var pair in _icons)
             {

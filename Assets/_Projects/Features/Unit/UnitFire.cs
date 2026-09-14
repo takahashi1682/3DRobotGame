@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading;
+using _Projects.Features.Game;
 using _Projects.Features.Unit.Battle;
 using Cysharp.Threading.Tasks;
 using MyUtils;
@@ -28,7 +29,8 @@ namespace _Projects.Features.Unit
         IScopeRegisterable,
         IScopeLaunchable,
         IFireActionHandler,
-        IFireActionObservable
+        IFireActionObservable,
+        IPhaseUpdatable
     {
         [Header("References")]
         public BulletController BulletPrefab; // 発射する弾のプレハブ
@@ -43,7 +45,10 @@ namespace _Projects.Features.Unit
 
         private float _fireTime;
         [Inject] private IObjectResolver _resolver;
+        [Inject] private UpdateDispatcher _dispatcher;
         private readonly List<BulletController> _bulletInstances = new();
+
+        public UpdatePhase Phase => UpdatePhase.Action;
 
         private void Awake()
         {
@@ -58,6 +63,7 @@ namespace _Projects.Features.Unit
         public virtual void OnLaunch()
         {
             IsAction.AddTo(this);
+            _dispatcher.Register(this);
         }
 
         public UniTask OnValueChanged(bool value, CancellationToken ct)
@@ -85,7 +91,7 @@ namespace _Projects.Features.Unit
             }
         }
 
-        private void Update()
+        public void OnPhaseUpdate()
         {
             if (!IsAction.CurrentValue) return;
 
@@ -126,6 +132,8 @@ namespace _Projects.Features.Unit
 
         private void OnDestroy()
         {
+            _dispatcher.Unregister(this);
+
             // 弾のインスタンスを破棄する
             foreach (var bullet in _bulletInstances)
             {

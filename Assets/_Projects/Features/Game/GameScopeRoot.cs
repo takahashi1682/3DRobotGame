@@ -12,13 +12,14 @@ namespace _Projects.Features.Game
 
     public class GameScopeRoot : AbstractScopeRoot<IGameScopeMember>
     {
-        [SerializeField] private Camera _mainCamera;
+        [SerializeField] private Camera _camera;
 
         protected override void ConfigureScope(IContainerBuilder builder)
         {
             base.ConfigureScope(builder);
-            builder.RegisterComponent(_mainCamera);
-            builder.Register<UnitManager>(Lifetime.Singleton).WithParameter(gameObject);
+            builder.RegisterComponent(_camera);
+            builder.Register<UnitManager>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<UpdateDispatcher>().AsSelf();
         }
     }
 }

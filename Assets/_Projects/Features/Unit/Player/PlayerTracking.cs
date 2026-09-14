@@ -6,9 +6,9 @@ namespace _Projects.Features.Unit.Player
     {
         public Transform CameraTarget;
 
-        protected override void Update()
+        public override void OnPhaseUpdate()
         {
-            base.Update();
+            base.OnPhaseUpdate();
             if (!IsTargetValid()) return;
 
             RotateCameraTowardsTarget();

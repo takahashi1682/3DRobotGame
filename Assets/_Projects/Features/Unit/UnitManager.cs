@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using _Projects.Features.Unit.Battle;
 using R3;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitManager
+    public class UnitManager : IDisposable
     {
         public List<UnitScopeRoot> UnitList { get; } = new();
 
@@ -15,12 +16,13 @@ namespace _Projects.Features.Unit
         private readonly Subject<UnitScopeRoot> _onRemovedUnitSubject = new();
         public Observable<UnitScopeRoot> OnRemovedUnit => _onRemovedUnitSubject;
 
-        public UnitManager(GameObject gameObject)
+        public void Dispose()
         {
-            _onRegisteredUnitSubject.AddTo(gameObject);
-            _onRemovedUnitSubject.AddTo(gameObject);
+            Debug.Log(1);
+            _onRegisteredUnitSubject?.Dispose();
+            _onRemovedUnitSubject?.Dispose();
         }
-
+        
         public void RegisterUnit(UnitScopeRoot unit)
         {
             UnitList.Add(unit);
