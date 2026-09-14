@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using _Projects.Features.Game;
 using Cysharp.Threading.Tasks;
 using MyUtils;
 using MyUtils.VContainerExtensions;
@@ -15,6 +16,7 @@ namespace _Projects.Features.Unit.Enemy
         , IUnitScopeMember
         , IScopeRegisterable
         , IScopeLaunchable
+        , IPhaseUpdatable
         , IUnitControllable
     {
         [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
@@ -54,6 +56,8 @@ namespace _Projects.Features.Unit.Enemy
         [Inject] private IUnitTrackingHandler _trackingHandler;
         [Inject] private UnitStatus _unitStatus;
         [Inject] private UnitSetting _unitSetting;
+        [Inject] private UpdateDispatcher _dispatcher;
+        private float _lastThinkTime;
 
         public void OnLaunch()
         {
@@ -63,10 +67,25 @@ namespace _Projects.Features.Unit.Enemy
             _boost.AddTo(this);
             _fire.AddTo(this);
             _lockOn.AddTo(this);
+            _lastThinkTime = Time.time;
 
-            Observable.Interval(TimeSpan.FromSeconds(ThinkingInterval))
-                .Subscribe(_ => Think())
-                .AddTo(this);
+            _dispatcher.Register(this);
+        }
+
+        private void OnDestroy()
+        {
+            _dispatcher.Unregister(this);
+        }
+
+        public UpdatePhase Phase => UpdatePhase.AI;
+
+        public void OnPhaseUpdate()
+        {
+            if (Time.time - _lastThinkTime >= ThinkingInterval)
+            {
+                _lastThinkTime = Time.time;
+                Think();
+            }
         }
 
         /// <summary>
