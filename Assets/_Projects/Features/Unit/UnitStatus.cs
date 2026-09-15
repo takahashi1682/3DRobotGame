@@ -10,7 +10,7 @@ using VContainer.Unity;
 
 namespace _Projects.Features.Unit
 {
-    public enum EPlayerState
+    public enum EUnitState
     {
         Move,
         Look,
@@ -22,7 +22,7 @@ namespace _Projects.Features.Unit
         Dead,
     }
 
-    /// <summary>CanXxxプロパティに対応するフラグ。EPlayerStateと同じビットフラグ機構で管理する。</summary>
+    /// <summary>CanXxxプロパティに対応するフラグ。EUnitStateと同じビットフラグ機構で管理する。</summary>
     public enum ECanFlags
     {
         Move,
@@ -38,10 +38,10 @@ namespace _Projects.Features.Unit
         IScopeRegisterable,
         IScopeLaunchable
     {
-        [SerializeField] private FlagsParameter<EPlayerState> _stateFlags = new();
+        [SerializeField] private FlagsParameter<EUnitState> _stateFlags = new();
         [SerializeField] private FlagsParameter<ECanFlags> _canFlags = new();
 
-        public bool HasFlag(EPlayerState flag) => _stateFlags.HasFlag(flag);
+        public bool HasFlag(EUnitState flag) => _stateFlags.HasFlag(flag);
 
         public bool CanMove => _canFlags.HasFlag(ECanFlags.Move);
         public bool CanLook => _canFlags.HasFlag(ECanFlags.Look);
@@ -71,53 +71,53 @@ namespace _Projects.Features.Unit
             _resolver.TryResolve(out _look);
             if (_look != null)
             {
-                _look.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Look, x)).AddTo(this);
+                _look.IsAction.Subscribe(x => _stateFlags.SetFlag(EUnitState.Look, x)).AddTo(this);
             }
 
-            _move.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Move, x)).AddTo(this);
-            _ground.IsHit.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Grounded, x)).AddTo(this);
-            _boost.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Boost, x)).AddTo(this);
-            _lockOn.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.LockOn, x)).AddTo(this);
-            _fire.IsAction.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Fire, x)).AddTo(this);
-            _health.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.Dead, x)).AddTo(this);
-            _energy.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EPlayerState.EnergyEmpty, x)).AddTo(this);
+            _move.IsAction.Subscribe(x => _stateFlags.SetFlag(EUnitState.Move, x)).AddTo(this);
+            _ground.IsHit.Subscribe(x => _stateFlags.SetFlag(EUnitState.Grounded, x)).AddTo(this);
+            _boost.IsAction.Subscribe(x => _stateFlags.SetFlag(EUnitState.Boost, x)).AddTo(this);
+            _lockOn.IsAction.Subscribe(x => _stateFlags.SetFlag(EUnitState.LockOn, x)).AddTo(this);
+            _fire.IsAction.Subscribe(x => _stateFlags.SetFlag(EUnitState.Fire, x)).AddTo(this);
+            _health.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EUnitState.Dead, x)).AddTo(this);
+            _energy.IsEmpty.Subscribe(x => _stateFlags.SetFlag(EUnitState.EnergyEmpty, x)).AddTo(this);
 
             this.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
                     // Moveできる条件
                     var canMove = true;
-                    canMove &= !HasFlag(EPlayerState.Dead);
+                    canMove &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Move, canMove);
 
                     // Lookできる条件
                     var canLook = true;
-                    canLook &= !HasFlag(EPlayerState.Dead);
-                    canLook &= !HasFlag(EPlayerState.LockOn);
+                    canLook &= !HasFlag(EUnitState.Dead);
+                    canLook &= !HasFlag(EUnitState.LockOn);
                     _canFlags.SetFlag(ECanFlags.Look, canLook);
 
                     // Boostできる条件
                     var canBoost = true;
-                    canBoost &= HasFlag(EPlayerState.Move);
-                    canBoost &= !HasFlag(EPlayerState.Boost);
-                    canBoost &= !HasFlag(EPlayerState.Dead);
+                    canBoost &= HasFlag(EUnitState.Move);
+                    canBoost &= !HasFlag(EUnitState.Boost);
+                    canBoost &= !HasFlag(EUnitState.Dead);
                     canBoost &= _energy.CurrentValue > _boost.BoostEnergy;
                     _canFlags.SetFlag(ECanFlags.Boost, canBoost);
 
                     // Fireできる条件
                     var canFire = true;
-                    canFire &= !HasFlag(EPlayerState.Dead);
+                    canFire &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Fire, canFire);
 
                     // Flyできる条件
                     var canFly = true;
-                    canFly &= !HasFlag(EPlayerState.EnergyEmpty);
-                    canFly &= !HasFlag(EPlayerState.Dead);
+                    canFly &= !HasFlag(EUnitState.EnergyEmpty);
+                    canFly &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Fly, canFly);
 
                     // LockOnできる条件
                     var canLockOn = true;
-                    canLockOn &= !HasFlag(EPlayerState.Dead);
+                    canLockOn &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.LockOn, canLockOn);
                 }).AddTo(this);
         }

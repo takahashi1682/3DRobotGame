@@ -5,10 +5,8 @@ using UnityEngine;
 namespace _Projects.Features.Unit
 {
     /// <summary>
-    /// 「実行中かどうか」を示すIsAction(ReactiveProperty)の宣言・公開を共通化する基底クラス。
-    /// UnitMove/UnitFly/UnitBoost/UnitFire/UnitLockOn/PlayerFreeLookなど、
-    /// IUnitActionHandler&lt;T&gt;を実装する各アクションクラスで同じ宣言が重複していたため抽出した。
-    /// OnValueChanged/CancelActionの中身はアクションごとに異なるため、派生クラス側で実装する。
+    /// 「実行中かどうか」を表すIsActionをまとめた基底クラス。
+    /// UnitMoveやUnitFireなど、各アクションクラスで共通する部分を1つにまとめている。
     /// </summary>
     public abstract class AbstractUnitAction : MonoBehaviour, IUnitActionObservable
     {

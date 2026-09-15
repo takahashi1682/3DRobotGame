@@ -1,9 +1,14 @@
+using System;
 using _Projects.Features.Unit;
 using _Projects.Features.Unit.Battle;
+using Cysharp.Threading.Tasks;
 using MyUtils;
+using MyUtils.FadeScreen;
+using MyUtils.SceneLoader;
 using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 
@@ -88,10 +93,16 @@ namespace _Projects.Features.Game
                 .Merge(timeUp)
                 .Merge(playerDie)
                 .Take(1)
-                .Subscribe(playerWin =>
+                .SubscribeAwait(async (playerWin, cts) =>
                 {
                     _gameTimer.IsPlay.Value = false;
                     _state.Value = playerWin ? EGameState.GameClear : EGameState.GameOver;
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(3), cancellationToken: cts);
+
+                    // シーンを再読み込み（フェードアウトしてから）
+                    var currentScene = SceneManager.GetActiveScene();
+                    await SceneLoaderUtils.LoadSceneAsync(currentScene.name, FadeSetting.Default);
                 })
                 .AddTo(this);
         }

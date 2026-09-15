@@ -1,4 +1,3 @@
-using System;
 using _Projects.Features.Game;
 using MyUtils.Parameter.Basic;
 using MyUtils.VContainerExtensions;
@@ -65,6 +64,7 @@ namespace _Projects.Features.Unit
         {
             base.ConfigureScope(builder);
             builder.RegisterComponent(this);
+            builder.RegisterComponent(gameObject);
             builder.RegisterInstance(Setting);
             builder.RegisterComponent(_rigidbody);
             builder.RegisterComponent(_groundDetection);

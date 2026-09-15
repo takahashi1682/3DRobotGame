@@ -21,10 +21,7 @@ namespace _Projects.Features.Unit
 
     public class UnitActionController : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
-        /// <summary>
-        /// 体力が0でなく、かつゲーム進行中かどうか。派生クラス(PlayerActionControllerのLookなど)も
-        /// 同じインスタンスを参照することで、死亡・ゲーム終了時の停止処理を連動させる。
-        /// </summary>
+        // 各アクションの実行役。派生クラス(PlayerActionControllerなど)からも使う
         protected IMoveActionHandler _moveHandler;
         protected IFlyActionHandler _flyHandler;
         protected IBoostActionHandler _boostHandler;
@@ -32,6 +29,8 @@ namespace _Projects.Features.Unit
         protected ILockOnActionHandler _lockOnHandler;
 
         protected IUnitControllable _control;
+
+        // Running: 体力が0でなく、かつゲーム進行中かどうか。falseになったら全アクションを止める
         [Inject] protected UnitScopeRoot _unitScopeRoot;
         [Inject] protected UnitStatus _playerStatus;
 

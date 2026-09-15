@@ -18,7 +18,6 @@ namespace _Projects.Features.Unit
 
         public void Dispose()
         {
-            Debug.Log(1);
             _onRegisteredUnitSubject?.Dispose();
             _onRemovedUnitSubject?.Dispose();
         }
@@ -36,10 +35,8 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        /// currentから見て敵対する陣営のUnitを返す。
+        /// currentから見て敵対する陣営の、生きているUnit一覧を返す。
         /// </summary>
-        /// <param name="current"></param>
-        /// <returns></returns>
         public List<UnitScopeRoot> GetTargetUnits(ArmyType current)
         {
             var units = new List<UnitScopeRoot>();

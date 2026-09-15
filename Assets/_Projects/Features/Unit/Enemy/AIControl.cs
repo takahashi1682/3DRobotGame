@@ -16,7 +16,6 @@ namespace _Projects.Features.Unit.Enemy
         , IUnitScopeMember
         , IScopeRegisterable
         , IScopeLaunchable
-        , IPhaseUpdatable
         , IUnitControllable
     {
         [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
@@ -45,19 +44,19 @@ namespace _Projects.Features.Unit.Enemy
         public float BoostRate = 0.5f;
         public float FireRate = 0.9f;
 
-        public void OnRegister(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(this).As<IUnitControllable>();
-        }
-
-        [Inject] private UnitScopeRoot _current;
+        [Inject] private UnitScopeRoot _unitScopeRoot;
         [Inject] private UnitManager _unitManager;
         [Inject] private IUnitTrackingObservable _trackingObservable;
         [Inject] private IUnitTrackingHandler _trackingHandler;
         [Inject] private UnitStatus _unitStatus;
         [Inject] private UnitSetting _unitSetting;
-        [Inject] private UpdateDispatcher _dispatcher;
+        [Inject] private IUpdateObservable _updateObservable;
         private float _lastThinkTime;
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<IUnitControllable>();
+        }
 
         public void OnLaunch()
         {
@@ -69,15 +68,10 @@ namespace _Projects.Features.Unit.Enemy
             _lockOn.AddTo(this);
             _lastThinkTime = Time.time;
 
-            _dispatcher.Register(this);
+            _updateObservable.OnUpdate(EUpdatePhase.Default)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
-
-        private void OnDestroy()
-        {
-            _dispatcher.Unregister(this);
-        }
-
-        public UpdatePhase Phase => UpdatePhase.AI;
 
         public void OnPhaseUpdate()
         {
@@ -94,13 +88,13 @@ namespace _Projects.Features.Unit.Enemy
         /// </summary>
         private void Think()
         {
-            if (!_current.Running.CurrentValue)
+            if (!_unitScopeRoot.Running.CurrentValue)
             {
                 StopAllActions();
                 return;
             }
 
-            if (_unitStatus.HasFlag(EPlayerState.LockOn))
+            if (_unitStatus.HasFlag(EUnitState.LockOn))
             {
                 DecideLockedOnBehavior();
             }
@@ -118,7 +112,7 @@ namespace _Projects.Features.Unit.Enemy
             _move.Value = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
 
             // 飛行を試みる
-            if (_unitStatus.HasFlag(EPlayerState.Grounded))
+            if (_unitStatus.HasFlag(EUnitState.Grounded))
                 TryPress(_fly, FlyRate, Random.Range(1f, 2f));
 
             // ブーストを試みる(ロックオンの有無に関係なく共通)

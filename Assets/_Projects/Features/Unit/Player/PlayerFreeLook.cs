@@ -1,7 +1,6 @@
 using System.Threading;
 using _Projects.Features.Game;
 using Cysharp.Threading.Tasks;
-using MyUtils;
 using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
@@ -19,20 +18,15 @@ namespace _Projects.Features.Unit.Player
     }
 
     /// <summary>
-    /// マウス/スティック入力を受けて、水平・垂直それぞれのTransformを回転させるカメラ制御。
-    /// 水平方向はRigidbody本体をMoveRotationで回転させ、垂直方向はCameraTarget(物理に関与しない
-    /// 子Transform)を直接回転させる。どちらも毎レンダーフレーム(Update)で反映する。
-    /// MoveRotationはInterpolateと組み合わせても、呼び出し頻度自体がその間隔でしか目標値を
-    /// 更新しないため、FixedUpdateで呼ぶと物理ティック単位の粗さが見た目のカクつきとして残る。
-    /// Updateで毎フレーム呼ぶことでこれを避けている。
+    /// マウス/スティック入力でカメラを動かす。水平方向(Yaw)はRigidbody本体を回転させ、
+    /// 垂直方向(Pitch)はCameraTargetを直接回転させる。
     /// </summary>
     public class PlayerFreeLook : AbstractUnitAction,
         IUnitScopeMember,
         IScopeRegisterable,
         IScopeLaunchable,
         ILookActionHandler,
-        ILookActionObservable,
-        IPhaseUpdatable
+        ILookActionObservable
     {
         [Header("References")]
         public Transform CameraTarget;
@@ -48,12 +42,11 @@ namespace _Projects.Features.Unit.Player
         public float NonMouseLookScale = 1500f;
 
         private Vector2 CurrentLook { get; set; }
+        private float _yaw;
 
         [Inject] private IUnitControllable _control;
         [Inject] private Rigidbody _rigidbody;
-        [Inject] private UpdateDispatcher _dispatcher;
-
-        public UpdatePhase Phase => UpdatePhase.Movement;
+        [Inject] private IUpdateObservable _updateObservable;
 
         public void OnRegister(IContainerBuilder builder)
         {
@@ -63,12 +56,11 @@ namespace _Projects.Features.Unit.Player
         public void OnLaunch()
         {
             IsAction.AddTo(this);
-            _dispatcher.Register(this);
-        }
-
-        private void OnDestroy()
-        {
-            _dispatcher.Unregister(this);
+            _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)
+                .Subscribe(_ =>
+                {
+                    OnPhaseUpdate();
+                }).AddTo(this);
         }
 
         public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
@@ -106,8 +98,10 @@ namespace _Projects.Features.Unit.Player
 
         private void ApplyHorizontalLook(float yawInput)
         {
-            float yaw = _rigidbody.rotation.eulerAngles.y + yawInput * CamSpeedX;
-            _rigidbody.MoveRotation(Quaternion.Euler(0, yaw, 0));
+            // _rigidbody.rotationは物理演算の更新までしか変わらないので、そこから読み直すと
+            // 入力が上書きされてカクつく。yawは自分で足し込んで管理する。
+            _yaw = Mathf.Repeat(_yaw + yawInput * CamSpeedX, 360f);
+            _rigidbody.MoveRotation(Quaternion.Euler(0, _yaw, 0));
         }
 
         private void ApplyVerticalLook(float pitchInput)

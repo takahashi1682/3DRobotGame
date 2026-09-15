@@ -10,11 +10,10 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    /// CinemachineBrainはUpdatePhase.CameraApply(CinemachineManualUpdater)でこのフレームの
-    /// カメラTransformを確定させるため、それより後のUpdatePhase.UIで読めば常に最新のカメラ位置を
-    /// 参照できる。
+    /// ロックオン中のターゲット位置をスクリーン座標に変換し、Dotやロックオン用UIを追従させる。
+    /// カメラ位置が確定した後のUIフェーズで動くので、常に最新のカメラ位置を参照できる。
     /// </summary>
-    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable, IPhaseUpdatable
+    public class PlayerLockOnViewer : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
     {
         [SerializeField] private RectTransform _lockOnUI;
         [SerializeField] private Slider _healthSlider;
@@ -22,13 +21,11 @@ namespace _Projects.Features.Unit.Player
         [SerializeField] private RectTransform _dot;
         [SerializeField] private TMP_Text _distanceText;
         [Inject] private Camera _mainCamera;
-        [Inject] private UpdateDispatcher _dispatcher;
         private UnitSetting _targetSetting;
         [Inject] private IUnitTrackingObservable _trackingObservable;
+        [Inject] private IUpdateObservable _updateObservable;
         private IDisposable _health;
         private IDisposable _energy;
-
-        public UpdatePhase Phase => UpdatePhase.UI;
 
         private void Awake()
         {
@@ -64,12 +61,9 @@ namespace _Projects.Features.Unit.Player
                 }
             }).AddTo(this);
 
-            _dispatcher.Register(this);
-        }
-
-        private void OnDestroy()
-        {
-            _dispatcher.Unregister(this);
+            _updateObservable.OnUpdate(EUpdatePhase.UI)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
 
         public void OnPhaseUpdate()

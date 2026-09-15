@@ -11,18 +11,16 @@ using VContainer.Unity;
 namespace _Projects.Features.Input
 {
     /// <summary>
-    /// Input Systemはデフォルトだと自動(ProcessEventsInDynamicUpdate)でイベントを処理するため、
-    /// UpdateDispatcherのUpdatePhase.Inputより前後どちらで値が更新されるかが保証されない。
-    /// ProcessEventsManuallyに切り替え、UpdatePhase.Inputの先頭でこちらからInputSystem.Update()を
-    /// 呼ぶことで、毎フレーム最初に入力を確定させてから後続のAI/Action/Movementが読めるようにする。
+    /// 入力の読み取りを行うクラス。
+    /// Input Systemの自動更新はタイミングが不定なので手動更新(ProcessEventsManually)に切り替え、
+    /// Inputフェーズの先頭でこちらから更新することで、毎フレーム一番最初に入力を確定させる。
     /// </summary>
     public class PlayerInputReader : MonoBehaviour,
         InputSystem_Actions.IPlayerActions,
         IUnitControllable,
         IUnitScopeMember,
         IScopeRegisterable,
-        IScopeLaunchable,
-        IPhaseUpdatable
+        IScopeLaunchable
     {
         [SerializeField] private SerializableReactiveProperty<Vector2> _move = new();
         public Observable<Vector2> Move => _move;
@@ -48,9 +46,7 @@ namespace _Projects.Features.Input
         private InputSystem_Actions _actions;
         public InputSystem_Actions.PlayerActions Player { get; private set; }
 
-        [Inject] private UpdateDispatcher _dispatcher;
-
-        public UpdatePhase Phase => UpdatePhase.Input;
+        [Inject] private IUpdateObservable _updateObservable;
 
         private void Awake()
         {
@@ -69,12 +65,13 @@ namespace _Projects.Features.Input
 
         public void OnLaunch()
         {
-            _dispatcher.Register(this);
+            _updateObservable.OnUpdate(EUpdatePhase.Input)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
 
         private void OnDestroy()
         {
-            _dispatcher.Unregister(this);
             _actions.Dispose();
         }
 

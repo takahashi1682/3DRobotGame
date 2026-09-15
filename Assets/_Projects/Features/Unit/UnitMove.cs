@@ -97,7 +97,7 @@ namespace _Projects.Features.Unit
             _currentPower = Mathf.Lerp(_currentPower, targetPower, PowerDownTime * Time.fixedDeltaTime);
 
             // 加速
-            _rigidbody.linearVelocity += moveDirection * (_currentPower * Time.deltaTime);
+            _rigidbody.linearVelocity += moveDirection * (_currentPower * Time.fixedDeltaTime);
         }
 
         private void ApplyAutoStop()

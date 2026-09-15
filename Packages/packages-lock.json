@@ -17,7 +17,7 @@
       "url": "https://package.openupm.com"
     },
     "com.takahashi.myutils": {
-      "version": "file:C:/Users/walki/Documents/GitHub/MyUtils",
+      "version": "file:C:/Users/h.takahashi/Documents/GitHub/MyUtils",
       "depth": 0,
       "source": "local",
       "dependencies": {

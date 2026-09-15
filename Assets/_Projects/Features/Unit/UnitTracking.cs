@@ -23,17 +23,15 @@ namespace _Projects.Features.Unit
     }
 
     /// <summary>
-    /// 設定されたTargetの方向を向くよう、本体(水平のみ)とFirePoint(全方位)を毎フレーム回転させる。
-    /// ロックオンのオン/オフやターゲット選定(UnitLockOn)とは責務を分離しており、
-    /// このクラスは「与えられたTargetを向き続ける」ことだけを担当する。
+    /// TargetのいるほうへUnit本体とFirePointを毎フレーム向ける。
+    /// ターゲットを決める処理(UnitLockOn)とは別で、ここは「向き続ける」ことだけを担当する。
     /// </summary>
     public class UnitTracking : MonoBehaviour,
         IUnitScopeMember,
         IScopeRegisterable,
         IScopeLaunchable,
         IUnitTrackingHandler,
-        IUnitTrackingObservable,
-        IPhaseUpdatable
+        IUnitTrackingObservable
     {
         private const float MinDirectionSqrMagnitude = 0.0001f;
         private const float UnlockedAimDistance = 200f;
@@ -49,25 +47,20 @@ namespace _Projects.Features.Unit
 
         [Inject] protected Rigidbody _rigidbody;
         [Inject] protected UnitSetting _unitSetting;
-        [Inject] private UpdateDispatcher _dispatcher;
+        [Inject] private IUpdateObservable _updateObservable;
         protected Transform _targetPivot;
-
-        public UpdatePhase Phase => UpdatePhase.Movement;
 
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IUnitTrackingHandler, IUnitTrackingObservable>();
         }
 
-        public void OnLaunch()
+        public virtual void OnLaunch()
         {
             _target.AddTo(this);
-            _dispatcher.Register(this);
-        }
-
-        private void OnDestroy()
-        {
-            _dispatcher.Unregister(this);
+            _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
 
         public void SetTarget(UnitScopeRoot target, float maxDistance)
@@ -97,7 +90,7 @@ namespace _Projects.Features.Unit
             _isAction.Value = false;
         }
 
-        public virtual void OnPhaseUpdate()
+        protected virtual void OnPhaseUpdate()
         {
             if (!IsTargetValid())
             {

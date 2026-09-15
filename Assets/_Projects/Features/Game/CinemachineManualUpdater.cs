@@ -1,4 +1,5 @@
 using MyUtils.VContainerExtensions;
+using R3;
 using Unity.Cinemachine;
 using UnityEngine;
 using VContainer;
@@ -6,28 +7,19 @@ using VContainer;
 namespace _Projects.Features.Game
 {
     /// <summary>
-    /// CinemachineのManualUpdateを実行するためのクラス。
-    /// UpdatePhase.Cameraで各UnitがCameraTarget等を更新し終えた直後に、CinemachineBrain.ManualUpdateを
-    /// 呼んで実際のカメラTransformを確定させる。これにより、後続のUI等が常にこのフレームの
-    /// 最終的なカメラ位置を参照できる(LateUpdateのタイミングに依存しなくなる)。
-    /// シーン側でCinemachineBrainのUpdateMethodをManualUpdateにしておくこと(自動更新との二重実行防止)。
+    /// CinemachineBrainを手動更新する。CameraApplyフェーズ(各UnitがCameraTargetを動かした直後)で
+    /// 呼ぶことで、後のUI処理が常に最新のカメラ位置を使えるようにする。
+    /// ※CinemachineBrainのUpdateMethodはManualUpdateに設定しておくこと。
     /// </summary>
-    public class CinemachineManualUpdater : MonoBehaviour, IGameScopeMember, IScopeLaunchable, IPhaseUpdatable
+    public class CinemachineManualUpdater : MonoBehaviour, IGameScopeMember, IScopeLaunchable
     {
         [SerializeField] private CinemachineBrain _brain;
-        [Inject] private UpdateDispatcher _dispatcher;
+        [Inject] private IUpdateObservable _updateObservable;
 
-        public UpdatePhase Phase => UpdatePhase.Camera;
-
-        public void OnLaunch()
-        {
-            _dispatcher.Register(this);
-        }
-
-        private void OnDestroy()
-        {
-            _dispatcher.Unregister(this);
-        }
+        public void OnLaunch() =>
+            _updateObservable.OnUpdate(EUpdatePhase.CameraApply)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
 
         public void OnPhaseUpdate()
         {

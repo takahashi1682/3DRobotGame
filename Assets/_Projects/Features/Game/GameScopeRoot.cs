@@ -19,7 +19,6 @@ namespace _Projects.Features.Game
             base.ConfigureScope(builder);
             builder.RegisterComponent(_camera);
             builder.Register<UnitManager>(Lifetime.Singleton);
-            builder.RegisterEntryPoint<UpdateDispatcher>().AsSelf();
         }
     }
 }

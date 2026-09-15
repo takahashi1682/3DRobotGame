@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.takahashi.myutils": "file:C:/Users/walki/Documents/GitHub/MyUtils",
+    "com.takahashi.myutils": "file:C:/Users/h.takahashi/Documents/GitHub/MyUtils",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.analytics": "3.8.2",

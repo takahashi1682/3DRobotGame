@@ -5,8 +5,7 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    /// UnitActionControllerにLook(Player固有のアクション)を追加したPlayer専用コントローラ。
-    /// PlayerFire : UnitFireなどと同じく、Unit共通の挙動をPlayerScopeで拡張する構成に揃えている。
+    /// UnitActionControllerにLook(カメラ操作)を追加したPlayer専用コントローラ。
     /// </summary>
     public class PlayerActionController : UnitActionController
     {
@@ -39,8 +38,7 @@ namespace _Projects.Features.Unit.Player
             }
         }
 
-        // 死亡・ゲーム終了時のキャンセルは、基底クラスのRunning購読からCancelAllActionsを
-        // 通じて呼ばれる(重複購読を避けるため、ここでは個別にRunningを購読しない)。
+        // 死亡・ゲーム終了時は基底クラス側からCancelAllActionsが呼ばれる
         protected override void CancelAllActions()
         {
             base.CancelAllActions();

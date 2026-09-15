@@ -12,6 +12,7 @@ namespace _Projects.Features.Unit
         [SerializeField] private float _dieEffectScale = 5f;
 
         [Inject] private Health _health;
+        [Inject] private GameObject _currentObject;
 
         public void OnLaunch()
         {
@@ -19,7 +20,7 @@ namespace _Projects.Features.Unit
             {
                 var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
                 effect.transform.localScale = Vector3.one * _dieEffectScale;
-                gameObject.SetActive(false);
+                _currentObject.SetActive(false);
             }).AddTo(this);
         }
     }
