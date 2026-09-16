@@ -22906,7 +22906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: MyUtils.Runtime::MyUtils.VContainerExtensions.SceneLifetimeScope
   parentReference:
-    TypeName: _Projects.Features.Root.RootLifetimeScope
+    TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
   SceneScopeRoot:
