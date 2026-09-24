@@ -12,11 +12,13 @@ namespace _Projects.Features.Game
 
         [Inject] private GameJudge _judge;
 
-        public void OnLaunch() =>
+        public void OnLaunch()
+        {
             // GameJudgeのGameStateを監視し、ObjectGroupSwitcherで表示するオブジェクトを切り替える
             _judge.State
                 .Select(x => (int)x)
                 .Subscribe(_gameStateSwitcher.SetActiveObject)
                 .AddTo(this);
+        }
     }
 }

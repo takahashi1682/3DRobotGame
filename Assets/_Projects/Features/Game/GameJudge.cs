@@ -23,7 +23,7 @@ namespace _Projects.Features.Game
     }
 
     /// <summary>
-    ///     ゲーム全体の進行(開始/終了)と勝敗を管理する。
+    /// ゲーム全体の進行(開始/終了)と勝敗を管理する。
     /// </summary>
     public class GameJudge : MonoBehaviour,
         IScopeRegisterable,
@@ -35,9 +35,14 @@ namespace _Projects.Features.Game
         [SerializeField] private BasicTimer _gameTimer;
 
         [SerializeField] private SerializableReactiveProperty<EGameState> _state = new(EGameState.Ready);
+        public ReadOnlyReactiveProperty<EGameState> State => _state;
 
         [Inject] private UnitManager _unitManager;
-        public ReadOnlyReactiveProperty<EGameState> State => _state;
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this);
+        }
 
         public void OnLaunch()
         {
@@ -50,21 +55,22 @@ namespace _Projects.Features.Game
             SubscribeGameEnd(_player);
         }
 
-        public void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this);
-
         /// <summary>
-        ///     カウントダウン終了後、ゲームを開始する。
+        /// カウントダウン終了後、ゲームを開始する。
         /// </summary>
-        private void SubscribeGameStart() => _startTimer.OnFinish.Take(1)
-            .Subscribe(_ =>
-            {
-                _state.Value = EGameState.Playing;
-                _gameTimer.IsPlay.Value = true;
-            })
-            .AddTo(this);
+        private void SubscribeGameStart()
+        {
+            _startTimer.OnFinish.Take(1)
+                .Subscribe(_ =>
+                {
+                    _state.Value = EGameState.Playing;
+                    _gameTimer.IsPlay.Value = true;
+                })
+                .AddTo(this);
+        }
 
         /// <summary>
-        ///     時間切れ、またはプレイヤーの体力切れのどちらか早い方でゲームを終了させ、勝敗を確定する。
+        /// 時間切れ、またはプレイヤーの体力切れのどちらか早い方でゲームを終了させ、勝敗を確定する。
         /// </summary>
         private void SubscribeGameEnd(UnitScopeRoot unit)
         {

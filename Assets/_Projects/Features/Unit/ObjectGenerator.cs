@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 namespace _Projects.Features.Unit
 {
     /// <summary>
-    ///     オブジェクトを一定間隔で生成する機能
+    /// オブジェクトを一定間隔で生成する機能
     /// </summary>
     public class ObjectGenerator : MonoBehaviour
     {
@@ -22,7 +22,10 @@ namespace _Projects.Features.Unit
         private float _spawnTime;
         private Transform[] _spawnPoints;
 
-        private void Awake() => CollectSpawnPoints();
+        private void Awake()
+        {
+            CollectSpawnPoints();
+        }
 
         private void Update()
         {
@@ -34,6 +37,24 @@ namespace _Projects.Features.Unit
                 _spawnTime = Time.time;
                 RandomSpawn();
             }
+        }
+
+        private void CollectSpawnPoints()
+        {
+            // 子オブジェクトのTransformを取得
+            _spawnPoints = new Transform[transform.childCount];
+            for (int i = 0; i < transform.childCount; i++)
+                _spawnPoints[i] = transform.GetChild(i);
+        }
+
+        private void RandomSpawn()
+        {
+            if (_spawnPoints.Length == 0) return;
+
+            var randomIndex = Random.Range(0, _spawnPoints.Length);
+            var spawnPoint = _spawnPoints[randomIndex];
+
+            Instantiate(SpawnPrefab, spawnPoint.position, spawnPoint.rotation);
         }
 
 #if UNITY_EDITOR
@@ -49,23 +70,5 @@ namespace _Projects.Features.Unit
                 Gizmos.DrawSphere(point.position, 0.2f);
         }
 #endif
-
-        private void CollectSpawnPoints()
-        {
-            // 子オブジェクトのTransformを取得
-            _spawnPoints = new Transform[transform.childCount];
-            for (int i = 0; i < transform.childCount; i++)
-                _spawnPoints[i] = transform.GetChild(i);
-        }
-
-        private void RandomSpawn()
-        {
-            if (_spawnPoints.Length == 0) return;
-
-            int randomIndex = Random.Range(0, _spawnPoints.Length);
-            var spawnPoint = _spawnPoints[randomIndex];
-
-            Instantiate(SpawnPrefab, spawnPoint.position, spawnPoint.rotation);
-        }
     }
 }

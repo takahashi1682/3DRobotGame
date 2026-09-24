@@ -12,10 +12,16 @@ namespace _Projects.Features.Unit
     {
         [Inject] private GroundDetection _groundDetection;
 
-        public void OnLaunch() => _groundDetection.IsHit
-            .Subscribe(x => IsEnable = x)
-            .AddTo(this);
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this);
+        }
 
-        public void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this);
+        public void OnLaunch()
+        {
+            _groundDetection.IsHit
+                .Subscribe(x => IsEnable = x)
+                .AddTo(this);
+        }
     }
 }

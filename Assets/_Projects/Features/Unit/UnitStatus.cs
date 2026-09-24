@@ -19,7 +19,7 @@ namespace _Projects.Features.Unit
         Grounded,
         Boost,
         EnergyEmpty,
-        Dead
+        Dead,
     }
 
     /// <summary>CanXxxプロパティに対応するフラグ。EUnitStateと同じビットフラグ機構で管理する。</summary>
@@ -30,7 +30,7 @@ namespace _Projects.Features.Unit
         LockOn,
         Fire,
         Boost,
-        Fly
+        Fly,
     }
 
     public class UnitStatus : MonoBehaviour,
@@ -39,6 +39,20 @@ namespace _Projects.Features.Unit
     {
         [SerializeField] private FlagsParameter<EUnitState> _stateFlags = new();
         [SerializeField] private FlagsParameter<ECanFlags> _canFlags = new();
+
+        public bool HasFlag(EUnitState flag) => _stateFlags.HasFlag(flag);
+
+        public bool CanMove => _canFlags.HasFlag(ECanFlags.Move);
+        public bool CanLook => _canFlags.HasFlag(ECanFlags.Look);
+        public bool CanLockOn => _canFlags.HasFlag(ECanFlags.LockOn);
+        public bool CanFire => _canFlags.HasFlag(ECanFlags.Fire);
+        public bool CanBoost => _canFlags.HasFlag(ECanFlags.Boost);
+        public bool CanFly => _canFlags.HasFlag(ECanFlags.Fly);
+
+        public virtual void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this);
+        }
 
         private ILookActionObservable _look;
         [Inject] private IMoveActionObservable _move;
@@ -50,13 +64,6 @@ namespace _Projects.Features.Unit
         [Inject] private Energy _energy;
 
         [Inject] private IObjectResolver _resolver;
-
-        public bool CanMove => _canFlags.HasFlag(ECanFlags.Move);
-        public bool CanLook => _canFlags.HasFlag(ECanFlags.Look);
-        public bool CanLockOn => _canFlags.HasFlag(ECanFlags.LockOn);
-        public bool CanFire => _canFlags.HasFlag(ECanFlags.Fire);
-        public bool CanBoost => _canFlags.HasFlag(ECanFlags.Boost);
-        public bool CanFly => _canFlags.HasFlag(ECanFlags.Fly);
 
         public virtual void OnLaunch()
         {
@@ -78,18 +85,18 @@ namespace _Projects.Features.Unit
                 .Subscribe(_ =>
                 {
                     // Moveできる条件
-                    bool canMove = true;
+                    var canMove = true;
                     canMove &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Move, canMove);
 
                     // Lookできる条件
-                    bool canLook = true;
+                    var canLook = true;
                     canLook &= !HasFlag(EUnitState.Dead);
                     canLook &= !HasFlag(EUnitState.LockOn);
                     _canFlags.SetFlag(ECanFlags.Look, canLook);
 
                     // Boostできる条件
-                    bool canBoost = true;
+                    var canBoost = true;
                     canBoost &= HasFlag(EUnitState.Move);
                     canBoost &= !HasFlag(EUnitState.Boost);
                     canBoost &= !HasFlag(EUnitState.Dead);
@@ -97,25 +104,21 @@ namespace _Projects.Features.Unit
                     _canFlags.SetFlag(ECanFlags.Boost, canBoost);
 
                     // Fireできる条件
-                    bool canFire = true;
+                    var canFire = true;
                     canFire &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Fire, canFire);
 
                     // Flyできる条件
-                    bool canFly = true;
+                    var canFly = true;
                     canFly &= !HasFlag(EUnitState.EnergyEmpty);
                     canFly &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.Fly, canFly);
 
                     // LockOnできる条件
-                    bool canLockOn = true;
+                    var canLockOn = true;
                     canLockOn &= !HasFlag(EUnitState.Dead);
                     _canFlags.SetFlag(ECanFlags.LockOn, canLockOn);
                 }).AddTo(this);
         }
-
-        public virtual void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this);
-
-        public bool HasFlag(EUnitState flag) => _stateFlags.HasFlag(flag);
     }
 }

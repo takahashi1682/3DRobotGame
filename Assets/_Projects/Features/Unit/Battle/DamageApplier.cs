@@ -4,8 +4,8 @@ using VContainer;
 namespace _Projects.Features.Unit.Battle
 {
     /// <summary>
-    ///     ダメージ適用を行う。当たり判定(Rayスイープ)と移動・寿命の管理は、
-    ///     同一GameObjectのBulletController(AbstractSweepDetector)が担当する。
+    /// ダメージ適用を行う。当たり判定(Rayスイープ)と移動・寿命の管理は、
+    /// 同一GameObjectのBulletController(AbstractSweepDetector)が担当する。
     /// </summary>
     public class DamageApplier : MonoBehaviour, IDamageSource
     {
@@ -13,7 +13,10 @@ namespace _Projects.Features.Unit.Battle
         [field: SerializeField] public int Damage { get; set; } = 100;
         public IObjectResolver Owner { get; private set; }
 
-        public void Build(IObjectResolver resolver) => Owner = resolver;
+        public void Build(IObjectResolver resolver)
+        {
+            Owner = resolver;
+        }
 
         public void TryApplyDamage(Collider other)
         {

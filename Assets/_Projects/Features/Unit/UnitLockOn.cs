@@ -1,7 +1,9 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using MyUtils;
 using MyUtils.VContainerExtensions;
 using R3;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
@@ -16,7 +18,7 @@ namespace _Projects.Features.Unit
     }
 
     /// <summary>
-    ///     Targetの方向を向くよう、CurrentUnit(水平のみ)とShotPos(全方位)を回転させるロックオン制御。
+    /// Targetの方向を向くよう、CurrentUnit(水平のみ)とShotPos(全方位)を回転させるロックオン制御。
     /// </summary>
     public class UnitLockOn : AbstractUnitAction,
         IScopeRegisterable,
@@ -29,9 +31,28 @@ namespace _Projects.Features.Unit
         [Inject] private IUnitTrackingHandler _unitTracking;
         [Inject] private IUnitTrackingObservable _trackingObservable;
 
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<ILockOnActionHandler, ILockOnActionObservable>();
+        }
+
+        public virtual void OnLaunch()
+        {
+            IsAction.AddTo(this);
+
+            // Targetがnullになったらロックオンを解除する
+            _trackingObservable.Target.Subscribe(target =>
+            {
+                if (target == null)
+                {
+                    CancelAction();
+                }
+            }).AddTo(this);
+        }
+
         /// <summary>
-        ///     ボタン押下でロックオンをトグルする。呼び出し元(UnitActionController)は
-        ///     押下時にのみvalue=trueで呼ぶため、解除はCancelActionで直接行う想定。
+        /// ボタン押下でロックオンをトグルする。呼び出し元(UnitActionController)は
+        /// 押下時にのみvalue=trueで呼ぶため、解除はCancelActionで直接行う想定。
         /// </summary>
         public UniTask OnValueChanged(bool value, CancellationToken ct)
         {
@@ -61,22 +82,5 @@ namespace _Projects.Features.Unit
             _unitTracking?.ClearTarget();
             _isAction.Value = false;
         }
-
-        public virtual void OnLaunch()
-        {
-            IsAction.AddTo(this);
-
-            // Targetがnullになったらロックオンを解除する
-            _trackingObservable.Target.Subscribe(target =>
-            {
-                if (target == null)
-                {
-                    CancelAction();
-                }
-            }).AddTo(this);
-        }
-
-        public void OnRegister(IContainerBuilder builder)
-            => builder.RegisterComponent(this).As<ILockOnActionHandler, ILockOnActionObservable>();
     }
 }

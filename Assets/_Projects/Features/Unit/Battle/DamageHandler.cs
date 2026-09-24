@@ -7,13 +7,18 @@ using VContainer.Unity;
 namespace _Projects.Features.Unit.Battle
 {
     /// <summary>
-    ///     ダメージを受け取るクラス
+    /// ダメージを受け取るクラス
     /// </summary>
     public class DamageHandler : MonoBehaviour,
         IScopeRegisterable,
         IDamageable
     {
         [Inject] public IObjectResolver Owner { get; private set; }
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this);
+        }
 
         public bool TakeDamage(IDamageSource source)
         {
@@ -34,7 +39,5 @@ namespace _Projects.Features.Unit.Battle
             health.Sub(source.Damage);
             return true;
         }
-
-        public void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this);
     }
 }

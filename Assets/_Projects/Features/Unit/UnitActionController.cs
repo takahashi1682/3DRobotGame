@@ -61,7 +61,7 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     sourceの値を、Running中かつcanActを満たす間だけそのままhandlerへ渡し続ける。
+        /// sourceの値を、Running中かつcanActを満たす間だけそのままhandlerへ渡し続ける。
         /// </summary>
         private void BindValueAction<T>(Observable<T> source, IUnitActionHandler<T> handler, Func<bool> canAct)
         {
@@ -72,7 +72,7 @@ namespace _Projects.Features.Unit
                 .SubscribeAwait(async (value, cts) => await handler.OnValueChanged(value, cts), AwaitOperation.Drop)
                 .AddTo(this);
         }
-
+        
         protected virtual void CancelAllActions()
         {
             _moveHandler?.CancelAction();

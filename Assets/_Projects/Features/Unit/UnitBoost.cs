@@ -32,6 +32,19 @@ namespace _Projects.Features.Unit
 
         [Inject] private Energy _energy;
 
+        float IBoostActionObservable.BoostPower => BoostPower;
+        int IBoostActionObservable.BoostEnergy => BoostEnergy;
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<IBoostActionHandler, IBoostActionObservable>();
+        }
+
+        public void OnLaunch()
+        {
+            IsAction.AddTo(this);
+        }
+
         public async UniTask OnValueChanged(bool value, CancellationToken ct)
         {
             if (!value) return;
@@ -45,14 +58,9 @@ namespace _Projects.Features.Unit
             await UniTask.Delay(BoostInterval, cancellationToken: ct);
         }
 
-        public void CancelAction() => _isAction.Value = false;
-
-        float IBoostActionObservable.BoostPower => BoostPower;
-        int IBoostActionObservable.BoostEnergy => BoostEnergy;
-
-        public void OnLaunch() => IsAction.AddTo(this);
-
-        public void OnRegister(IContainerBuilder builder)
-            => builder.RegisterComponent(this).As<IBoostActionHandler, IBoostActionObservable>();
+        public void CancelAction()
+        {
+            _isAction.Value = false;
+        }
     }
 }

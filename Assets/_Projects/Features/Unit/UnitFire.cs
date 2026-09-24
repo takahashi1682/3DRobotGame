@@ -20,8 +20,8 @@ namespace _Projects.Features.Unit
     }
 
     /// <summary>
-    ///     押下中(IsAction)の間、FireRate間隔でFirePointから弾を発射する。
-    ///     弾はUnitFire自身がプールし、非アクティブな既存インスタンスがあれば再利用する。
+    /// 押下中(IsAction)の間、FireRate間隔でFirePointから弾を発射する。
+    /// 弾はUnitFire自身がプールし、非アクティブな既存インスタンスがあれば再利用する。
     /// </summary>
     public class UnitFire : AbstractUnitAction,
         IScopeRegisterable,
@@ -35,28 +35,32 @@ namespace _Projects.Features.Unit
 
         [Header("Settings")]
         public float FireRate = 0.15f;
-        private readonly List<BulletController> _bulletInstances = new();
-
-        private float _fireTime;
-        [Inject] private IObjectResolver _resolver;
-        [Inject] private IUpdateObservable _updateObservable;
 
         /// <summary>派生クラス(PlayerFireなど)からもFirePoint等を参照できるようprotectedにしている。</summary>
         [Inject]
         protected UnitSetting Setting { get; private set; }
 
-        private void Awake() => SetEffectsActive(false);
+        private float _fireTime;
+        [Inject] private IObjectResolver _resolver;
+        [Inject] private IUpdateObservable _updateObservable;
+        private readonly List<BulletController> _bulletInstances = new();
 
-        private void OnDestroy()
+        private void Awake()
         {
-            // 弾のインスタンスを破棄する
-            foreach (var bullet in _bulletInstances)
-            {
-                if (bullet != null)
-                {
-                    Destroy(bullet.gameObject);
-                }
-            }
+            SetEffectsActive(false);
+        }
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<IFireActionHandler, IFireActionObservable>();
+        }
+
+        public virtual void OnLaunch()
+        {
+            IsAction.AddTo(this);
+            _updateObservable.OnUpdate(EUpdatePhase.Default)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
 
         public UniTask OnValueChanged(bool value, CancellationToken ct)
@@ -71,17 +75,6 @@ namespace _Projects.Features.Unit
             _isAction.Value = false;
             SetEffectsActive(false);
         }
-
-        public virtual void OnLaunch()
-        {
-            IsAction.AddTo(this);
-            _updateObservable.OnUpdate(EUpdatePhase.Default)
-                .Subscribe(_ => OnPhaseUpdate())
-                .AddTo(this);
-        }
-
-        public void OnRegister(IContainerBuilder builder)
-            => builder.RegisterComponent(this).As<IFireActionHandler, IFireActionObservable>();
 
         private void SetEffectsActive(bool isActive)
         {
@@ -107,7 +100,7 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     FirePointから弾を発射する。既存のプールに非アクティブな弾があれば再利用する。
+        /// FirePointから弾を発射する。既存のプールに非アクティブな弾があれば再利用する。
         /// </summary>
         protected void Fire()
         {
@@ -132,6 +125,18 @@ namespace _Projects.Features.Unit
             }
 
             return null;
+        }
+
+        private void OnDestroy()
+        {
+            // 弾のインスタンスを破棄する
+            foreach (var bullet in _bulletInstances)
+            {
+                if (bullet != null)
+                {
+                    Destroy(bullet.gameObject);
+                }
+            }
         }
     }
 }

@@ -14,11 +14,14 @@ namespace _Projects.Features.Unit
         [Inject] private Health _health;
         [Inject] private GameObject _currentObject;
 
-        public void OnLaunch() => _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
+        public void OnLaunch()
         {
-            var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
-            effect.transform.localScale = Vector3.one * _dieEffectScale;
-            _currentObject.SetActive(false);
-        }).AddTo(this);
+            _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
+            {
+                var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
+                effect.transform.localScale = Vector3.one * _dieEffectScale;
+                _currentObject.SetActive(false);
+            }).AddTo(this);
+        }
     }
 }

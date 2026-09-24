@@ -23,8 +23,8 @@ namespace _Projects.Features.Unit
     }
 
     /// <summary>
-    ///     TargetのいるほうへUnit本体とFirePointを毎フレーム向ける。
-    ///     ターゲットを決める処理(UnitLockOn)とは別で、ここは「向き続ける」ことだけを担当する。
+    /// TargetのいるほうへUnit本体とFirePointを毎フレーム向ける。
+    /// ターゲットを決める処理(UnitLockOn)とは別で、ここは「向き続ける」ことだけを担当する。
     /// </summary>
     public class UnitTracking : MonoBehaviour,
         IScopeRegisterable,
@@ -35,14 +35,24 @@ namespace _Projects.Features.Unit
         private const float MinDirectionSqrMagnitude = 0.0001f;
         private const float UnlockedAimDistance = 200f;
 
-        [SerializeField] [ReadOnly] protected SerializableReactiveProperty<bool> _isAction = new();
-        [SerializeField] [ReadOnly] protected SerializableReactiveProperty<UnitScopeRoot> _target = new();
+        [SerializeField, ReadOnly] protected SerializableReactiveProperty<bool> _isAction = new();
+        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
+        [SerializeField, ReadOnly] protected SerializableReactiveProperty<UnitScopeRoot> _target = new();
+        public ReadOnlyReactiveProperty<UnitScopeRoot> Target => _target;
+        public bool IsLookingAtTarget { get; private set; }
+        public Vector3 TargetPosition { get; protected set; }
+        public float Distance { get; private set; }
+        private float MaxDistance { get; set; }
 
         [Inject] protected Rigidbody _rigidbody;
         [Inject] protected UnitSetting _unitSetting;
         [Inject] private IUpdateObservable _updateObservable;
         protected Transform _targetPivot;
-        private float MaxDistance { get; set; }
+
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<IUnitTrackingHandler, IUnitTrackingObservable>();
+        }
 
         public virtual void OnLaunch()
         {
@@ -51,9 +61,6 @@ namespace _Projects.Features.Unit
                 .Subscribe(_ => OnPhaseUpdate())
                 .AddTo(this);
         }
-
-        public void OnRegister(IContainerBuilder builder)
-            => builder.RegisterComponent(this).As<IUnitTrackingHandler, IUnitTrackingObservable>();
 
         public void SetTarget(UnitScopeRoot target, float maxDistance)
         {
@@ -81,12 +88,6 @@ namespace _Projects.Features.Unit
 
             _isAction.Value = false;
         }
-
-        public ReadOnlyReactiveProperty<bool> IsAction => _isAction;
-        public ReadOnlyReactiveProperty<UnitScopeRoot> Target => _target;
-        public bool IsLookingAtTarget { get; private set; }
-        public Vector3 TargetPosition { get; protected set; }
-        public float Distance { get; private set; }
 
         protected virtual void OnPhaseUpdate()
         {
@@ -116,12 +117,17 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     ロックオン対象がない間、銃口を正面方向に向けておくための仮想ターゲット位置。
+        /// ロックオン対象がない間、銃口を正面方向に向けておくための仮想ターゲット位置。
         /// </summary>
-        protected virtual Vector3 GetUnlockedTargetPosition() => GetForwardPosition(_unitSetting.UnitPivot);
+        protected virtual Vector3 GetUnlockedTargetPosition()
+        {
+            return GetForwardPosition(_unitSetting.UnitPivot);
+        }
 
         protected static Vector3 GetForwardPosition(Transform origin, float distance = UnlockedAimDistance)
-            => origin.position + origin.forward * distance;
+        {
+            return origin.position + origin.forward * distance;
+        }
 
         protected bool IsTargetValid()
         {
@@ -134,7 +140,7 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     自身からTargetまでの間に、ObstacleLayerMaskに属する障害物がなければ「直視できている」とする。
+        /// 自身からTargetまでの間に、ObstacleLayerMaskに属する障害物がなければ「直視できている」とする。
         /// </summary>
         private void UpdateIsLookingAtTarget(Vector3 targetPosition)
         {
@@ -144,18 +150,18 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     本体を水平方向(Yaw)のみ、現在の角度からターゲット方向へ一定速度で回転させる。
+        /// 本体を水平方向(Yaw)のみ、現在の角度からターゲット方向へ一定速度で回転させる。
         /// </summary>
         private void RotateBodyTowardsTarget(Vector3 targetPosition)
         {
             if (!TryGetDirection(_rigidbody.position, targetPosition, out var diff)) return;
 
-            float targetY = Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg;
+            var targetY = Mathf.Atan2(diff.x, diff.z) * Mathf.Rad2Deg;
             _rigidbody.MoveRotation(Quaternion.Euler(0f, targetY, 0f));
         }
 
         /// <summary>
-        ///     銃口(FirePoint)を、親の向きに関係なくワールド回転で直接ターゲットへ、一定速度で回転させる。
+        /// 銃口(FirePoint)を、親の向きに関係なくワールド回転で直接ターゲットへ、一定速度で回転させる。
         /// </summary>
         private void RotateFirePointTowardsTarget(Vector3 targetPosition)
         {
@@ -166,7 +172,7 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     fromからtoへの方向ベクトルを求める。距離が近すぎて方向が定まらない場合はfalseを返す。
+        /// fromからtoへの方向ベクトルを求める。距離が近すぎて方向が定まらない場合はfalseを返す。
         /// </summary>
         private static bool TryGetDirection(Vector3 from, Vector3 to, out Vector3 direction)
         {

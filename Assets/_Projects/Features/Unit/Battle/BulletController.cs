@@ -5,8 +5,8 @@ using VContainer;
 namespace _Projects.Features.Unit.Battle
 {
     /// <summary>
-    ///     弾の移動・寿命(プーリング再利用)を管理する。
-    ///     当たり判定とダメージ適用は、同一GameObjectのDamageApplierに委譲する。
+    /// 弾の移動・寿命(プーリング再利用)を管理する。
+    /// 当たり判定とダメージ適用は、同一GameObjectのDamageApplierに委譲する。
     /// </summary>
     [RequireComponent(typeof(DamageApplier))]
     public class BulletController : AbstractSweepDetector
@@ -21,18 +21,6 @@ namespace _Projects.Features.Unit.Battle
         public float FireBlur = 3f;
 
         private float _lifeTimer;
-
-        protected override void FixedUpdate()
-        {
-            base.FixedUpdate();
-            transform.position += transform.forward * (Speed * Time.fixedDeltaTime);
-
-            _lifeTimer += Time.fixedDeltaTime;
-            if (_lifeTimer >= LifeTime)
-            {
-                gameObject.SetActive(false);
-            }
-        }
 
         public void Initialize(IObjectResolver resolver, Vector3 position, Quaternion rotation)
         {
@@ -56,6 +44,21 @@ namespace _Projects.Features.Unit.Battle
             gameObject.SetActive(true);
         }
 
-        protected override void OnHit(Collider hitCollider) => _damageApplier.TryApplyDamage(hitCollider);
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            transform.position += transform.forward * (Speed * Time.fixedDeltaTime);
+
+            _lifeTimer += Time.fixedDeltaTime;
+            if (_lifeTimer >= LifeTime)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        protected override void OnHit(Collider hitCollider)
+        {
+            _damageApplier.TryApplyDamage(hitCollider);
+        }
     }
 }

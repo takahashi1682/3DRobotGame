@@ -18,8 +18,8 @@ namespace _Projects.Features.Unit.Player
     }
 
     /// <summary>
-    ///     マウス/スティック入力でカメラを動かす。水平方向(Yaw)はRigidbody本体を回転させ、
-    ///     垂直方向(Pitch)はCameraTargetを直接回転させる。
+    /// マウス/スティック入力でカメラを動かす。水平方向(Yaw)はRigidbody本体を回転させ、
+    /// 垂直方向(Pitch)はCameraTargetを直接回転させる。
     /// </summary>
     public class PlayerFreeLook : AbstractUnitAction,
         IScopeRegisterable,
@@ -39,13 +39,28 @@ namespace _Projects.Features.Unit.Player
         [Header("Non-Mouse Input Settings")]
         public string MouseDeviceName = "Mouse";
         public float NonMouseLookScale = 1500f;
+
+        private Vector2 CurrentLook { get; set; }
         private float _yaw;
 
         [Inject] private IUnitControllable _control;
         [Inject] private Rigidbody _rigidbody;
         [Inject] private IUpdateObservable _updateObservable;
 
-        private Vector2 CurrentLook { get; set; }
+        public void OnRegister(IContainerBuilder builder)
+        {
+            builder.RegisterComponent(this).As<ILookActionHandler, ILookActionObservable>();
+        }
+
+        public void OnLaunch()
+        {
+            IsAction.AddTo(this);
+            _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)
+                .Subscribe(_ =>
+                {
+                    OnPhaseUpdate();
+                }).AddTo(this);
+        }
 
         public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
         {
@@ -59,19 +74,6 @@ namespace _Projects.Features.Unit.Player
             _isAction.Value = false;
             CurrentLook = Vector2.zero;
         }
-
-        public void OnLaunch()
-        {
-            IsAction.AddTo(this);
-            _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)
-                .Subscribe(_ =>
-                {
-                    OnPhaseUpdate();
-                }).AddTo(this);
-        }
-
-        public void OnRegister(IContainerBuilder builder)
-            => builder.RegisterComponent(this).As<ILookActionHandler, ILookActionObservable>();
 
         public void OnPhaseUpdate()
         {

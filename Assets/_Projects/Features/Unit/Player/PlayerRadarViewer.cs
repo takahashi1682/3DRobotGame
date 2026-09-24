@@ -11,8 +11,8 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    ///     自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
-    ///     ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
+    /// 自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
+    /// ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
     /// </summary>
     public class PlayerRadarViewer : MonoBehaviour, IScopeLaunchable
     {
@@ -82,8 +82,8 @@ namespace _Projects.Features.Unit.Player
         }
 
         /// <summary>
-        ///     アイコンを非表示にしてプールへ戻す。
-        ///     _iconsから即座に取り除くことで、破棄済みユニットをUpdateで毎フレーム参照し続けるのを防ぐ。
+        /// アイコンを非表示にしてプールへ戻す。
+        /// _iconsから即座に取り除くことで、破棄済みユニットをUpdateで毎フレーム参照し続けるのを防ぐ。
         /// </summary>
         private void ReleaseIcon(UnitScopeRoot unit)
         {
@@ -104,7 +104,7 @@ namespace _Projects.Features.Unit.Player
         }
 
         /// <summary>
-        ///     ワールド座標を、自機を中心・自機の向きを基準にしたレーダーUI上の座標に変換する。
+        /// ワールド座標を、自機を中心・自機の向きを基準にしたレーダーUI上の座標に変換する。
         /// </summary>
         private Vector3 WorldToRadarPosition(Vector3 worldPosition)
         {

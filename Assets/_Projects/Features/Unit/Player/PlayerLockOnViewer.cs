@@ -10,8 +10,8 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    ///     ロックオン中のターゲット位置をスクリーン座標に変換し、Dotやロックオン用UIを追従させる。
-    ///     カメラ位置が確定した後のUIフェーズで動くので、常に最新のカメラ位置を参照できる。
+    /// ロックオン中のターゲット位置をスクリーン座標に変換し、Dotやロックオン用UIを追従させる。
+    /// カメラ位置が確定した後のUIフェーズで動くので、常に最新のカメラ位置を参照できる。
     /// </summary>
     public class PlayerLockOnViewer : MonoBehaviour, IScopeLaunchable
     {
@@ -27,7 +27,10 @@ namespace _Projects.Features.Unit.Player
         private IDisposable _health;
         private IDisposable _energy;
 
-        private void Awake() => _lockOnUI.gameObject.SetActive(false);
+        private void Awake()
+        {
+            _lockOnUI.gameObject.SetActive(false);
+        }
 
         public void OnLaunch()
         {

@@ -12,6 +12,7 @@ namespace _Projects.Features.Unit
         , IScopeLaunchable
     {
         [SerializeField] private SerializableReactiveProperty<bool> _running = new();
+        public ReadOnlyReactiveProperty<bool> Running => _running;
 
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
@@ -28,7 +29,6 @@ namespace _Projects.Features.Unit
 
         [Inject] private UnitManager _unitManager;
         [Inject] private GameJudge _gameJudge;
-        public ReadOnlyReactiveProperty<bool> Running => _running;
 
         private void Awake()
         {
@@ -56,8 +56,8 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        ///     自身が構築するPlayerスコープ(子コンテナ)への登録。
-        ///     Player配下のIUnitScopeMemberから解決される共有依存をここで登録する。
+        /// 自身が構築するPlayerスコープ(子コンテナ)への登録。
+        /// Player配下のIUnitScopeMemberから解決される共有依存をここで登録する。
         /// </summary>
         protected override void ConfigureScope(IContainerBuilder builder)
         {
