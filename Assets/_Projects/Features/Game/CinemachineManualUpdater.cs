@@ -7,11 +7,11 @@ using VContainer;
 namespace _Projects.Features.Game
 {
     /// <summary>
-    /// CinemachineBrainを手動更新する。CameraApplyフェーズ(各UnitがCameraTargetを動かした直後)で
-    /// 呼ぶことで、後のUI処理が常に最新のカメラ位置を使えるようにする。
-    /// ※CinemachineBrainのUpdateMethodはManualUpdateに設定しておくこと。
+    ///     CinemachineBrainを手動更新する。CameraApplyフェーズ(各UnitがCameraTargetを動かした直後)で
+    ///     呼ぶことで、後のUI処理が常に最新のカメラ位置を使えるようにする。
+    ///     ※CinemachineBrainのUpdateMethodはManualUpdateに設定しておくこと。
     /// </summary>
-    public class CinemachineManualUpdater : MonoBehaviour, IGameScopeMember, IScopeLaunchable
+    public class CinemachineManualUpdater : MonoBehaviour, IScopeLaunchable
     {
         [SerializeField] private CinemachineBrain _brain;
         [Inject] private IUpdateObservable _updateObservable;
@@ -21,9 +21,6 @@ namespace _Projects.Features.Game
                 .Subscribe(_ => OnPhaseUpdate())
                 .AddTo(this);
 
-        public void OnPhaseUpdate()
-        {
-            _brain.ManualUpdate();
-        }
+        public void OnPhaseUpdate() => _brain.ManualUpdate();
     }
 }

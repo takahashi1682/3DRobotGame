@@ -6,11 +6,7 @@ using VContainer.Unity;
 
 namespace _Projects.Features.Game
 {
-    public interface IGameScopeMember : IScopeMember
-    {
-    }
-
-    public class GameScopeRoot : AbstractScopeRoot<IGameScopeMember>
+    public class GameScopeRoot : AbstractScopeRoot
     {
         [SerializeField] private Camera _camera;
 

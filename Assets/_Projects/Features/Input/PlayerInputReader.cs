@@ -11,42 +11,34 @@ using VContainer.Unity;
 namespace _Projects.Features.Input
 {
     /// <summary>
-    /// 入力の読み取りを行うクラス。
-    /// Input Systemの自動更新はタイミングが不定なので手動更新(ProcessEventsManually)に切り替え、
-    /// Inputフェーズの先頭でこちらから更新することで、毎フレーム一番最初に入力を確定させる。
+    ///     入力の読み取りを行うクラス。
+    ///     Input Systemの自動更新はタイミングが不定なので手動更新(ProcessEventsManually)に切り替え、
+    ///     Inputフェーズの先頭でこちらから更新することで、毎フレーム一番最初に入力を確定させる。
     /// </summary>
     public class PlayerInputReader : MonoBehaviour,
         InputSystem_Actions.IPlayerActions,
         IUnitControllable,
-        IUnitScopeMember,
         IScopeRegisterable,
         IScopeLaunchable
     {
         [SerializeField] private SerializableReactiveProperty<Vector2> _move = new();
-        public Observable<Vector2> Move => _move;
 
         [SerializeField] private SerializableReactiveProperty<Vector2> _look = new();
-        public Observable<Vector2> Look => _look;
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<string> _lookDeviceName = new();
-        public string LookDeviceName => _lookDeviceName.Value;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<string> _lookDeviceName = new();
 
         [SerializeField] private SerializableReactiveProperty<bool> _fire = new();
-        public Observable<bool> Fire => _fire;
 
         [SerializeField] private SerializableReactiveProperty<bool> _fly = new();
-        public Observable<bool> Fly => _fly;
 
         [SerializeField] private SerializableReactiveProperty<bool> _boost = new();
-        public Observable<bool> Boost => _boost;
 
         [SerializeField] private SerializableReactiveProperty<bool> _lockOn = new();
-        public Observable<bool> LockOn => _lockOn;
 
         private InputSystem_Actions _actions;
-        public InputSystem_Actions.PlayerActions Player { get; private set; }
 
         [Inject] private IUpdateObservable _updateObservable;
+        public InputSystem_Actions.PlayerActions Player { get; private set; }
 
         private void Awake()
         {
@@ -58,30 +50,10 @@ namespace _Projects.Features.Input
             Player.Enable();
         }
 
-        public void OnRegister(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(this).As<IUnitControllable>();
-        }
-
-        public void OnLaunch()
-        {
-            _updateObservable.OnUpdate(EUpdatePhase.Input)
-                .Subscribe(_ => OnPhaseUpdate())
-                .AddTo(this);
-        }
-
-        private void OnDestroy()
-        {
-            _actions.Dispose();
-        }
-
         private void OnEnable() => _actions.Enable();
         private void OnDisable() => _actions.Disable();
 
-        public void OnPhaseUpdate()
-        {
-            InputSystem.Update();
-        }
+        private void OnDestroy() => _actions.Dispose();
 
         public void OnMove(InputAction.CallbackContext context) => _move.Value = context.ReadValue<Vector2>();
 
@@ -95,5 +67,20 @@ namespace _Projects.Features.Input
         public void OnFly(InputAction.CallbackContext context) => _fly.Value = context.ReadValueAsButton();
         public void OnBoost(InputAction.CallbackContext context) => _boost.Value = context.ReadValueAsButton();
         public void OnLockOn(InputAction.CallbackContext context) => _lockOn.Value = context.ReadValueAsButton();
+
+        public void OnLaunch() => _updateObservable.OnUpdate(EUpdatePhase.Input)
+            .Subscribe(_ => OnPhaseUpdate())
+            .AddTo(this);
+
+        public void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this).As<IUnitControllable>();
+        public Observable<Vector2> Move => _move;
+        public Observable<Vector2> Look => _look;
+        public string LookDeviceName => _lookDeviceName.Value;
+        public Observable<bool> Fire => _fire;
+        public Observable<bool> Fly => _fly;
+        public Observable<bool> Boost => _boost;
+        public Observable<bool> LockOn => _lockOn;
+
+        public void OnPhaseUpdate() => InputSystem.Update();
     }
 }

@@ -8,12 +8,11 @@ namespace _Projects.Features.Unit
 {
     public class UnitManager : IDisposable
     {
-        public List<UnitScopeRoot> UnitList { get; } = new();
-
         private readonly Subject<UnitScopeRoot> _onRegisteredUnitSubject = new();
-        public Observable<UnitScopeRoot> OnRegisteredUnit => _onRegisteredUnitSubject;
 
         private readonly Subject<UnitScopeRoot> _onRemovedUnitSubject = new();
+        public List<UnitScopeRoot> UnitList { get; } = new();
+        public Observable<UnitScopeRoot> OnRegisteredUnit => _onRegisteredUnitSubject;
         public Observable<UnitScopeRoot> OnRemovedUnit => _onRemovedUnitSubject;
 
         public void Dispose()
@@ -21,7 +20,7 @@ namespace _Projects.Features.Unit
             _onRegisteredUnitSubject?.Dispose();
             _onRemovedUnitSubject?.Dispose();
         }
-        
+
         public void RegisterUnit(UnitScopeRoot unit)
         {
             UnitList.Add(unit);
@@ -35,7 +34,7 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        /// currentから見て敵対する陣営の、生きているUnit一覧を返す。
+        ///     currentから見て敵対する陣営の、生きているUnit一覧を返す。
         /// </summary>
         public List<UnitScopeRoot> GetTargetUnits(ArmyType current)
         {
@@ -55,8 +54,8 @@ namespace _Projects.Features.Unit
         }
 
         /// <summary>
-        /// currentから見て敵対する陣営のUnitのうち、maxDistance以内で最も近いものを返す。
-        /// 該当がなければnull。
+        ///     currentから見て敵対する陣営のUnitのうち、maxDistance以内で最も近いものを返す。
+        ///     該当がなければnull。
         /// </summary>
         public UnitScopeRoot FindClosestTargetUnit(ArmyType current, Vector3 currentPos,
             float maxDistance)

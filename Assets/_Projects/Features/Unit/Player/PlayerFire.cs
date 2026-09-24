@@ -5,8 +5,8 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    /// ロックオン対象がいない間、FirePointがメインカメラの正面方向(BestFireDistance先)を
-    /// 向くようにする。ロックオン中の照準はUnitTracking側が担当する。
+    ///     ロックオン対象がいない間、FirePointがメインカメラの正面方向(BestFireDistance先)を
+    ///     向くようにする。ロックオン中の照準はUnitTracking側が担当する。
     /// </summary>
     public class PlayerFire : UnitFire
     {

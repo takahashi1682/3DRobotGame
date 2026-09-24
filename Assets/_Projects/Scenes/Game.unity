@@ -22909,16 +22909,7 @@ MonoBehaviour:
     TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
-  SceneScopeRoot:
-    mode: 0
-    unityReference: {fileID: 842825498748116227}
-    rawReference:
-      rid: -2
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+  SceneScopeRoot: {fileID: 842825498748116227}
 --- !u!4 &8039796362190765577
 Transform:
   m_ObjectHideFlags: 0

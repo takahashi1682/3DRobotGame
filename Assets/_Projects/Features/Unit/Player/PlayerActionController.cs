@@ -5,7 +5,7 @@ using VContainer;
 namespace _Projects.Features.Unit.Player
 {
     /// <summary>
-    /// UnitActionControllerにLook(カメラ操作)を追加したPlayer専用コントローラ。
+    ///     UnitActionControllerにLook(カメラ操作)を追加したPlayer専用コントローラ。
     /// </summary>
     public class PlayerActionController : UnitActionController
     {

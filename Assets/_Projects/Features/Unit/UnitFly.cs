@@ -1,6 +1,5 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MyUtils;
 using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
@@ -18,7 +17,6 @@ namespace _Projects.Features.Unit
     }
 
     public class UnitFly : AbstractUnitAction,
-        IUnitScopeMember,
         IScopeRegisterable,
         IScopeLaunchable,
         IFlyActionHandler,
@@ -30,22 +28,6 @@ namespace _Projects.Features.Unit
 
         [Inject] private Rigidbody _rigidbody;
         [Inject] private Energy _energy;
-
-        public void OnRegister(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(this).As<IFlyActionHandler, IFlyActionObservable>();
-        }
-
-        public void OnLaunch()
-        {
-            IsAction.AddTo(this);
-        }
-
-        public UniTask OnValueChanged(bool value, CancellationToken ct)
-        {
-            _isAction.Value = value;
-            return UniTask.CompletedTask;
-        }
 
         private void FixedUpdate()
         {
@@ -61,17 +43,22 @@ namespace _Projects.Features.Unit
             _energy.Sub(FlyingEnergy);
         }
 
-        /// <summary>
-        /// 飛行中の処理。
-        /// </summary>
-        private void ApplyFly()
+        public UniTask OnValueChanged(bool value, CancellationToken ct)
         {
-            _rigidbody.linearVelocity += Vector3.up * (FlyForce * Time.fixedDeltaTime);
+            _isAction.Value = value;
+            return UniTask.CompletedTask;
         }
 
-        public void CancelAction()
-        {
-            _isAction.Value = false;
-        }
+        public void CancelAction() => _isAction.Value = false;
+
+        public void OnLaunch() => IsAction.AddTo(this);
+
+        public void OnRegister(IContainerBuilder builder)
+            => builder.RegisterComponent(this).As<IFlyActionHandler, IFlyActionObservable>();
+
+        /// <summary>
+        ///     飛行中の処理。
+        /// </summary>
+        private void ApplyFly() => _rigidbody.linearVelocity += Vector3.up * (FlyForce * Time.fixedDeltaTime);
     }
 }

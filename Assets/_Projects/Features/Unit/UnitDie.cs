@@ -6,7 +6,7 @@ using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitDie : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
+    public class UnitDie : MonoBehaviour, IScopeLaunchable
     {
         [SerializeField] private GameObject _dieEffectPrefab;
         [SerializeField] private float _dieEffectScale = 5f;
@@ -14,14 +14,11 @@ namespace _Projects.Features.Unit
         [Inject] private Health _health;
         [Inject] private GameObject _currentObject;
 
-        public void OnLaunch()
+        public void OnLaunch() => _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
         {
-            _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
-            {
-                var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
-                effect.transform.localScale = Vector3.one * _dieEffectScale;
-                _currentObject.SetActive(false);
-            }).AddTo(this);
-        }
+            var effect = Instantiate(_dieEffectPrefab, transform.position, Quaternion.identity);
+            effect.transform.localScale = Vector3.one * _dieEffectScale;
+            _currentObject.SetActive(false);
+        }).AddTo(this);
     }
 }

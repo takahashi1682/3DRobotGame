@@ -6,8 +6,14 @@ using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitAnimation : MonoBehaviour, IUnitScopeMember, IScopeLaunchable
+    public class UnitAnimation : MonoBehaviour, IScopeLaunchable
     {
+        private static readonly int _boostHash = Animator.StringToHash("Boost");
+        private static readonly int _groundHash = Animator.StringToHash("Ground");
+        private static readonly int _moveXHash = Animator.StringToHash("MoveX");
+        private static readonly int _moveZHash = Animator.StringToHash("MoveZ");
+        private static readonly int _jumpOnHash = Animator.StringToHash("JumpOn");
+        private static readonly int _jumpOffHash = Animator.StringToHash("JumpOff");
         [Header("References")]
         [SerializeField] private Animator _animator;
         [SerializeField] private Light _boostLight;
@@ -19,13 +25,6 @@ namespace _Projects.Features.Unit
         [SerializeField] private float _tweenSpeed = 100f;
         [SerializeField] private float _defaultLightIntensity = 10f;
         [SerializeField] private float _boostLightIntensity = 200f;
-
-        private static readonly int _boostHash = Animator.StringToHash("Boost");
-        private static readonly int _groundHash = Animator.StringToHash("Ground");
-        private static readonly int _moveXHash = Animator.StringToHash("MoveX");
-        private static readonly int _moveZHash = Animator.StringToHash("MoveZ");
-        private static readonly int _jumpOnHash = Animator.StringToHash("JumpOn");
-        private static readonly int _jumpOffHash = Animator.StringToHash("JumpOff");
 
         [Inject] private UnitMove _unitMove;
         [Inject] private GroundDetection _groundDetection;
@@ -39,8 +38,8 @@ namespace _Projects.Features.Unit
             this.UpdateAsObservable()
                 .Subscribe(_ =>
                 {
-                    var deltaTime = Time.deltaTime;
-                    var isBoost = _boost.IsAction.CurrentValue;
+                    float deltaTime = Time.deltaTime;
+                    bool isBoost = _boost.IsAction.CurrentValue;
 
                     UpdateBoostLight(isBoost, deltaTime);
                     UpdateAnimatorParameters(isBoost, _unitMove.MoveDirection, deltaTime);
@@ -50,7 +49,7 @@ namespace _Projects.Features.Unit
 
         private void UpdateBoostLight(bool isBoost, float deltaTime)
         {
-            var targetIntensity = isBoost ? _boostLightIntensity : _defaultLightIntensity;
+            float targetIntensity = isBoost ? _boostLightIntensity : _defaultLightIntensity;
             _boostLight.intensity = Mathf.Lerp(_boostLight.intensity, targetIntensity, deltaTime * _tweenSpeed);
         }
 

@@ -13,30 +13,21 @@ using Random = UnityEngine.Random;
 namespace _Projects.Features.Unit.Enemy
 {
     public class AIControl : MonoBehaviour
-        , IUnitScopeMember
         , IScopeRegisterable
         , IScopeLaunchable
         , IUnitControllable
     {
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
-        public Observable<Vector2> Move => _move;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _look = new();
-        public Observable<Vector2> Look => _look;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<Vector2> _look = new();
 
-        public string LookDeviceName => string.Empty;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<bool> _fly = new();
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _fly = new();
-        public Observable<bool> Fly => _fly;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<bool> _boost = new();
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _boost = new();
-        public Observable<bool> Boost => _boost;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<bool> _fire = new();
 
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _fire = new();
-        public Observable<bool> Fire => _fire;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _lockOn = new();
-        public Observable<bool> LockOn => _lockOn;
+        [SerializeField] [ReadOnly] private SerializableReactiveProperty<bool> _lockOn = new();
 
         [Header("Settings")]
         public float ThinkingInterval = 1f;
@@ -53,11 +44,6 @@ namespace _Projects.Features.Unit.Enemy
         [Inject] private IUpdateObservable _updateObservable;
         private float _lastThinkTime;
 
-        public void OnRegister(IContainerBuilder builder)
-        {
-            builder.RegisterComponent(this).As<IUnitControllable>();
-        }
-
         public void OnLaunch()
         {
             _move.AddTo(this);
@@ -73,6 +59,16 @@ namespace _Projects.Features.Unit.Enemy
                 .AddTo(this);
         }
 
+        public void OnRegister(IContainerBuilder builder) => builder.RegisterComponent(this).As<IUnitControllable>();
+        public Observable<Vector2> Move => _move;
+        public Observable<Vector2> Look => _look;
+
+        public string LookDeviceName => string.Empty;
+        public Observable<bool> Fly => _fly;
+        public Observable<bool> Boost => _boost;
+        public Observable<bool> Fire => _fire;
+        public Observable<bool> LockOn => _lockOn;
+
         public void OnPhaseUpdate()
         {
             if (Time.time - _lastThinkTime >= ThinkingInterval)
@@ -83,8 +79,8 @@ namespace _Projects.Features.Unit.Enemy
         }
 
         /// <summary>
-        /// 一定間隔で呼ばれるAIの思考処理。停止中はすべての操作を解除し、
-        /// 稼働中はロックオンの有無で行動を切り替える。
+        ///     一定間隔で呼ばれるAIの思考処理。停止中はすべての操作を解除し、
+        ///     稼働中はロックオンの有無で行動を切り替える。
         /// </summary>
         private void Think()
         {
@@ -105,7 +101,7 @@ namespace _Projects.Features.Unit.Enemy
         }
 
         /// <summary>
-        /// ロックオン中の行動。ランダムに動き回りつつ、状況に応じて飛行・ブースト・攻撃を試みる。
+        ///     ロックオン中の行動。ランダムに動き回りつつ、状況に応じて飛行・ブースト・攻撃を試みる。
         /// </summary>
         private void DecideLockedOnBehavior()
         {
@@ -126,7 +122,7 @@ namespace _Projects.Features.Unit.Enemy
         }
 
         /// <summary>
-        /// ロックオン前の行動。ターゲットを探し、見つかっていれば前進しつつロックオンを試みる。
+        ///     ロックオン前の行動。ターゲットを探し、見つかっていれば前進しつつロックオンを試みる。
         /// </summary>
         private void DecideSearchBehavior()
         {
@@ -157,7 +153,7 @@ namespace _Projects.Features.Unit.Enemy
         }
 
         /// <summary>
-        /// ユニットが停止中の場合、すべての操作を解除する。
+        ///     ユニットが停止中の場合、すべての操作を解除する。
         /// </summary>
         private void StopAllActions()
         {
@@ -170,7 +166,7 @@ namespace _Projects.Features.Unit.Enemy
         }
 
         /// <summary>
-        /// rateの確率でactionをduration秒だけtrueにする(ボタンの単発押下を模す)。
+        ///     rateの確率でactionをduration秒だけtrueにする(ボタンの単発押下を模す)。
         /// </summary>
         private void TryPress(ReactiveProperty<bool> action, float rate, float duration)
         {

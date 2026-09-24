@@ -1,9 +1,10 @@
+using System;
 using _Projects.Features.Unit.Battle;
 using UnityEngine;
 
 namespace _Projects.Features.Unit
 {
-    [System.Serializable]
+    [Serializable]
     public class UnitSetting
     {
         [Header("Stats")]
@@ -23,7 +24,7 @@ namespace _Projects.Features.Unit
         [field: SerializeField] public LayerMask ObstacleLayerMask { get; private set; }
 
         /// <summary>
-        /// 距離判定・ロックオンなどで使う、このUnitの基準座標。
+        ///     距離判定・ロックオンなどで使う、このUnitの基準座標。
         /// </summary>
         public Vector3 Pivot => UnitPivot.position;
     }

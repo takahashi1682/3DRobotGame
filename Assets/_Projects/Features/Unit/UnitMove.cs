@@ -19,7 +19,6 @@ namespace _Projects.Features.Unit
     }
 
     public class UnitMove : AbstractUnitAction,
-        IUnitScopeMember,
         IScopeRegisterable,
         IScopeLaunchable,
         IMoveActionHandler,
@@ -33,16 +32,26 @@ namespace _Projects.Features.Unit
         public float PowerDownTime = 10f;
         public float StoppingPower = 2f;
 
-        [field: SerializeField, ReadOnly] public Vector3 MoveDirection { get; private set; }
+        [field: SerializeField] [field: ReadOnly]
+        public Vector3 MoveDirection { get; private set; }
 
         private float _currentPower;
         [Inject] private Rigidbody _rigidbody;
         [Inject] private GroundDetection _groundDetection;
         [Inject] private IBoostActionObservable _playerBoost;
 
-        public void OnRegister(IContainerBuilder builder)
+        public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
         {
-            builder.RegisterComponent(this).As<IMoveActionHandler, IMoveActionObservable>();
+            _isAction.Value = value.sqrMagnitude > 0f;
+            var clampMagnitude = Vector2.ClampMagnitude(value, 1);
+            MoveDirection = new Vector3(clampMagnitude.x, 0f, clampMagnitude.y);
+            return UniTask.CompletedTask;
+        }
+
+        public void CancelAction()
+        {
+            _isAction.Value = false;
+            MoveDirection = Vector3.zero;
         }
 
         public void OnLaunch()
@@ -61,19 +70,8 @@ namespace _Projects.Features.Unit
                 .AddTo(this);
         }
 
-        public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
-        {
-            _isAction.Value = value.sqrMagnitude > 0f;
-            var clampMagnitude = Vector2.ClampMagnitude(value, 1);
-            MoveDirection = new Vector3(clampMagnitude.x, 0f, clampMagnitude.y);
-            return UniTask.CompletedTask;
-        }
-
-        public void CancelAction()
-        {
-            _isAction.Value = false;
-            MoveDirection = Vector3.zero;
-        }
+        public void OnRegister(IContainerBuilder builder)
+            => builder.RegisterComponent(this).As<IMoveActionHandler, IMoveActionObservable>();
 
         private Vector3 GetGroundAlignedMoveDirection()
         {
@@ -93,15 +91,14 @@ namespace _Projects.Features.Unit
         private void ApplyMove(Vector3 moveDirection)
         {
             // ブースト中はPlayerBoost.BoostPowerを目標に、それ以外はMovePowerを目標に近づける
-            var targetPower = _playerBoost.IsAction.CurrentValue ? _playerBoost.BoostPower : MovePower;
+            float targetPower = _playerBoost.IsAction.CurrentValue ? _playerBoost.BoostPower : MovePower;
             _currentPower = Mathf.Lerp(_currentPower, targetPower, PowerDownTime * Time.fixedDeltaTime);
 
             // 加速
             _rigidbody.linearVelocity += moveDirection * (_currentPower * Time.fixedDeltaTime);
         }
 
-        private void ApplyAutoStop()
-        {
+        private void ApplyAutoStop() =>
             // 自動で止まる
             _rigidbody.linearVelocity =
                 Vector3.Lerp(
@@ -109,6 +106,5 @@ namespace _Projects.Features.Unit
                     Vector3.zero,
                     StoppingPower * Time.fixedDeltaTime
                 );
-        }
     }
 }
