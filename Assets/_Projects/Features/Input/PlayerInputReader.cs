@@ -15,47 +15,18 @@ namespace _Projects.Features.Input
     /// Input Systemの自動更新はタイミングが不定なので手動更新(ProcessEventsManually)に切り替え、
     /// Inputフェーズの先頭でこちらから更新することで、毎フレーム一番最初に入力を確定させる。
     /// </summary>
-    public class PlayerInputReader : MonoBehaviour,
+    public class PlayerInputReader : AbstractUnitControllable,
         InputSystem_Actions.IPlayerActions,
-        IUnitControllable,
         IScopeRegisterable,
         IScopeLaunchable
     {
-        [SerializeField] private SerializableReactiveProperty<Vector2> _move = new();
-        public Observable<Vector2> Move => _move;
-
-        [SerializeField] private SerializableReactiveProperty<Vector2> _look = new();
-        public Observable<Vector2> Look => _look;
-
         [SerializeField, ReadOnly] private SerializableReactiveProperty<string> _lookDeviceName = new();
-        public string LookDeviceName => _lookDeviceName.Value;
-
-        [SerializeField] private SerializableReactiveProperty<bool> _fire = new();
-        public Observable<bool> Fire => _fire;
-
-        [SerializeField] private SerializableReactiveProperty<bool> _fly = new();
-        public Observable<bool> Fly => _fly;
-
-        [SerializeField] private SerializableReactiveProperty<bool> _boost = new();
-        public Observable<bool> Boost => _boost;
-
-        [SerializeField] private SerializableReactiveProperty<bool> _lockOn = new();
-        public Observable<bool> LockOn => _lockOn;
+        public override string LookDeviceName => _lookDeviceName.Value;
 
         private InputSystem_Actions _actions;
         public InputSystem_Actions.PlayerActions Player { get; private set; }
 
         [Inject] private IUpdateObservable _updateObservable;
-
-        private void Awake()
-        {
-            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
-
-            _actions = new InputSystem_Actions();
-            Player = _actions.Player;
-            Player.AddCallbacks(this);
-            Player.Enable();
-        }
 
         public void OnRegister(IContainerBuilder builder)
         {
@@ -69,18 +40,25 @@ namespace _Projects.Features.Input
                 .AddTo(this);
         }
 
-        private void OnDestroy()
+        private void Awake()
         {
-            _actions.Dispose();
-        }
+            InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
 
+            _actions = new InputSystem_Actions();
+            Player = _actions.Player;
+            Player.AddCallbacks(this);
+        }
+        
         private void OnEnable() => _actions.Enable();
         private void OnDisable() => _actions.Disable();
 
-        public void OnPhaseUpdate()
+        private void OnDestroy()
         {
-            InputSystem.Update();
+            Player.RemoveCallbacks(this);
+            _actions.Dispose();
         }
+
+        private static void OnPhaseUpdate() => InputSystem.Update();
 
         public void OnMove(InputAction.CallbackContext context) => _move.Value = context.ReadValue<Vector2>();
 

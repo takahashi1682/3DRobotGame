@@ -2,7 +2,6 @@ using System;
 using System.Threading;
 using _Projects.Features.Game;
 using Cysharp.Threading.Tasks;
-using MyUtils;
 using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
@@ -12,30 +11,11 @@ using Random = UnityEngine.Random;
 
 namespace _Projects.Features.Unit.Enemy
 {
-    public class AIControl : MonoBehaviour
+    public class AIControl : AbstractUnitControllable
         , IScopeRegisterable
         , IScopeLaunchable
-        , IUnitControllable
     {
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _move = new();
-        public Observable<Vector2> Move => _move;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<Vector2> _look = new();
-        public Observable<Vector2> Look => _look;
-
-        public string LookDeviceName => string.Empty;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _fly = new();
-        public Observable<bool> Fly => _fly;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _boost = new();
-        public Observable<bool> Boost => _boost;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _fire = new();
-        public Observable<bool> Fire => _fire;
-
-        [SerializeField, ReadOnly] private SerializableReactiveProperty<bool> _lockOn = new();
-        public Observable<bool> LockOn => _lockOn;
+        public override string LookDeviceName => string.Empty;
 
         [Header("Settings")]
         public float ThinkingInterval = 1f;
