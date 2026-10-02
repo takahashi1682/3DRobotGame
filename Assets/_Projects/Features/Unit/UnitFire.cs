@@ -110,10 +110,18 @@ namespace _Projects.Features.Unit
                 bullet.ResetBullet(Setting.FirePoint.position, Setting.FirePoint.rotation);
                 return;
             }
+            
+            // bullet = Instantiate(BulletPrefab);
+            // bullet.Initialize(_resolver, Setting.FirePoint.position, Setting.FirePoint.rotation);
+            // _bulletInstances.Add(bullet);
+            
+            // TODO: この下に上と同じ処理を書いてみよう!!
 
-            bullet = Instantiate(BulletPrefab);
-            bullet.Initialize(_resolver, Setting.FirePoint.position, Setting.FirePoint.rotation);
-            _bulletInstances.Add(bullet);
+            
+            
+            
+            
+            
         }
 
         /// <summary>非アクティブ(=使用済み)な弾があれば返す。無ければnull。</summary>

@@ -97,17 +97,26 @@ namespace _Projects.Features.Unit.Player
 
         private void ApplyHorizontalLook(float yawInput)
         {
-            // _rigidbody.rotationは物理演算の更新までしか変わらないので、そこから読み直すと
-            // 入力が上書きされてカクつく。yawは自分で足し込んで管理する。
-            _yaw = Mathf.Repeat(_yaw + yawInput * CamSpeedX, 360f);
-            _rigidbody.MoveRotation(Quaternion.Euler(0, _yaw, 0));
+            // _yaw = Mathf.Repeat(_yaw + yawInput * CamSpeedX, 360f);
+            // _rigidbody.MoveRotation(Quaternion.Euler(0, _yaw, 0));
+            
+            // TODO: この下に上と同じ処理を書いてみよう!!
+            
+            
         }
 
         private void ApplyVerticalLook(float pitchInput)
         {
-            float pitch = NormalizePitchAngle(CameraTarget.localEulerAngles.x) - pitchInput * CamSpeedY;
-            pitch = Mathf.Clamp(pitch, LookupLimit, LookdownLimit);
-            CameraTarget.localRotation = Quaternion.Euler(pitch, 0, 0);
+            // float pitch = NormalizePitchAngle(CameraTarget.localEulerAngles.x) - pitchInput * CamSpeedY;
+            // pitch = Mathf.Clamp(pitch, LookupLimit, LookdownLimit);
+            // CameraTarget.localRotation = Quaternion.Euler(pitch, 0, 0);
+            
+            // TODO: この下に上と同じ処理を書いてみよう!!
+
+            
+            
+            
+            
         }
 
         private static float NormalizePitchAngle(float angle)

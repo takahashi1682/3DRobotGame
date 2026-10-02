@@ -62,9 +62,14 @@ namespace _Projects.Features.Unit
 
         public UniTask OnValueChanged(Vector2 value, CancellationToken ct = default)
         {
-            _isAction.Value = value.sqrMagnitude > 0f;
-            var clampMagnitude = Vector2.ClampMagnitude(value, 1);
-            MoveDirection = new Vector3(clampMagnitude.x, 0f, clampMagnitude.y);
+            // _isAction.Value = value.sqrMagnitude > 0f;
+            // var clampMagnitude = Vector2.ClampMagnitude(value, 1);
+            // MoveDirection = new Vector3(clampMagnitude.x, 0f, clampMagnitude.y);
+
+            // TODO: この下に上と同じ処理を書いてみよう!!
+
+            
+            
             return UniTask.CompletedTask;
         }
 

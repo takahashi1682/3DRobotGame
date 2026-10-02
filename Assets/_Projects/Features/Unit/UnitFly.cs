@@ -64,7 +64,11 @@ namespace _Projects.Features.Unit
         /// </summary>
         private void ApplyFly()
         {
-            _rigidbody.linearVelocity += Vector3.up * (FlyForce * Time.fixedDeltaTime);
+            // _rigidbody.linearVelocity += Vector3.up * (FlyForce * Time.fixedDeltaTime);
+
+            // TODO: この下に上と同じ処理を書いてみよう!!
+
+            
         }
 
         public void CancelAction()
