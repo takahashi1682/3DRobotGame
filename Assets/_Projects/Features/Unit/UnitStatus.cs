@@ -34,8 +34,7 @@ namespace _Projects.Features.Unit
     }
 
     public class UnitStatus : MonoBehaviour,
-        IScopeRegisterable,
-        IScopeLaunchable
+        IScopeRegisterable
     {
         [SerializeField] private FlagsParameter<EUnitState> _stateFlags = new();
         [SerializeField] private FlagsParameter<ECanFlags> _canFlags = new();
@@ -65,7 +64,7 @@ namespace _Projects.Features.Unit
 
         [Inject] private IObjectResolver _resolver;
 
-        public virtual void OnLaunch()
+        protected virtual void Awake()
         {
             _resolver.TryResolve(out _look);
             if (_look != null)

@@ -13,7 +13,6 @@ namespace _Projects.Features.Unit.Enemy
 {
     public class AIControl : AbstractUnitControllable
         , IScopeRegisterable
-        , IScopeLaunchable
     {
         public override string LookDeviceName => string.Empty;
 
@@ -37,7 +36,7 @@ namespace _Projects.Features.Unit.Enemy
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
-        public void OnLaunch()
+        private void Start()
         {
             _move.AddTo(this);
             _look.AddTo(this);

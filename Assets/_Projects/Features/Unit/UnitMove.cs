@@ -20,7 +20,6 @@ namespace _Projects.Features.Unit
 
     public class UnitMove : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         IMoveActionHandler,
         IMoveActionObservable
     {
@@ -44,7 +43,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IMoveActionHandler, IMoveActionObservable>();
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             IsAction.AddTo(this);
 

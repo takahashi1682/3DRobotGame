@@ -1,0 +1,15 @@
+key,name,text
+battle_start,つむぎ,着いた!!…ここが最奥区みたいだね!!,0,Assets/_Projects/Features/Talk/001_春日部つむぎ（ノーマル）_着いた!!…ここが….wav
+battle_start,ずんだもん,ここまで めっちゃ長かったのだ,0,Assets/_Projects/Features/Talk/002_ずんだもん（ノーマル）_ここまで めっちゃ….wav
+battle_start,ひまり,さっさと任務を終わらせて帰りましょう!!,0,Assets/_Projects/Features/Talk/003_冥鳴ひまり（ノーマル）_さっさと任務を終わ….wav
+battle_start,つむぎ,みんな!!油断しないでね!!,0,Assets/_Projects/Features/Talk/004_春日部つむぎ（ノーマル）_みんな!!油断しな….wav
+
+ally1_dead,つむぎ,まさかここまで…\nみんな…あとは任せるね…,0,Assets/_Projects/Features/Talk/ally1_dead.wav
+ally2_dead,ずんだもん,もう…動けないのだ…\n少し休むのだ…,0,Assets/_Projects/Features/Talk/ally2_dead.wav
+ally3_dead,ひまり,ここまでのようね… みんな…ごめん…,0,Assets/_Projects/Features/Talk/ally3_dead.wav
+
+player_battle_start,SYSTEM,システム。起動。\n戦闘モードに入ります。,0,Assets/_Projects/Features/Talk/001_Voidoll（ノーマル）_システム。起動。戦….wav
+player_health_50,SYSTEM,機体損傷率 50%に上昇,0,Assets/_Projects/Features/Talk/001_Voidoll（ノーマル）_機体損傷率　50%….wav
+player_health_80,SYSTEM,機体損傷率 80%に上昇,0,Assets/_Projects/Features/Talk/003_Voidoll（ノーマル）_機体損傷率　80%….wav
+player_game_clear,SYSTEM,全ターゲットの破壊を確認…任務成功,0,Assets/_Projects/Features/Talk/005_Voidoll（ノーマル）_全ターゲットの破壊….wav
+player_game_over,SYSTEM,機体稼働限界に達しました…任務失敗,0,Assets/_Projects/Features/Talk/004_Voidoll（ノーマル）_機体稼働限界に達し….wav

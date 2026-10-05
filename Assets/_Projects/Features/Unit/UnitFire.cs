@@ -25,7 +25,6 @@ namespace _Projects.Features.Unit
     /// </summary>
     public class UnitFire : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         IFireActionHandler,
         IFireActionObservable
     {
@@ -37,26 +36,25 @@ namespace _Projects.Features.Unit
         public float FireRate = 0.15f;
 
         /// <summary>派生クラス(PlayerFireなど)からもFirePoint等を参照できるようprotectedにしている。</summary>
-        [Inject]
-        protected UnitSetting Setting { get; private set; }
+        [Inject] protected UnitSetting Setting { get; private set; }
+
+        [Header("Audio")]
+        [SerializeField] protected AudioSource _audioSource;
 
         private float _fireTime;
         [Inject] private IObjectResolver _resolver;
         [Inject] private IUpdateObservable _updateObservable;
         private readonly List<BulletController> _bulletInstances = new();
 
-        private void Awake()
-        {
-            SetEffectsActive(false);
-        }
-
         public void OnRegister(IContainerBuilder builder)
         {
             builder.RegisterComponent(this).As<IFireActionHandler, IFireActionObservable>();
         }
 
-        public virtual void OnLaunch()
+        protected virtual void Awake()
         {
+            SetEffectsActive(false);
+
             IsAction.AddTo(this);
             _updateObservable.OnUpdate(EUpdatePhase.Default)
                 .Subscribe(_ => OnPhaseUpdate())
@@ -67,6 +65,7 @@ namespace _Projects.Features.Unit
         {
             _isAction.Value = value;
             SetEffectsActive(value);
+            SetFireSound(value);
             return UniTask.CompletedTask;
         }
 
@@ -74,6 +73,7 @@ namespace _Projects.Features.Unit
         {
             _isAction.Value = false;
             SetEffectsActive(false);
+            SetFireSound(false);
         }
 
         private void SetEffectsActive(bool isActive)
@@ -85,6 +85,19 @@ namespace _Projects.Features.Unit
             else
             {
                 FireEffect.Stop();
+            }
+        }
+
+        private void SetFireSound(bool isActive)
+        {
+            if (isActive)
+            {
+                _audioSource.loop = true;
+                _audioSource.Play();
+            }
+            else
+            {
+                _audioSource.loop = false;
             }
         }
 

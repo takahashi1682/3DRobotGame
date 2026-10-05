@@ -12,8 +12,7 @@ namespace _Projects.Features.Unit
     /// 飛行しておらず、かつ接地していない間だけ重力を加算する。
     /// </summary>
     public class UnitGravity : MonoBehaviour,
-        IScopeRegisterable,
-        IScopeLaunchable
+        IScopeRegisterable
     {
         [Header("Settings")]
         public float Gravity = -2.25f;
@@ -30,7 +29,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this);
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             this.FixedUpdateAsObservable()
                 .Subscribe(_ =>

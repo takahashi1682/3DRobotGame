@@ -20,7 +20,6 @@ namespace _Projects.Features.Unit
 
     public class UnitBoost : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         IBoostActionHandler,
         IBoostActionObservable
     {
@@ -40,7 +39,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IBoostActionHandler, IBoostActionObservable>();
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             IsAction.AddTo(this);
         }

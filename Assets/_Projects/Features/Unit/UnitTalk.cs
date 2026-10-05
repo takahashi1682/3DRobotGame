@@ -1,20 +1,23 @@
-using System;
-using System.Collections.Generic;
+using MyUtils.Parameter.Basic;
 using MyUtils.TalkUtils;
+using R3;
 using UnityEngine;
+using VContainer;
 
 namespace _Projects.Features.Unit
 {
     public class UnitTalk : MonoBehaviour
     {
-        private void Start()
+        [SerializeField] protected string _deadKey = "ally1_dead";
+
+        [Inject] protected TalkManager _talkManager;
+        [Inject] protected Health _health;
+
+        protected virtual void Awake()
         {
-            TalkManager.Instance.TalkAsync(new List<LineData>
-            {
-                new LineData("Hello, this is a test line 1.", ""),
-                new LineData("This is line 2 of the conversation."),
-                new LineData("And this is the final line, line 3.")
-            });
+            _health.IsEmpty.Where(isEmpty => isEmpty)
+                .Subscribe(_ => _talkManager.Talk(_deadKey))
+                .AddTo(this);
         }
     }
 }

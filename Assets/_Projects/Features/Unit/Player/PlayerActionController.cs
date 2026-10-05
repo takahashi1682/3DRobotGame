@@ -13,9 +13,9 @@ namespace _Projects.Features.Unit.Player
 
         [Inject] private IObjectResolver _lookResolver;
 
-        public override void OnLaunch()
+        protected override void Awake()
         {
-            base.OnLaunch();
+            base.Awake();
             if (_control == null) return;
 
             _lookResolver.TryResolve(out _lookHandler);

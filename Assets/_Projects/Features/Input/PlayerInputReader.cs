@@ -17,8 +17,7 @@ namespace _Projects.Features.Input
     /// </summary>
     public class PlayerInputReader : AbstractUnitControllable,
         InputSystem_Actions.IPlayerActions,
-        IScopeRegisterable,
-        IScopeLaunchable
+        IScopeRegisterable
     {
         [SerializeField, ReadOnly] private SerializableReactiveProperty<string> _lookDeviceName = new();
         public override string LookDeviceName => _lookDeviceName.Value;
@@ -33,20 +32,17 @@ namespace _Projects.Features.Input
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
-        public void OnLaunch()
-        {
-            _updateObservable.OnUpdate(EUpdatePhase.Input)
-                .Subscribe(_ => OnPhaseUpdate())
-                .AddTo(this);
-        }
-
-        private void Awake()
+        private void Start()
         {
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
 
             _actions = new InputSystem_Actions();
             Player = _actions.Player;
             Player.AddCallbacks(this);
+
+            _updateObservable.OnUpdate(EUpdatePhase.Input)
+                .Subscribe(_ => OnPhaseUpdate())
+                .AddTo(this);
         }
         
         private void OnEnable() => _actions.Enable();

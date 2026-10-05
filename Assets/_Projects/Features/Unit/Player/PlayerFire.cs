@@ -15,9 +15,9 @@ namespace _Projects.Features.Unit.Player
         [Inject] private Camera _camera;
         [Inject] private IUnitTrackingObservable _trackingObservable;
 
-        public override void OnLaunch()
+        protected override void Awake()
         {
-            base.OnLaunch();
+            base.Awake();
 
             // ロックオン対象がいない場合、カメラの正面方向を向くようにする。
             _trackingObservable.Target.Subscribe(target =>

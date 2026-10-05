@@ -7,8 +7,7 @@ using VContainer.Unity;
 namespace _Projects.Features.Unit
 {
     public class EnergyUpdater : IntParameterUpdater,
-        IScopeRegisterable,
-        IScopeLaunchable
+        IScopeRegisterable
     {
         [Inject] private GroundDetection _groundDetection;
 
@@ -17,7 +16,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this);
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             _groundDetection.IsHit
                 .Subscribe(x => IsEnable = x)

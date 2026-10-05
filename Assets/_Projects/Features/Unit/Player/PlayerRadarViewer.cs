@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using _Projects.Features.Game;
 using _Projects.Features.Unit.Battle;
-using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,7 +13,7 @@ namespace _Projects.Features.Unit.Player
     /// 自機を中心としたレーダーUIに、生存中の各ユニットの位置を陣営色のアイコンで表示する。
     /// ユニット削除時、アイコンは破棄せずプールへ戻し、新規ユニット登録時に再利用する。
     /// </summary>
-    public class PlayerRadarViewer : MonoBehaviour, IScopeLaunchable
+    public class PlayerRadarViewer : MonoBehaviour
     {
         [SerializeField] private float _radarScale = 2;
         [SerializeField] private RectTransform _radarUI;
@@ -31,7 +30,7 @@ namespace _Projects.Features.Unit.Player
         [Inject] private UnitManager _unitManager;
         [Inject] private IUpdateObservable _updateObservable;
 
-        public void OnLaunch()
+        private void Awake()
         {
             // すでに存在するユニットのアイコンを生成
             foreach (var unit in _unitManager.UnitList)

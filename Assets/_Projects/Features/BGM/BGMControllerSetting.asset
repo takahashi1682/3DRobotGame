@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68ab2372aac6403e8809bf00db309790, type: 3}
+  m_Name: BGMControllerSetting
+  m_EditorClassIdentifier: MyUtils.Runtime::MyUtils.BGMControllerSetting
+  SceneEnterAudioSettings:
+  - SceneName:
+      SceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+      _sceneName: Game
+    AudioPlayMode: 0
+    Resource: {fileID: 11400000, guid: d1948d64cc26ba347a4498cbcac6e07d, type: 2}
+  SceneExitAudioSettings:
+  - SceneName:
+      SceneAsset: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
+      _sceneName: Game
+    AudioPlayMode: 6
+    Resource: {fileID: 0}

@@ -28,7 +28,6 @@ namespace _Projects.Features.Unit
     /// </summary>
     public class UnitTracking : MonoBehaviour,
         IScopeRegisterable,
-        IScopeLaunchable,
         IUnitTrackingHandler,
         IUnitTrackingObservable
     {
@@ -54,7 +53,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IUnitTrackingHandler, IUnitTrackingObservable>();
         }
 
-        public virtual void OnLaunch()
+        protected virtual void Awake()
         {
             _target.AddTo(this);
             _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)

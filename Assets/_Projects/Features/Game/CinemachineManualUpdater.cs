@@ -1,4 +1,3 @@
-using MyUtils.VContainerExtensions;
 using R3;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -11,12 +10,12 @@ namespace _Projects.Features.Game
     /// 呼ぶことで、後のUI処理が常に最新のカメラ位置を使えるようにする。
     /// ※CinemachineBrainのUpdateMethodはManualUpdateに設定しておくこと。
     /// </summary>
-    public class CinemachineManualUpdater : MonoBehaviour, IScopeLaunchable
+    public class CinemachineManualUpdater : MonoBehaviour
     {
         [SerializeField] private CinemachineBrain _brain;
         [Inject] private IUpdateObservable _updateObservable;
 
-        public void OnLaunch() =>
+        private void Awake() =>
             _updateObservable.OnUpdate(EUpdatePhase.CameraApply)
                 .Subscribe(_ => OnPhaseUpdate())
                 .AddTo(this);

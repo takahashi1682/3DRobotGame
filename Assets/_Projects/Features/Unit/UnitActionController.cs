@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
@@ -19,7 +18,7 @@ namespace _Projects.Features.Unit
         void CancelAction();
     }
 
-    public class UnitActionController : MonoBehaviour, IScopeLaunchable
+    public class UnitActionController : MonoBehaviour
     {
         // 各アクションの実行役。派生クラス(PlayerActionControllerなど)からも使う
         protected IMoveActionHandler _moveHandler;
@@ -36,7 +35,7 @@ namespace _Projects.Features.Unit
 
         [Inject] private IObjectResolver _resolver;
 
-        public virtual void OnLaunch()
+        protected virtual void Awake()
         {
             // IUnitControllableが解決できない場合は、アクション制御を行わない
             if (!_resolver.TryResolve(out _control)) return;

@@ -9,13 +9,13 @@ using VContainer.Unity;
 namespace _Projects.Features.Unit
 {
     public class UnitScopeRoot : AbstractScopeRoot
-        , IScopeLaunchable
     {
         [SerializeField] private SerializableReactiveProperty<bool> _running = new();
         public ReadOnlyReactiveProperty<bool> Running => _running;
 
         [Header("References")]
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private AudioSource _audioSource;
         [SerializeField] private GroundDetection _groundDetection;
 
         [field: SerializeField]
@@ -37,10 +37,7 @@ namespace _Projects.Features.Unit
             Health.SetFull();
             Energy.SetMax(Setting.MaxEnergy);
             Energy.SetFull();
-        }
 
-        public void OnLaunch()
-        {
             // 体力が0でなく、かつゲーム進行中のみアクション可能
             Health.IsEmpty.CombineLatest(_gameJudge.State,
                     (healthEmpty, gameState) => !healthEmpty && gameState == EGameState.Playing)
@@ -66,6 +63,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(gameObject);
             builder.RegisterInstance(Setting);
             builder.RegisterComponent(_rigidbody);
+            builder.RegisterComponent(_audioSource);
             builder.RegisterComponent(_groundDetection);
             builder.RegisterComponent(Health);
             builder.RegisterComponent(Energy);

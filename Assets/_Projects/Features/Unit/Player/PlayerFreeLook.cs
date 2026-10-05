@@ -23,7 +23,6 @@ namespace _Projects.Features.Unit.Player
     /// </summary>
     public class PlayerFreeLook : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         ILookActionHandler,
         ILookActionObservable
     {
@@ -52,7 +51,7 @@ namespace _Projects.Features.Unit.Player
             builder.RegisterComponent(this).As<ILookActionHandler, ILookActionObservable>();
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             IsAction.AddTo(this);
             _updateObservable.OnUpdate(EUpdatePhase.CameraPrepare)

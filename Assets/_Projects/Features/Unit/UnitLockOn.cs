@@ -22,7 +22,6 @@ namespace _Projects.Features.Unit
     /// </summary>
     public class UnitLockOn : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         ILockOnActionHandler,
         ILockOnActionObservable
     {
@@ -36,7 +35,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<ILockOnActionHandler, ILockOnActionObservable>();
         }
 
-        public virtual void OnLaunch()
+        protected virtual void Awake()
         {
             IsAction.AddTo(this);
 

@@ -26,8 +26,7 @@ namespace _Projects.Features.Game
     /// ゲーム全体の進行(開始/終了)と勝敗を管理する。
     /// </summary>
     public class GameJudge : MonoBehaviour,
-        IScopeRegisterable,
-        IScopeLaunchable
+        IScopeRegisterable
     {
         [Header("References")]
         [SerializeField] private UnitScopeRoot _player;
@@ -44,7 +43,7 @@ namespace _Projects.Features.Game
             builder.RegisterComponent(this);
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             _state.AddTo(this);
 

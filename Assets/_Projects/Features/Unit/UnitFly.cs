@@ -18,7 +18,6 @@ namespace _Projects.Features.Unit
 
     public class UnitFly : AbstractUnitAction,
         IScopeRegisterable,
-        IScopeLaunchable,
         IFlyActionHandler,
         IFlyActionObservable
     {
@@ -34,7 +33,7 @@ namespace _Projects.Features.Unit
             builder.RegisterComponent(this).As<IFlyActionHandler, IFlyActionObservable>();
         }
 
-        public void OnLaunch()
+        private void Awake()
         {
             IsAction.AddTo(this);
         }

@@ -1,12 +1,11 @@
 using MyUtils.Parameter.Basic;
-using MyUtils.VContainerExtensions;
 using R3;
 using UnityEngine;
 using VContainer;
 
 namespace _Projects.Features.Unit
 {
-    public class UnitDie : MonoBehaviour, IScopeLaunchable
+    public class UnitDie : MonoBehaviour
     {
         [SerializeField] private GameObject _dieEffectPrefab;
         [SerializeField] private float _dieEffectScale = 5f;
@@ -14,7 +13,7 @@ namespace _Projects.Features.Unit
         [Inject] private Health _health;
         [Inject] private GameObject _currentObject;
 
-        public void OnLaunch()
+        private void Awake()
         {
             _health.IsEmpty.Where(isEmpty => isEmpty).Subscribe(_ =>
             {
