@@ -32,7 +32,7 @@ namespace _Projects.Features.Input
             builder.RegisterComponent(this).As<IUnitControllable>();
         }
 
-        private void Start()
+        private void Awake()
         {
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
 

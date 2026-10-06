@@ -40,7 +40,7 @@ namespace _Projects.Features.Unit.Player
                 .AddTo(this);
 
             _health.CurrentRate
-                .Where(rate => rate < 0.8f)
+                .Where(rate => rate < 0.2f)
                 .Take(1)
                 .Subscribe(_ => _talkManager.Talk("player_health_80"))
                 .AddTo(this);

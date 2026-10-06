@@ -3430,7 +3430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &556414299
 MonoBehaviour:
@@ -3839,7 +3839,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4186,7 +4186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 40
 --- !u!114 &589956908
 MonoBehaviour:
@@ -4582,7 +4582,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -4715,7 +4715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &632850475
 MonoBehaviour:
@@ -5111,7 +5111,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -6704,7 +6704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &799823307
 MonoBehaviour:
@@ -7100,7 +7100,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -10956,7 +10956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &1423939287
 MonoBehaviour:
@@ -11352,7 +11352,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -14222,7 +14222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &1855678265
 MonoBehaviour:
@@ -14618,7 +14618,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -15878,7 +15878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &2007454277
 MonoBehaviour:
@@ -16287,7 +16287,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -16771,7 +16771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &2009075055
 MonoBehaviour:
@@ -16811,7 +16811,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -17142,7 +17142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8abbe19f5e584cd98e0cd7dd7f2c4d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Features.Unit.UnitDie
-  _dieEffectPrefab: {fileID: 100008, guid: 06736895ea0a4ff408d25e6684dce797, type: 3}
+  _dieEffectPrefab: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   _dieEffectScale: 6
 --- !u!114 &2032437645
 MonoBehaviour:
@@ -17551,7 +17551,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -18497,7 +18497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155872612}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a516ae247afd40fea9269cf79470af29, type: 3}
   m_Name: 
@@ -18525,7 +18525,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155872612}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb83fae761a1da94d93b8c26a22d1d60, type: 3}
   m_Name: 
@@ -18566,7 +18566,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 50
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
